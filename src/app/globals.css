@@ -1,26 +1,27 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-win95-gray: #c0c0c0; /* Classic Windows gray */
+  --color-win95-dark-gray: #808080;
+  --color-win95-blue: #000080; /* Title bar blue */
+  --color-win95-white: #f0f0f0;
+
+  --box-shadow-win95-inset: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
+  --box-shadow-win95-outset: 1px 1px 0 #fff, -1px -1px 0 #000;
+
+  --font-family-win95: "MS Sans Serif", system-ui; /* Retro font (fallback to system) */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Optional: Add @font-face if you have MS Sans Serif font */
+@font-face {
+  font-family: "MS Sans Serif";
+  src: url("/fonts/ms-sans-serif.woff") format("woff");
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-win95-gray);
+  font-family: var(--font-family-win95);
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
