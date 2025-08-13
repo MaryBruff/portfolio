@@ -1,8 +1,8 @@
 import React from 'react';
 
-export default function Window({ title, children }: { title: string; children: React.ReactNode }) {
+export default function Window({ title, children, className = '' }: { title: string; children: React.ReactNode; className?: string }) {
   return (
-    <div className="border-[3px] border-win95-dark-gray bg-win95-white shadow-win95-outset rounded-sm max-w-3xl mx-auto my-4">
+    <div className={`border-[3px] border-win95-dark-gray bg-win95-white shadow-win95-outset rounded-sm max-w-3xl mx-auto my-4 ${className}`}>
       {/* Title Bar */}
       <div className="bg-win95-blue text-white px-2 py-1 flex justify-between items-center">
         <span className="font-bold">{title}</span>
