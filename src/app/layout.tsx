@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
 
 export const metadata: Metadata = {
-  title: 'My Retro Portfolio',
-  description: 'Oldschool Windows-style portfolio',
+  title: "Mary Bruff Portfolio",
+  description: 'Mary Bruff MySpace Inspired Portfolio',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

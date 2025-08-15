@@ -5,7 +5,13 @@ export default function Window({
   title,
   children,
   className = "",
-}: { title: string; children: React.ReactNode; className?: string }) {
+  bodyClassName = "",
+}: {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+  bodyClassName?: string; // NEW
+}) {
   return (
     <div className={`border-[3px] border-win95-dark-gray bg-win95-white shadow-win95-outset rounded-sm ${className}`}>
       {/* Title Bar */}
@@ -18,7 +24,7 @@ export default function Window({
         </div>
       </div>
       {/* Content */}
-      <div className="p-4 md:p-5 lg:p-6">{children}</div>
+      <div className={`p-4 md:p-5 lg:p-6 ${bodyClassName}`}>{children}</div>
     </div>
   );
 }
