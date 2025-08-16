@@ -1,16 +1,24 @@
 import Window from '@/components/Window';
 import Button from '@/components/Button';
 
-export default function Home() {
+export default function WorkHub() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center p-4">
-      <Window title="Welcome to My Portfolio">
-        <h1 className="text-2xl font-bold mb-4">Work</h1>
-        <div className="flex space-x-4">
-          <Button href="/about">About Me</Button>
-          <Button href="/contact">Contact</Button>
-        </div>
-      </Window>
+    <main className="min-h-screen bg-myspace-bg p-4">
+      <div className="mx-auto max-w-4xl space-y-6">
+        <Window title="Work">
+          <p className="text-myspace-text mb-4">
+            Explore selected work by category.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <Button href="/work/ui-ux">UI/UX & Content Strategy</Button>
+            <Button href="/work/multimedia">Multimedia & Motion</Button>
+            <Button href="/work/creative">Creative & Performance</Button>
+            <Button href="/work/marketing">Marketing & Strategy</Button>
+            <Button href="/work/data">Data Analytics & Viz</Button>
+            <Button href="/resume">Resume</Button>
+          </div>
+        </Window>
+      </div>
     </main>
   );
 }
