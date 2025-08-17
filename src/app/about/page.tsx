@@ -5,20 +5,45 @@ export default function About() {
   return (
     <main className="min-h-screen bg-myspace-bg relative">
       <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
-        <div className="grid grid-cols-1 md:grid-cols-[300px,1fr] gap-6 items-start">
+        <div className="grid grid-cols-2 gap-6 items-start">
           {/* Left Column (profile pic and music) */}
-          <div className="space-y-6">
-            <div className="absolute top-4 left-4 z-10 md:static">
-              <Window title="My Profile Pic" className="myspace-window w-64">
-                <Image
-                  src="/Me_Toon.png"
-                  alt="Profile Picture"
-                  width={256}
-                  height={256}
-                  className="w-64 h-64 rounded-full border-[3px] border-myspace-accent mx-auto"
-                />
-              </Window>
-            </div>
+          <div className="space-y-6 col-span-2 sm:col-span-1">
+            <Window title="About Me" className="myspace-window">
+              <div className="grid grid-cols-2 gap-6">
+                <div className="">
+                  <h1 className="text-2xl font-bold mb-3 animate-blink text-myspace-text">
+                    Mary Bruff
+                  </h1>
+                  <Image
+                    src="/Me_Toon.png"
+                    alt="Profile Picture"
+                    width={256}
+                    height={256}
+                    className="w-64 h-64 mx-auto"
+                  />
+                </div>
+                <div className="my-auto grid grid-cols-1 gap-8">
+                  <Image
+                    src="https://dl.glitter-graphics.com/pub/745/745455rvacxjsot2.gif"
+                    alt="Online Now"
+                    width={90}
+                    height={90}
+                    unoptimized
+                  />
+                  <p className="mb-4 text-myspace-text">
+                    Insert generic text here: Generic about me text goes here.
+                  </p>
+                  <table className="w-full border-collapse text-myspace-text">
+                    <tbody>
+                      <tr>
+                        <td className="border border-myspace-accent p-2">Mood:</td>
+                        <td className="border border-myspace-accent p-2">Groovy 🎸</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </Window>
             <Window title="My Jams" className="myspace-window">
               <div className="w-full h-[360px]">
                 <iframe
@@ -33,27 +58,7 @@ export default function About() {
           </div>
 
           {/* Right Column (main content) */}
-          <div className="space-y-6">
-            <Window title="About Me" className="myspace-window">
-              <h1 className="text-2xl font-bold mb-3 animate-blink text-myspace-text">
-                Hey, I&apos;m Mary!
-              </h1>
-              <p className="mb-4 text-myspace-text">
-                Insert generic text here: Generic about me text goes here.
-              </p>
-              <table className="w-full border-collapse text-myspace-text">
-                <tbody>
-                  <tr>
-                    <td className="border border-myspace-accent p-2">Mood:</td>
-                    <td className="border border-myspace-accent p-2">Groovy 🎸</td>
-                  </tr>
-                  <tr>
-                    <td className="border border-myspace-accent p-2">Currently Listening To:</td>
-                    <td className="border border-myspace-accent p-2">Live below!</td>
-                  </tr>
-                </tbody>
-              </table>
-            </Window>
+          <div className="space-y-6 col-span-2 sm:col-span-1">
 
             <Window title="My Skills" className="myspace-window">
               <ul className="list-disc pl-5 space-y-1 text-myspace-text">
@@ -68,12 +73,13 @@ export default function About() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <img
+                <Image
                   src="https://dl7.glitter-graphics.net/pub/570/570007a6azac7wdy.gif"
                   alt="Glitter Graphics"
                   width={90}
                   height={90}
                   style={{ border: 0 }}
+                  unoptimized
                 />
               </a>
             </Window>
