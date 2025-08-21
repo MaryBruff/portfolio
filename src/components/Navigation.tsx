@@ -7,7 +7,7 @@ export default function Navigation() {
       <Button>Start</Button> {/* Placeholder for future menu */}
       <Button href="/">Home</Button>
       <Button href="/about">About</Button>
-      <Button href="/contact">Contact</Button>
+      {/* <Button href="/contact">Contact</Button> */}
       <Button href="/work">Work</Button>
     </nav>
   );

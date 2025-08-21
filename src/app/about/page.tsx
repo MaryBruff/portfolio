@@ -1,12 +1,15 @@
 import Window from "@/components/Window";
 import Image from "next/image";
+import Link from "next/link";
+import EmailCopy from "@/components/EmailCopy";
+import Guestbook from "@/components/Guestbook";
 
 export default function About() {
   return (
     <main className="min-h-screen bg-myspace-bg relative">
       <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
         <div className="grid grid-cols-2 gap-6 items-start">
-          {/* Left Column (profile pic and music) */}
+          {/* Left Column (profile pic, music, and interests) */}
           <div className="space-y-6 col-span-2 sm:col-span-1">
             <Window title="About Me" className="myspace-window">
               <div className="grid grid-cols-2 gap-6">
@@ -22,7 +25,7 @@ export default function About() {
                     className="w-64 h-64 mx-auto"
                   />
                 </div>
-                <div className="my-auto grid grid-cols-1 gap-8">
+                <div className="my-auto grid grid-cols-1 gap-4">
                   <Image
                     src="https://dl.glitter-graphics.com/pub/745/745455rvacxjsot2.gif"
                     alt="Online Now"
@@ -30,60 +33,188 @@ export default function About() {
                     height={90}
                     unoptimized
                   />
-                  <p className="mb-4 text-myspace-text">
-                    Insert generic text here: Generic about me text goes here.
-                  </p>
-                  <table className="w-full border-collapse text-myspace-text">
-                    <tbody>
-                      <tr>
-                        <td className="border border-myspace-accent p-2">Mood:</td>
-                        <td className="border border-myspace-accent p-2">Groovy 🎸</td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <div className="details text-myspace-text">
+                    <p>&quot;lala&quot;</p>
+                    <p>United States</p>
+                    <p>Last active: <br />
+                      <time className="ago" data-timestamp="1744433186" style={{ opacity: 1 }}>
+                        4 months ago
+                      </time>
+                    </p>
+                  </div>
+                  <div className="mood text-myspace-text">
+                    <p><b>Mood:</b> Groovy :-)</p>
+                  </div>
                 </div>
               </div>
             </Window>
             <Window title="My Jams" className="myspace-window">
-              <div className="w-full h-[360px]">
+              <div className="w-full h-[200px]">
                 <iframe
                   src="https://spotify-github-profile.kittinanx.com/api/view?uid=poptartmarbear&cover_image=true&theme=default&show_offline=false&background_color=ff69b4&interchange=false&bar_color=ff64da"
                   className="w-full h-full max-w-full"
                   allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                   loading="lazy"
-                />
+                />   
               </div>
+            </Window>
+            <Window title="Mary's Interests" className="myspace-window">
+              <div className="table-section">
+                <table className="w-full border-collapse text-myspace-text" cellSpacing="3" cellPadding="3">
+                  <tbody>
+                    <tr>
+                      <td className="border border-myspace-accent p-2 w-1/4">
+                        <p><b>Skills</b></p>
+                      </td>
+                      <td className="border border-myspace-accent p-2">
+                        <p>
+                          Leadership, Software Development, Collaboration & Teamwork, Data Analysis & Quality Management, Technical Communication & Documentation
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-myspace-accent p-2">
+                        <p><b>Music</b></p>
+                      </td>
+                      <td className="border border-myspace-accent p-2">
+                        <p>
+                          Check out my tunes on{' '}
+                          <Link
+                            href="https://open.spotify.com/user/poptartmarbear"
+                            target="_blank"
+                            className="underline decoration-dashed underline-offset-4 hover:opacity-90"
+                          >
+                            Spotify
+                          </Link>{' '}
+                          and{' '}
+                          <Link
+                            href="https://www.youtube.com/@MarbearFM"
+                            target="_blank"
+                            className="underline decoration-dashed underline-offset-4 hover:opacity-90"
+                          >
+                            YouTube
+                          </Link>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-myspace-accent p-2">
+                        <p><b>Movies</b></p>
+                      </td>
+                      <td className="border border-myspace-accent p-2">
+                        <p>
+                          See my favorite films on{' '}
+                          <Link
+                            href="https://letterboxd.com/Poptartmarbear/"
+                            target="_blank"
+                            className="underline decoration-dashed underline-offset-4 hover:opacity-90"
+                          >
+                            Letterboxd
+                          </Link>
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-myspace-accent p-2">
+                        <p><b>Activities</b></p>
+                      </td>
+                      <td className="border border-myspace-accent p-2">
+                        <p>
+                          Music, Films, Video Games, Always Learning
+                        </p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-myspace-accent p-2">
+                        <p><b>Books</b></p>
+                      </td>
+                      <td className="border border-myspace-accent p-2">
+                        <p></p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="border border-myspace-accent p-2">
+                        <p><b>Heroes</b></p>
+                      </td>
+                      <td className="border border-myspace-accent p-2">
+                        <p></p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </Window>
+            <Window title="MySpace Top 3 (Links)" className="myspace-window h-full">
+              <ul className="space-y-3 text-myspace-text">
+                <li className="flex items-center justify-between border border-myspace-accent p-2 rounded">
+                  <span className="flex items-center gap-2"><span>💼</span>LinkedIn</span>
+                  <Link href="https://www.linkedin.com/in/mary-bruff/" target="_blank"
+                    className="underline decoration-dashed underline-offset-4 hover:opacity-90">
+                    /marybruff
+                  </Link>
+                </li>
+                <li className="flex items-center justify-between border border-myspace-accent p-2 rounded">
+                  <span className="flex items-center gap-2"><span>💻</span>GitHub</span>
+                  <Link href="https://github.com/MaryBruff" target="_blank"
+                    className="underline decoration-dashed underline-offset-4 hover:opacity-90">
+                    @MaryBruff
+                  </Link>
+                </li>
+                <li className="flex items-center justify-between border border-myspace-accent p-2 rounded">
+                  <span className="flex items-center gap-2"><span>📮</span>Email</span>
+                  <EmailCopy email="marybruff5@gmail.com" />
+                </li>
+              </ul>
             </Window>
           </div>
 
           {/* Right Column (main content) */}
           <div className="space-y-6 col-span-2 sm:col-span-1">
-
-            <Window title="My Skills" className="myspace-window">
-              <ul className="list-disc pl-5 space-y-1 text-myspace-text">
-                <li className="text-lg">Leadership</li>
-                <li className="text-lg">Software Development</li>
-                <li className="text-lg">Collaboration & Teamwork</li>
-                <li className="text-lg">Data Analysis & Quality Management</li>
-                <li className="text-lg">Technical Communication & Documentation</li>
-              </ul>
-              <a
-                href="https://www.glitter-graphics.com"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Image
-                  src="https://dl7.glitter-graphics.net/pub/570/570007a6azac7wdy.gif"
-                  alt="Glitter Graphics"
-                  width={90}
-                  height={90}
-                  style={{ border: 0 }}
-                  unoptimized
-                />
-              </a>
+            <Window title="Latest Blog Entries" className="myspace-window">
+              <div className="blog-preview text-myspace-text">
+                <h4 className="text-lg font-bold mb-2">
+                  Mary&apos;s Latest Blog Entries [
+                  <Link
+                    href="https://mbruff.wixsite.com/letstalkabooutmusic"
+                    target="_blank"
+                    className="underline decoration-dashed underline-offset-4 hover:opacity-90"
+                  >
+                    View Blog
+                  </Link>
+                  ]
+                </h4>
+                <ul className="list-disc pl-5 space-y-1">
+                  <li>
+                    <Link
+                      href="https://mbruff.wixsite.com/letstalkabooutmusic/post/6-albums-to-get-you-into-jazz"
+                      target="_blank"
+                      className="underline decoration-dashed underline-offset-4 hover:opacity-90"
+                    >
+                      6 Albums to Get You into Jazz
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://mbruff.wixsite.com/letstalkabooutmusic/post/not-your-cliché-jangle-pop-song-recommendation-pt-1"
+                      target="_blank"
+                      className="underline decoration-dashed underline-offset-4 hover:opacity-90"
+                    >
+                      Not Your Cliché Jangle Pop Song Recommendation (Pt. 1)
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="https://mbruff.wixsite.com/letstalkabooutmusic/post/5-underrated-alternative-albums-from-the-90s"
+                      target="_blank"
+                      className="underline decoration-dashed underline-offset-4 hover:opacity-90"
+                    >
+                      5 Underrated Alternative Albums from the 90s
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </Window>
-
             <Window title="My Education" className="myspace-window">
               <table className="w-full border-collapse text-myspace-text">
                 <tbody>
@@ -106,14 +237,8 @@ export default function About() {
                 </tbody>
               </table>
             </Window>
-
-            <Window title="My Activities" className="myspace-window">
-              <ul className="list-disc pl-5 space-y-1 mb-2 text-myspace-text">
-                <li className="text-lg">Music</li>
-                <li className="text-lg">Films</li>
-                <li className="text-lg">Video Games</li>
-                <li className="text-lg">Always Learning</li>
-              </ul>
+            <Window title="Guestbook" className="myspace-window">
+              <Guestbook />
             </Window>
           </div>
         </div>
