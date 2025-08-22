@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import EmailCopy from "@/components/EmailCopy";
 import Guestbook from "@/components/Guestbook";
+import Button from "@/components/Button";
 
 export default function About() {
   return (
@@ -171,6 +172,20 @@ export default function About() {
 
           {/* Right Column (main content) */}
           <div className="space-y-6 col-span-2 sm:col-span-1">
+            <Window title="Work" className="myspace-window">
+              <p className="text-myspace-text mb-4">
+                Explore selected work by category.
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <Button href="/work/software">Software Development</Button>
+                <Button href="/work/ui-ux">UI/UX & Content Strategy</Button>
+                <Button href="/work/multimedia">Multimedia & Motion</Button>
+                <Button href="/work/creative">Creative & Performance</Button>
+                <Button href="/work/marketing">Marketing & Strategy</Button>
+                <Button href="/resume">Resume</Button>
+                <Button href="/work">View All Work</Button>
+              </div>
+            </Window>
             <Window title="Latest Blog Entries" className="myspace-window">
               <div className="blog-preview text-myspace-text">
                 <h4 className="text-lg font-bold mb-2">
