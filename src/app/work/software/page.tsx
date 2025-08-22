@@ -44,7 +44,15 @@ export default function SoftwareDevelopment() {
     },
   ];
 
-  const [selected, setSelected] = useState(null);
+  type Project = {
+    title: string;
+    description: string;
+    slug: string;
+    url: string;
+    thumbnail: string;
+  };
+
+  const [selected, setSelected] = useState<Project | null>(null);
 
   return (
     <main className="min-h-screen bg-myspace-bg p-4">

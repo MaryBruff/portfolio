@@ -2,34 +2,42 @@
 
 import Window from '@/components/Window';
 import Image from 'next/image';
-import { use, useState } from 'react';
+import { useState } from 'react'; // Removed unused 'use' import
 
 export default function Creative() {
-  const projects = [
+  interface Project { // Changed to interface (optional)
+    title: string;
+    description: string;
+    slug: string;
+    portfoliumUrl: string;
+    thumbnail: string;
+  }
+
+  const projects: Project[] = [
     {
       title: 'Out of Touch: COVID Performance Art Piece',
       description: '(A thought-provoking YouTube project showing artistic interpretation of social themes.)',
       slug: 'out-of-touch-covid-performance-art-piece',
-      portfoliumUrl: 'https://portfolium.com/MaryBruff/portfolio', // Replace with actual Portfolium entry URL
+      portfoliumUrl: 'https://portfolium.com/MaryBruff/portfolio', // Replace with actual Portfolium URL
       thumbnail: '/thumbnails/out-of-touch-covid.png', // Replace with actual thumbnail path
     },
     {
       title: 'Cigarettes After Sex - Affection Music Video',
       description: '(A creative reinterpretation of Jean-Luc Godard\'s "Vivre sa vie," blending music and cinema.)',
       slug: 'cigarettes-after-sex-affection-music-video',
-      portfoliumUrl: 'https://portfolium.com/MaryBruff/portfolio', // Replace with actual Portfolium entry URL
+      portfoliumUrl: 'https://portfolium.com/MaryBruff/portfolio', // Replace with actual Portfolium URL
       thumbnail: '/thumbnails/affection-music-video.png', // Replace with actual thumbnail path
     },
     {
       title: '1950’s Depression PSA for 2019',
       description: '(Created a YouTube PSA blending retro aesthetic with contemporary relevance.)',
       slug: '1950s-depression-psa-for-2019',
-      portfoliumUrl: 'https://portfolium.com/MaryBruff/portfolio', // Replace with actual Portfolium entry URL
+      portfoliumUrl: 'https://portfolium.com/MaryBruff/portfolio', // Replace with actual Portfolium URL
       thumbnail: '/thumbnails/1950s-depression-psa.png', // Replace with actual thumbnail path
     },
   ];
 
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<Project | null>(null);
 
   return (
     <main className="min-h-screen bg-myspace-bg p-4">
@@ -51,6 +59,7 @@ export default function Creative() {
                   width={300}
                   height={200}
                   className="w-full h-auto mb-2"
+                  style={{ objectFit: 'cover' }} // Added for better image rendering
                 />
                 <h3 className="font-bold text-lg">{project.title}</h3>
                 <p>{project.description}</p>

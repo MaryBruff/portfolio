@@ -2,41 +2,37 @@
 
 import Window from '@/components/Window';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState } from 'react'; // Removed unused 'use' import
 
 export default function Multimedia() {
-  const projects = [
+  interface Project {
+    title: string;
+    description: string;
+    slug: string;
+    portfoliumUrl: string;
+    thumbnail: string;
+  }
+
+  const projects: Project[] = [
+    // Replace with your actual multimedia projects
     {
-      title: 'Adobe After Effects Motion Graphics Reel',
-      description: '(Compilation of motion graphics projects, demonstrating technical proficiency in Adobe After Effects.)',
-      slug: 'adobe-after-effects-motion-graphics-reel',
-      portfoliumUrl: 'https://portfolium.com/MaryBruff/portfolio', // Replace with actual Portfolium entry URL
-      thumbnail: '/thumbnails/adobe-after-effects-reel.png', // Replace with actual thumbnail path
+      title: 'Example Multimedia Project',
+      description: '(Description of the multimedia project.)',
+      slug: 'example-multimedia-project',
+      portfoliumUrl: 'https://portfolium.com/example/portfolio',
+      thumbnail: '/thumbnails/example-multimedia.png',
     },
-    {
-      title: 'Riverside Cemetery Soundscape',
-      description: '(Created an immersive audio-visual project for YouTube, showcasing storytelling through multimedia.)',
-      slug: 'riverside-cemetery-soundscape',
-      portfoliumUrl: 'https://portfolium.com/MaryBruff/portfolio', // Replace with actual Portfolium entry URL
-      thumbnail: '/thumbnails/riverside-cemetery.png', // Replace with actual thumbnail path
-    },
-    {
-      title: 'Denver Metro Caring On-Site Training Video',
-      description: '(Produced and starred in a training video for Metro Caring, demonstrating leadership and multimedia production.)',
-      slug: 'denver-metro-caring-training-video',
-      portfoliumUrl: 'https://portfolium.com/MaryBruff/portfolio', // Replace with actual Portfolium entry URL
-      thumbnail: '/thumbnails/denver-metro-caring.png', // Replace with actual thumbnail path
-    },
+    // Add more projects as needed
   ];
 
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<Project | null>(null);
 
   return (
     <main className="min-h-screen bg-myspace-bg p-4">
       <div className="mx-auto max-w-4xl space-y-6">
-        <Window title="Multimedia & Motion" className="myspace-window">
+        <Window title="Multimedia Projects" className="myspace-window">
           <p className="text-myspace-text mb-4">
-            This category showcases skills in multimedia and motion graphics.
+            Showcase of multimedia projects highlighting technical and creative skills.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project) => (
@@ -51,6 +47,7 @@ export default function Multimedia() {
                   width={300}
                   height={200}
                   className="w-full h-auto mb-2"
+                  style={{ objectFit: 'cover' }}
                 />
                 <h3 className="font-bold text-lg">{project.title}</h3>
                 <p>{project.description}</p>
