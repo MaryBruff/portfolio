@@ -10,11 +10,11 @@ export default function WorkHub() {
             Explore selected work by category.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <Button href="/work/software">Software Development</Button>
             <Button href="/work/ui-ux">UI/UX & Content Strategy</Button>
             <Button href="/work/multimedia">Multimedia & Motion</Button>
             <Button href="/work/creative">Creative & Performance</Button>
             <Button href="/work/marketing">Marketing & Strategy</Button>
-            <Button href="/work/data">Data Analytics & Viz</Button>
             <Button href="/resume">Resume</Button>
           </div>
         </Window>

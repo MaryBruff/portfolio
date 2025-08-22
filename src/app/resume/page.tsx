@@ -91,11 +91,11 @@
             {/* Quick Nav back to Work */}
             <Window title="Explore Work">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <a className="underline" href="/work/software">Software Development</a>
                 <a className="underline" href="/work/ui-ux">UI/UX & Content Strategy</a>
                 <a className="underline" href="/work/multimedia">Multimedia & Motion</a>
                 <a className="underline" href="/work/creative">Creative & Performance</a>
                 <a className="underline" href="/work/marketing">Marketing & Strategy</a>
-                <a className="underline" href="/work/data">Data Analytics & Viz</a>
             </div>
             </Window>
         </div>

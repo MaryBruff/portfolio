@@ -10,7 +10,7 @@ export default function Home() {
         <div className="flex space-x-4">
           <Button href="/about">About Me</Button>
           <Button href="/work">My Work</Button>
-          <Button href="/contact">Contact</Button>
+          {/* <Button href="/contact">Contact</Button> */}
         </div>
       </Window>
     </main>
