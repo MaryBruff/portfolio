@@ -1,5 +1,5 @@
-// components/Window.tsx
 import React from "react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export default function Window({
   title,
@@ -10,21 +10,23 @@ export default function Window({
   title: string;
   children: React.ReactNode;
   className?: string;
-  bodyClassName?: string; // NEW
+  bodyClassName?: string;
 }) {
   return (
-    <div className={`rounded-xl ${className}`}>
-      {/* Title Bar */}
-      <div className="text-white px-3 py-1.5 flex justify-between items-center">
-        <span className="font-bold">{title}</span>
-        <div className="flex space-x-1">
-          <button className="">-</button>
-          <button className="">□</button>
-          <button className="">X</button>
-        </div>
-      </div>
-      {/* Content */}
-      <div className={`p-4 md:p-5 lg:p-6 ${bodyClassName}`}>{children}</div>
-    </div>
+    <Card className={`bg-pink-950/80 border-pink-500 backdrop-blur-sm m-1 ${className}`}>
+      <CardHeader className="p-3">
+        <CardTitle className="text-white flex justify-between items-center font-comic-sans">
+          <span>{title}</span>
+          <div className="flex space-x-2">
+            <button className="w-4 h-4 rounded-full bg-pink-300" />
+            <button className="w-4 h-4 rounded-full bg-pink-400" />
+            <button className="w-4 h-4 rounded-full bg-pink-500" />
+          </div>
+        </CardTitle>
+      </CardHeader>
+      <CardContent className={`p-4 md:p-5 lg:p-6 ${bodyClassName}`}>
+        {children}
+      </CardContent>
+    </Card>
   );
 }
