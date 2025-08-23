@@ -23,7 +23,7 @@ export default function About() {
                     alt="Profile Picture"
                     width={256}
                     height={256}
-                    className="w-64 h-64 mx-auto"
+                    className="max-w-64 w-full h-auto mx-auto rounded-md object-cover"
                   />
                 </div>
                 <div className="my-auto grid grid-cols-1 gap-4">
