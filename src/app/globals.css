@@ -2,17 +2,9 @@
 
 :root {
   /* Existing retro Windows colors... */
---color-win95-gray: #c0c0c0; /* Classic Windows gray */
-  --color-win95-dark-gray: #808080;
-  --color-win95-blue: #000080; /* Title bar blue */
-  --color-win95-white: #f0f0f0;
-  --box-shadow-win95-inset: inset 1px 1px 0 #fff, inset -1px -1px 0 #000;
-  --box-shadow-win95-outset: 1px 1px 0 #fff, -1px -1px 0 #000;
-  --font-family-win95: "MS Sans Serif", system-ui;
   --color-myspace-bg: #000;
   --color-myspace-accent: #ff69b4;
   --color-myspace-text: #fff;
-
   /* MySpace-inspired styles */
   --color-myspace-bg: #000; /* Dark background */
   --color-myspace-accent: #ff69b4; /* Hot pink */
@@ -26,13 +18,13 @@
   50% { opacity: 0; }
 }
 
-/* Apply to About page elements */
+
 .myspace-window {
-border: 3px solid var(--color-myspace-accent);
-  box-shadow: var(--box-shadow-win95-outset); /* Use Windows 95 shadow for consistency */
-  border-radius: 2px;
+  border: 3px solid var(--color-myspace-accent);
+  box-shadow: var(--box-shadow-win95-outset);
+  border-radius: 12px;
   background-image: var(--background-image-glitter);
   background-repeat: repeat;
-  background-size: 180px 180px; /* Adjust sparkle size */    /* adjust sparkle size */
+  background-size: 180px 180px;
 }
 
