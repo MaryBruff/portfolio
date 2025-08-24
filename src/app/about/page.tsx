@@ -54,7 +54,7 @@ export default function About() {
             <Window title="My Jams">
               <div className="w-full h-[200px]">
                 <iframe
-                  src="https://spotify-github-profile.kittinanx.com/api/view?uid=poptartmarbear&cover_image=true&theme=default&show_offline=false&background_color=ff69b4&interchange=false&bar_color=ff64da"
+                  src="https://spotify-github-profile.kittinanx.com/api/view?uid=poptartmarbear&cover_image=true&theme=natemoo-re&show_offline=false&background_color=ff69b4&interchange=false&bar_color=ff64da"
                   className="w-full h-full rounded-lg border-2 border-pink-500"
                   allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
