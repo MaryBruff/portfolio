@@ -13,9 +13,11 @@ export default function Window({
   bodyClassName?: string;
 }) {
   return (
-    <Card className={`bg-pink-950/80 border-pink-500 backdrop-blur-sm m-1 ${className}`}>
+    <Card
+      className={`bg-pink-950/80 border-pink-500 backdrop-blur-sm m-1 ${className}`}
+    >
       <CardHeader className="p-3">
-        <CardTitle className="text-white flex justify-between items-center font-comic-sans">
+        <CardTitle className="text-white flex justify-between items-center portfolio-font">
           <span>{title}</span>
           <div className="flex space-x-2">
             <button className="w-4 h-4 rounded-full bg-pink-300" />

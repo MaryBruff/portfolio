@@ -16,7 +16,7 @@ export default function About() {
             <Window title="About Me">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <h1 className="text-2xl font-bold animate-blink text-pink-300 font-comic-sans mb-4">
+                  <h1 className="text-2xl font-bold animate-blink text-pink-300 portfolio-font mb-4">
                     Mary Bruff
                   </h1>
                   <Image
@@ -36,7 +36,7 @@ export default function About() {
                     unoptimized
                     className="mx-auto"
                   />
-                  <div className="text-sm space-y-2 font-comic-sans">
+                  <div className="text-sm space-y-2 portfolio-font">
                     <p>&quot;lala&quot;</p>
                     <p>United States</p>
                     <p>
@@ -44,7 +44,7 @@ export default function About() {
                       <time className="opacity-80">4 months ago</time>
                     </p>
                   </div>
-                  <p className="text-sm font-comic-sans">
+                  <p className="text-sm portfolio-font">
                     <b>Mood:</b> Groovy :-)
                   </p>
                 </div>
@@ -67,23 +67,29 @@ export default function About() {
               <Table>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-bold w-1/4 font-comic-sans">Skills</TableCell>
-                    <TableCell className="font-comic-sans">
-                      Leadership, Software Development, Collaboration & Teamwork, Data Analysis & Quality Management, Technical Communication & Documentation
+                    <TableCell className="font-bold w-1/4 portfolio-font">
+                      Skills
+                    </TableCell>
+                    <TableCell className="portfolio-font">
+                      Leadership, Software Development, Collaboration &
+                      Teamwork, Data Analysis & Quality Management, Technical
+                      Communication & Documentation
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-bold font-comic-sans">Music</TableCell>
-                    <TableCell className="font-comic-sans">
-                      Check out my tunes on{' '}
+                    <TableCell className="font-bold portfolio-font">
+                      Music
+                    </TableCell>
+                    <TableCell className="portfolio-font">
+                      Check out my tunes on{" "}
                       <Link
                         href="https://open.spotify.com/user/poptartmarbear"
                         target="_blank"
                         className="underline hover:text-pink-300 transition"
                       >
                         Spotify
-                      </Link>{' '}
-                      and{' '}
+                      </Link>{" "}
+                      and{" "}
                       <Link
                         href="https://www.youtube.com/@MarbearFM"
                         target="_blank"
@@ -94,9 +100,11 @@ export default function About() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-bold font-comic-sans">Movies</TableCell>
-                    <TableCell className="font-comic-sans">
-                      See my favorite films on{' '}
+                    <TableCell className="font-bold portfolio-font">
+                      Movies
+                    </TableCell>
+                    <TableCell className="portfolio-font">
+                      See my favorite films on{" "}
                       <Link
                         href="https://letterboxd.com/Poptartmarbear/"
                         target="_blank"
@@ -107,16 +115,24 @@ export default function About() {
                     </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-bold font-comic-sans">Activities</TableCell>
-                    <TableCell className="font-comic-sans">Music, Films, Video Games, Always Learning</TableCell>
+                    <TableCell className="font-bold portfolio-font">
+                      Activities
+                    </TableCell>
+                    <TableCell className="portfolio-font">
+                      Music, Films, Video Games, Always Learning
+                    </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-bold font-comic-sans">Books</TableCell>
-                    <TableCell className="font-comic-sans"></TableCell>
+                    <TableCell className="font-bold portfolio-font">
+                      Books
+                    </TableCell>
+                    <TableCell className="portfolio-font"></TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-bold font-comic-sans">Heroes</TableCell>
-                    <TableCell className="font-comic-sans"></TableCell>
+                    <TableCell className="font-bold portfolio-font">
+                      Heroes
+                    </TableCell>
+                    <TableCell className="portfolio-font"></TableCell>
                   </TableRow>
                 </TableBody>
               </Table>
@@ -125,27 +141,33 @@ export default function About() {
             <Window title="MySpace Top 3 (Links)">
               <ul className="space-y-3">
                 <li className="flex items-center justify-between border border-pink-500 p-2 rounded-lg">
-                  <span className="flex items-center gap-2 font-comic-sans"><span>💼</span>LinkedIn</span>
+                  <span className="flex items-center gap-2 portfolio-font">
+                    <span>💼</span>LinkedIn
+                  </span>
                   <Link
                     href="https://www.linkedin.com/in/mary-bruff/"
                     target="_blank"
-                    className="underline hover:text-pink-300 transition font-comic-sans"
+                    className="underline hover:text-pink-300 transition portfolio-font"
                   >
                     /marybruff
                   </Link>
                 </li>
                 <li className="flex items-center justify-between border border-pink-500 p-2 rounded-lg">
-                  <span className="flex items-center gap-2 font-comic-sans"><span>💻</span>GitHub</span>
+                  <span className="flex items-center gap-2 portfolio-font">
+                    <span>💻</span>GitHub
+                  </span>
                   <Link
                     href="https://github.com/MaryBruff"
                     target="_blank"
-                    className="underline hover:text-pink-300 transition font-comic-sans"
+                    className="underline hover:text-pink-300 transition portfolio-font"
                   >
                     @MaryBruff
                   </Link>
                 </li>
                 <li className="flex items-center justify-between border border-pink-500 p-2 rounded-lg">
-                  <span className="flex items-center gap-2 font-comic-sans"><span>📮</span>Email</span>
+                  <span className="flex items-center gap-2 portfolio-font">
+                    <span>📮</span>Email
+                  </span>
                   <EmailCopy email="marybruff5@gmail.com" />
                 </li>
               </ul>
@@ -155,27 +177,50 @@ export default function About() {
           {/* Right Column */}
           <div className="space-y-6">
             <Window title="Work">
-              <p className="mb-4 font-comic-sans">Explore selected work by category.</p>
+              <p className="mb-4 portfolio-font">
+                Explore selected work by category.
+              </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <Button variant="outline" className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 font-comic-sans">
+                <Button
+                  variant="outline"
+                  className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
+                >
                   <Link href="/work/software">Software Development</Link>
                 </Button>
-                <Button variant="outline" className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 font-comic-sans">
+                <Button
+                  variant="outline"
+                  className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
+                >
                   <Link href="/work/ui-ux">UI/UX & Content Strategy</Link>
                 </Button>
-                <Button variant="outline" className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 font-comic-sans">
+                <Button
+                  variant="outline"
+                  className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
+                >
                   <Link href="/work/multimedia">Multimedia & Motion</Link>
                 </Button>
-                <Button variant="outline" className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 font-comic-sans">
+                <Button
+                  variant="outline"
+                  className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
+                >
                   <Link href="/work/creative">Creative & Performance</Link>
                 </Button>
-                <Button variant="outline" className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 font-comic-sans">
+                <Button
+                  variant="outline"
+                  className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
+                >
                   <Link href="/work/marketing">Marketing & Strategy</Link>
                 </Button>
-                <Button variant="outline" className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 font-comic-sans">
+                <Button
+                  variant="outline"
+                  className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
+                >
                   <Link href="/resume">Resume</Link>
                 </Button>
-                <Button variant="outline" className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 font-comic-sans">
+                <Button
+                  variant="outline"
+                  className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
+                >
                   <Link href="/work">View All Work</Link>
                 </Button>
               </div>
@@ -183,7 +228,7 @@ export default function About() {
 
             <Window title="Latest Blog Entries">
               <div className="space-y-2">
-                <h4 className="text-lg font-bold font-comic-sans">
+                <h4 className="text-lg font-bold portfolio-font">
                   Mary&apos;s Latest Blog Entries [
                   <Link
                     href="https://mbruff.wixsite.com/letstalkabooutmusic"
@@ -199,7 +244,7 @@ export default function About() {
                     <Link
                       href="https://mbruff.wixsite.com/letstalkabooutmusic/post/6-albums-to-get-you-into-jazz"
                       target="_blank"
-                      className="underline hover:text-pink-300 transition font-comic-sans"
+                      className="underline hover:text-pink-300 transition portfolio-font"
                     >
                       6 Albums to Get You into Jazz
                     </Link>
@@ -208,7 +253,7 @@ export default function About() {
                     <Link
                       href="https://mbruff.wixsite.com/letstalkabooutmusic/post/not-your-cliché-jangle-pop-song-recommendation-pt-1"
                       target="_blank"
-                      className="underline hover:text-pink-300 transition font-comic-sans"
+                      className="underline hover:text-pink-300 transition portfolio-font"
                     >
                       Not Your Cliché Jangle Pop Song Recommendation (Pt. 1)
                     </Link>
@@ -217,7 +262,7 @@ export default function About() {
                     <Link
                       href="https://mbruff.wixsite.com/letstalkabooutmusic/post/5-underrated-alternative-albums-from-the-90s"
                       target="_blank"
-                      className="underline hover:text-pink-300 transition font-comic-sans"
+                      className="underline hover:text-pink-300 transition portfolio-font"
                     >
                       5 Underrated Alternative Albums from the 90s
                     </Link>
@@ -230,20 +275,34 @@ export default function About() {
               <Table>
                 <TableBody>
                   <TableRow>
-                    <TableCell className="font-bold font-comic-sans">Degree:</TableCell>
-                    <TableCell className="font-comic-sans">Bachelor of Science</TableCell>
+                    <TableCell className="font-bold portfolio-font">
+                      Degree:
+                    </TableCell>
+                    <TableCell className="portfolio-font">
+                      Bachelor of Science
+                    </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-bold font-comic-sans">Major:</TableCell>
-                    <TableCell className="font-comic-sans">Technical Communication</TableCell>
+                    <TableCell className="font-bold portfolio-font">
+                      Major:
+                    </TableCell>
+                    <TableCell className="portfolio-font">
+                      Technical Communication
+                    </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-bold font-comic-sans">Minor:</TableCell>
-                    <TableCell className="font-comic-sans">Digital Art</TableCell>
+                    <TableCell className="font-bold portfolio-font">
+                      Minor:
+                    </TableCell>
+                    <TableCell className="portfolio-font">
+                      Digital Art
+                    </TableCell>
                   </TableRow>
                   <TableRow>
-                    <TableCell className="font-bold font-comic-sans">Graduation:</TableCell>
-                    <TableCell className="font-comic-sans">2021</TableCell>
+                    <TableCell className="font-bold portfolio-font">
+                      Graduation:
+                    </TableCell>
+                    <TableCell className="portfolio-font">2021</TableCell>
                   </TableRow>
                 </TableBody>
               </Table>

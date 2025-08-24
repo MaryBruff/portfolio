@@ -2,16 +2,20 @@
 @import "tw-animate-css";
 
 @layer base {
-  .font-comic-sans {
-    font-family: 'Comic Sans MS', cursive, sans-serif;
+  .portfolio-font {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
   }
 
   .animate-blink {
-    animation: blink 1s infinite;
+    animation: blink 2s infinite;
   }
 
   @keyframes blink {
-    50% { opacity: 0; }
+    50% {
+      opacity: 0;
+    }
   }
 }
-
