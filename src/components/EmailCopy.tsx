@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import { Button } from "@/components/ui/button";
 
 export default function EmailCopy({ email }: { email: string }) {
   const [copied, setCopied] = React.useState(false);
@@ -14,20 +15,21 @@ export default function EmailCopy({ email }: { email: string }) {
   }
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 font-comic-sans">
       <a
         href={mailto}
-        className="underline decoration-dashed underline-offset-4 hover:opacity-90"
+        className="underline decoration-dashed underline-offset-4 hover:text-pink-300 transition text-white"
       >
         {email}
       </a>
-      <button
+      <Button
         type="button"
         onClick={onCopy}
-        className="bg-win95-gray border-2 border-win95-dark-gray shadow-win95-inset px-2 py-1 text-black leading-none"
+        variant="outline"
+        className="border-pink-500 bg-pink-950/80 text-white hover:bg-pink-300 hover:text-pink-950 font-comic-sans"
       >
         {copied ? "Copied!" : "Copy"}
-      </button>
+      </Button>
     </div>
   );
 }
