@@ -70,20 +70,20 @@ export default function Guestbook() {
           autoComplete="off"
         />
 
-        <Input
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Your name"
-          className="md:col-span-1 bg-pink-950/80 border-pink-500 text-white placeholder:text-pink-300/70 focus:ring-pink-300"
-          maxLength={40}
-          aria-label="Your name"
-        />
         <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
+            <Input
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Your name"
+            className="col-span-4 md:col-span-2 bg-pink-950/80 border-pink-500 text-white placeholder:text-pink-300/70 focus:ring-pink-300"
+            maxLength={40}
+            aria-label="Your name"
+            />
           <Textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Leave a note like it’s 2005…"
-            className="md:col-span-3 bg-pink-950/80 border-pink-500 text-white placeholder:text-pink-300/70 focus:ring-pink-300 min-h-[80px]"
+            className="col-span-4 bg-pink-950/80 border-pink-500 text-white placeholder:text-pink-300/70 focus:ring-pink-300 min-h-[80px]"
             maxLength={280}
             aria-label="Your message"
           />
