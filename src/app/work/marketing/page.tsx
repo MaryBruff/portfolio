@@ -1,74 +1,88 @@
 "use client";
 
-import Window from '@/components/Window';
-import Image from 'next/image';
-import { useState } from 'react';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {Button } from "@/components/ui/button";
+import Window from "@/components/Window";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Marketing() {
   const projects = [
     {
-      title: 'Marketing Strategy for Senior Citizens',
-      description: '(Focused marketing strategy tailored to a specific demographic, demonstrating audience awareness.)',
-      slug: 'marketing-strategy-for-senior-citizens',
-      portfoliumUrl: 'https://portfolium.com/MaryBruff/portfolio', // Replace with actual Portfolium entry URL
-      thumbnail: '/thumbnails/senior-citizens-marketing.png', // Replace with actual thumbnail path
+      title: "Marketing Strategy for Senior Citizens",
+      description: "A targeted marketing strategy tailored to senior citizens, emphasizing audience awareness and engagement.",
+      url: "https://portfolium.com/entry/marketing-strategy-for-senior-citizens",
+      github: null, // Add GitHub link if available
+      thumbnail: "/senior_marketing.jpg",
     },
     {
-      title: 'Video Marketing Strategy Guide',
-      description: '(A guide showcasing expertise in planning and executing marketing campaigns.)',
-      slug: 'video-marketing-strategy-guide',
-      portfoliumUrl: 'https://portfolium.com/MaryBruff/portfolio', // Replace with actual Portfolium entry URL
-      thumbnail: '/thumbnails/video-marketing-guide.png', // Replace with actual thumbnail path
+      title: "Video Marketing Strategy Guide",
+      description: "A comprehensive guide showcasing expertise in planning and executing impactful video marketing campaigns.",
+      url: "https://portfolium.com/entry/video-marketing-strategy-guide",
+      github: null, // Add GitHub link if available
+      thumbnail: "/marketing_guide.png",
     },
   ];
 
-  const [selected, setSelected] = useState<typeof projects[0] | null>(null);
-
   return (
-    <main className="min-h-screen bg-myspace-bg p-4">
-      <div className="mx-auto max-w-4xl space-y-6">
-        <Window title="Marketing & Strategy" className="myspace-window">
-          <p className="text-myspace-text mb-4">
-            Projects that emphasize marketing, branding, and strategic planning.
+    <main className="min-h-screen bg-gradient-to-b from-pink-700 to-pink-900 text-white relative">
+      <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
+        <Window title="Marketing & Strategy">
+          <p className="mb-6 portfolio-font text-lg">
+            Showcasing expertise in marketing, branding, and strategic planning for targeted audience engagement.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project) => (
-              <div
-                key={project.slug}
-                className="border border-myspace-accent p-4 rounded text-myspace-text cursor-pointer hover:opacity-90"
-                onClick={() => setSelected(project)}
+              <Card
+                key={project.title}
+                className="border-pink-500 bg-pink-800 bg-opacity-50 portfolio-font transition-transform hover:scale-105 hover:shadow-lg hover:shadow-pink-500/50"
               >
-                <Image
-                  src={project.thumbnail}
-                  alt={project.title}
-                  width={300}
-                  height={200}
-                  className="w-full h-auto mb-2"
-                />
-                <h3 className="font-bold text-lg">{project.title}</h3>
-                <p>{project.description}</p>
-              </div>
+                <CardHeader>
+                  <CardTitle className="text-xl text-pink-300 animate-blink">
+                    <Link href={project.url} target="_blank" className="hover:underline">
+                      {project.title}
+                    </Link>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Link href={project.url} target="_blank">
+                    <Image
+                      src={project.thumbnail}
+                      alt={project.title}
+                      width={300}
+                      height={200}
+                      className="w-full h-auto mb-4 rounded-lg border-2 border-pink-500"
+                    />
+                  </Link>
+                  <p>{project.description}</p>
+                </CardContent>
+                <CardFooter className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
+                    asChild
+                  >
+                    <Link href={project.url} target="_blank">
+                      View Project
+                    </Link>
+                  </Button>
+                  {project.github && (
+                    <Button
+                      variant="outline"
+                      className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
+                      asChild
+                    >
+                      <Link href={project.github} target="_blank">
+                        View GitHub
+                      </Link>
+                    </Button>
+                  )}
+                </CardFooter>
+              </Card>
             ))}
           </div>
         </Window>
       </div>
-      {selected && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-myspace-bg p-4 rounded max-w-4xl w-full h-4/5 overflow-auto border border-myspace-accent">
-            <button
-              onClick={() => setSelected(null)}
-              className="float-right text-myspace-text hover:underline"
-            >
-              Close
-            </button>
-            <iframe
-              src={selected.portfoliumUrl}
-              className="w-full h-[90%]"
-              title={selected.title}
-            />
-          </div>
-        </div>
-      )}
     </main>
   );
 }
