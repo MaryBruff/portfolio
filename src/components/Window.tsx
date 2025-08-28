@@ -1,5 +1,5 @@
-// components/Window.tsx
 import React from "react";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export default function Window({
   title,
@@ -10,21 +10,25 @@ export default function Window({
   title: string;
   children: React.ReactNode;
   className?: string;
-  bodyClassName?: string; // NEW
+  bodyClassName?: string;
 }) {
   return (
-    <div className={`border-[3px] border-win95-dark-gray bg-win95-white shadow-win95-outset rounded-sm ${className}`}>
-      {/* Title Bar */}
-      <div className="bg-win95-blue text-white px-3 py-1.5 flex justify-between items-center">
-        <span className="font-bold">{title}</span>
-        <div className="flex space-x-1">
-          <button className="bg-win95-gray text-black px-1 border-win95-dark-gray border-[2px] shadow-win95-inset">-</button>
-          <button className="bg-win95-gray text-black px-1 border-win95-dark-gray border-[2px] shadow-win95-inset">□</button>
-          <button className="bg-win95-gray text-black px-1 border-win95-dark-gray border-[2px] shadow-win95-inset">X</button>
-        </div>
-      </div>
-      {/* Content */}
-      <div className={`p-4 md:p-5 lg:p-6 ${bodyClassName}`}>{children}</div>
-    </div>
+    <Card
+      className={`bg-pink-950/80 border-pink-500 backdrop-blur-sm m-1 ${className}`}
+    >
+      <CardHeader className="p-3">
+        <CardTitle className="text-white flex justify-between items-center portfolio-font">
+          <span>{title}</span>
+          <div className="flex space-x-2">
+            <button className="w-4 h-4 rounded-full bg-pink-300" />
+            <button className="w-4 h-4 rounded-full bg-pink-400" />
+            <button className="w-4 h-4 rounded-full bg-pink-500" />
+          </div>
+        </CardTitle>
+      </CardHeader>
+      <CardContent className={`p-4 md:p-5 lg:p-6 ${bodyClassName}`}>
+        {children}
+      </CardContent>
+    </Card>
   );
 }

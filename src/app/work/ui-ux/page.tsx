@@ -1,87 +1,102 @@
-
 "use client";
 
-import Window from '@/components/Window';
-import Image from 'next/image';
-import { useState } from 'react';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import Window from "@/components/Window";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function UIUX() {
   const projects = [
     {
-      title: 'Writing Interactive Media Product',
-      description: '(Fits here due to its focus on user personas, audience analysis, and multi-device interface design, which align with UI/UX design principles.)',
-      slug: 'writing-interactive-media-product',
+      title: "Pitch Deck for 'The Queen'",
+      description: "A storytelling-focused pitch deck with strong visual organization and design principles.",
+      url: "https://portfolium.com/entry/pitch-deck-for-the-queen",
+      github: null, // Add GitHub link if available
+      thumbnail: "/the_queen.png",
     },
     {
-      title: 'Pitch Deck for "The Queen"',
-      description: '(This project showcases storytelling, visual organization, and design, making it an excellent fit for a content strategy or design-focused section.)',
-      slug: 'pitch-deck-for-the-queen',
+      title: "Clay Script Look Book",
+      description: "A visually engaging look book created using Adobe Photoshop, Illustrator, and Spark.",
+      url: "https://portfolium.com/entry/clay-script-look-book",
+      github: null, // Add GitHub link if available
+      thumbnail: "/clay_script.png",
     },
     {
-      title: 'Clay Script Look Book',
-      description: '(Created a visually engaging look book using Adobe Photoshop, Illustrator, and Spark, applying design principles and research.)',
-      slug: 'clay-script-look-book',
+      title: "Skincare Website Concept & Design",
+      description: "A user-focused website design with personas, audience analysis, and multi-device interfaces.",
+      url: "https://portfolium.com/entry/skincare-website-concept-design",
+      github: null, // Add GitHub link if available
+      thumbnail: "/skincare_website.png",
     },
     {
-      title: 'Content Strategy for NoAgenda Podcast',
-      description: '(Developed a content strategy for a popular podcast, showing skills in user engagement and strategic planning.)',
-      slug: 'content-strategy-for-noagenda-podcast',
-    },
-    {
-      title: 'Video Marketing Strategy Guide (Ebook)',
-      description: '(Detailed guide for companies on creating a video marketing campaign, showing expertise in communication and strategic thinking.)',
-      slug: 'video-marketing-strategy-guide-ebook',
+      title: "Content Strategy for NoAgenda Podcast",
+      description: "A strategic content plan for a popular podcast, enhancing user engagement.",
+      url: "https://portfolium.com/entry/content-strategy-for-noagenda-podcast",
+      github: null, // Add GitHub link if available
+      thumbnail: "/placeholder.png",
     },
   ];
 
-  type Project = { title: string; description: string; slug: string };
-  const [selected, setSelected] = useState<Project | null>(null);
-
   return (
-    <main className="min-h-screen bg-myspace-bg p-4">
-      <div className="mx-auto max-w-4xl space-y-6">
-        <Window title="UI/UX & Content Strategy" className="myspace-window">
-          <p className="text-myspace-text mb-4">
-            This category showcases skills in user experience, research, and strategy.
+    <main className="min-h-screen bg-gradient-to-b from-pink-700 to-pink-900 text-white relative">
+      <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
+        <Window title="UI/UX & Content Strategy">
+          <p className="mb-6 portfolio-font text-lg">
+            Showcasing skills in user experience, interface design, content strategy, and audience engagement.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {projects.map((project) => (
-              <div
-                key={project.slug}
-                className="border border-myspace-accent p-4 rounded text-myspace-text cursor-pointer hover:opacity-90"
-                onClick={() => setSelected(project)}
+              <Card
+                key={project.title}
+                className="border-pink-500 bg-pink-800 bg-opacity-50 portfolio-font transition-transform hover:scale-105 hover:shadow-lg hover:shadow-pink-500/50"
               >
-                <Image
-                  src="/placeholder.png" // Replace with actual thumbnail URL
-                  alt={project.title}
-                  width={300}
-                  height={200}
-                  className="w-full h-auto mb-2"
-                />
-                <h3 className="font-bold text-lg">{project.title}</h3>
-                <p>{project.description}</p>
-              </div>
+                <CardHeader>
+                  <CardTitle className="text-xl text-pink-300 animate-blink">
+                    <Link href={project.url} target="_blank" className="hover:underline">
+                      {project.title}
+                    </Link>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <Link href={project.url} target="_blank">
+                    <Image
+                      src={project.thumbnail}
+                      alt={project.title}
+                      width={300}
+                      height={200}
+                      className="w-full h-auto mb-4 rounded-lg border-2 border-pink-500"
+                    />
+                  </Link>
+                  <p>{project.description}</p>
+                </CardContent>
+                <CardFooter className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
+                    asChild
+                  >
+                    <Link href={project.url} target="_blank">
+                      View Project
+                    </Link>
+                  </Button>
+                  {project.github && (
+                    <Button
+                      variant="outline"
+                      className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
+                      asChild
+                    >
+                      <Link href={project.github} target="_blank">
+                        View GitHub
+                      </Link>
+                    </Button>
+                  )}
+                </CardFooter>
+              </Card>
             ))}
           </div>
         </Window>
       </div>
-      {selected && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-myspace-bg p-4 rounded max-w-4xl w-full h-4/5 overflow-auto border border-myspace-accent">
-            <button
-              onClick={() => setSelected(null)}
-              className="float-right text-myspace-text hover:underline"
-            >
-              Close
-            </button>
-            <iframe
-              src={`https://portfolium.com/entry/${selected.slug}`}
-              className="w-full h-[90%]"
-              title={selected.title}
-            />
-          </div>
-        </div>
-      )}
     </main>
   );
 }
