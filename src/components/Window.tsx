@@ -14,15 +14,15 @@ export default function Window({
 }) {
   return (
     <Card
-      className={`bg-pink-950/80 border-pink-500 backdrop-blur-sm m-1 ${className}`}
+      className={`border-black border m-1 p-0 rounded-xl ${className}`}
     >
-      <CardHeader className="p-3">
-        <CardTitle className="text-white flex justify-between items-center portfolio-font">
+      <CardHeader className="bg-primary rounded-t-xl p-3">
+        <CardTitle className="text-black flex justify-between items-center portfolio-font">
           <span>{title}</span>
           <div className="flex space-x-2">
-            <button className="w-4 h-4 rounded-full bg-pink-300" />
-            <button className="w-4 h-4 rounded-full bg-pink-400" />
-            <button className="w-4 h-4 rounded-full bg-pink-500" />
+            <button className="w-4 h-4 border-black border rounded-full bg-chart-3" />
+            <button className="w-4 h-4 border-black border rounded-full bg-chart-4" />
+            <button className="w-4 h-4 border-black border rounded-full bg-chart-5" />
           </div>
         </CardTitle>
       </CardHeader>
