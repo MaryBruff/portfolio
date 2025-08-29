@@ -23,7 +23,8 @@ export default function Window({
       dragTransition={{ bounceStiffness: 400, bounceDamping: 18 }}
       initial={{ scale: 1 }}
       animate={{ scale: 1 }}
-      whileDrag={{ scale: 1.05 }}
+      whileHover={{ scale: 1.02, cursor: "grab" }}
+      whileDrag={{ scale: 1.05, cursor: "grabbing" }}
     >
       <Card className={`border-black border p-0 rounded-xl shadow-[5px_5px_0_0_rgba(0,0,0,1)] ${className}`}>
         <CardHeader className="bg-primary rounded-t-xl p-3">
