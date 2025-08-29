@@ -59,7 +59,7 @@ export default function Guestbook() {
   }
 
   return (
-    <div className="text-white portfolio-font">
+    <div>
       <form onSubmit={onSubmit} className="space-y-3 mb-6">
         {/* Honeypot */}
         <input
@@ -75,7 +75,7 @@ export default function Guestbook() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Your name"
-            className="col-span-4 md:col-span-2 bg-pink-950/80 border-pink-500 text-white placeholder:text-pink-300/70 focus:ring-pink-300"
+            className="col-span-4 md:col-span-2"
             maxLength={40}
             aria-label="Your name"
             />
@@ -83,7 +83,7 @@ export default function Guestbook() {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Leave a note like it’s 2005…"
-            className="col-span-4 bg-pink-950/80 border-pink-500 text-white placeholder:text-pink-300/70 focus:ring-pink-300 min-h-[80px]"
+            className="col-span-4 min-h-[80px]"
             maxLength={280}
             aria-label="Your message"
           />
@@ -93,7 +93,6 @@ export default function Guestbook() {
             type="submit"
             disabled={submitting}
             variant="outline"
-            className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
           >
             {submitting ? "Posting…" : "Post Comment"}
           </Button>
