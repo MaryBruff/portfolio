@@ -9,10 +9,10 @@ export default function Home() {
         <h1 className="text-2xl font-bold mb-4">Hello, I am [Mary]!</h1>
         <p className="mb-4">Explore my work in a retro Windows style.</p>
         <div className="flex space-x-4">
-          <Button variant="default" size="lg" asChild>
+          <Button variant="outline" size="lg" asChild>
             <Link href="/about">About Me</Link>
           </Button>
-          <Button variant="default" size="lg" asChild>
+          <Button variant="outline" size="lg" asChild>
             <Link href="/work">My Work</Link>
           </Button>
         </div>
