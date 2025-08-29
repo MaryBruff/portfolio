@@ -14,7 +14,7 @@ export default function Window({
 }) {
   return (
     <Card
-      className={`border-black border m-1 p-0 rounded-xl ${className}`}
+      className={`border-black border m-1 p-0 rounded-xl shadow-[5px_5px_0_0_rgba(0,0,0,1)] ${className}`}
     >
       <CardHeader className="bg-primary rounded-t-xl p-3">
         <CardTitle className="text-black flex justify-between items-center portfolio-font">
