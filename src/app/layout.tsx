@@ -14,7 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body suppressHydrationWarning className="min-h-screen">
         <TheCube
           scale={7.0}
-          speed={0.5}
+          speed={0.25}
         />
         {children}
         <Navigation />
