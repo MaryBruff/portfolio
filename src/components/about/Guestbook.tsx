@@ -1,5 +1,6 @@
 "use client";
 import * as React from "react";
+import Window from "@/components/Window";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -59,7 +60,7 @@ export default function Guestbook() {
   }
 
   return (
-    <div>
+    <Window title="Guestbook">
       <form onSubmit={onSubmit} className="space-y-3 mb-6">
         {/* Honeypot */}
         <input
@@ -130,7 +131,7 @@ export default function Guestbook() {
           </li>
         ))}
       </ul>
-    </div>
+    </Window>
   );
 }
 
