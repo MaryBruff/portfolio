@@ -16,7 +16,7 @@ export default function TheCube({
     if (!ref.current) return;
 
     const rotate = Math.sin((t * speed) / 10000) * 200;
-    const y = (1 + Math.sin((t * speed) / 1000)) * 1 * scale;
+    const y = (1 + Math.sin((t * speed) / 1000)) * 42 * scale;
     ref.current.style.transform = `translateY(${y}px) rotateX(${rotate}deg) rotateY(${rotate}deg)`;
   });
 
