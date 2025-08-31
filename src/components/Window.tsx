@@ -31,9 +31,9 @@ export default function Window({
           <CardTitle className="text-black flex justify-between items-center portfolio-font">
             <span>{title}</span>
             <div className="flex space-x-2">
-              <button className="w-4 h-4 border-black border rounded-full bg-chart-4" />
-              <button className="w-4 h-4 border-black border rounded-full bg-chart-5" />
-              <button className="w-4 h-4 border-black border rounded-full bg-chart-3" />
+              <div className="w-4 h-4 border-black border rounded-full bg-chart-4" />
+              <div className="w-4 h-4 border-black border rounded-full bg-chart-5" />
+              <div className="w-4 h-4 border-black border rounded-full bg-chart-3" />
             </div>
           </CardTitle>
         </CardHeader>
