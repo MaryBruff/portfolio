@@ -18,7 +18,7 @@ export default function EmailCopy({ email }: { email: string }) {
     <div className="flex items-center gap-2 font-comic-sans">
       <a
         href={mailto}
-        className="underline decoration-dashed underline-offset-4 hover:text-pink-300 transition text-white"
+        className="underline decoration-dashed underline-offset-4 hover:text-accent transition text-foreground"
       >
         {email}
       </a>
@@ -26,7 +26,6 @@ export default function EmailCopy({ email }: { email: string }) {
         type="button"
         onClick={onCopy}
         variant="outline"
-        className="border-pink-500 bg-pink-950/80 text-white hover:bg-pink-300 hover:text-pink-950 font-comic-sans"
       >
         {copied ? "Copied!" : "Copy"}
       </Button>
