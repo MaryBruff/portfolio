@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
@@ -15,16 +15,31 @@ export default function Window({
   className?: string;
   bodyClassName?: string;
 }) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <motion.div
-      drag
-      dragConstraints={{ top: 0, left: 0, right: 0, bottom: 0 }}
-      dragElastic={0.5}
-      dragTransition={{ bounceStiffness: 400, bounceDamping: 18 }}
+      drag={!isMobile}
+      dragConstraints={isMobile ? false : { top: 0, left: 0, right: 0, bottom: 0 }}
+      dragElastic={isMobile ? 0 : 0.5}
+      dragTransition={isMobile ? {} : { bounceStiffness: 400, bounceDamping: 18 }}
       initial={{ scale: 1 }}
       animate={{ scale: 1 }}
-      whileHover={{ scale: 1.02, cursor: "grab" }}
-      whileDrag={{ scale: 1.05, cursor: "grabbing" }}
+      whileHover={{ scale: 1.02, cursor: isMobile ? "default" : "grab" }}
+      whileDrag={{ scale: isMobile ? 1 : 1.05, cursor: isMobile ? "default" : "grabbing" }}
     >
       <Card className={`border-black border p-0 rounded-xl shadow-[5px_5px_0_0_rgba(0,0,0,1)] ${className}`}>
         <CardHeader className="bg-primary rounded-t-xl p-3">
