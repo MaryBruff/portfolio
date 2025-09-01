@@ -6,7 +6,7 @@ import Window from "@/components/Window";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function SoftwareDevelopment() {
+export default function SoftwareDev() {
   const projects = [
     {
       title: "GenreQ",
