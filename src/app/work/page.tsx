@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Window from "@/components/Window";
 import Link from "next/link";
 
-export default function WorkHub() {
+export default function UiUx() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-pink-700 to-pink-900 text-white relative">
       <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
