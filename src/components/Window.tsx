@@ -38,7 +38,7 @@ export default function Window({
       dragTransition={isMobile ? {} : { bounceStiffness: 400, bounceDamping: 18 }}
       initial={{ scale: 1 }}
       animate={{ scale: 1 }}
-      whileHover={{ scale: 1.02, cursor: isMobile ? "default" : "grab" }}
+      // whileHover={{ scale: 1.02, cursor: isMobile ? "default" : "grab" }}
       whileDrag={{ scale: isMobile ? 1 : 1.05, cursor: isMobile ? "default" : "grabbing" }}
     >
       <Card className={`border-black border p-0 rounded-xl shadow-[5px_5px_0_0_rgba(0,0,0,1)] ${className}`}>
