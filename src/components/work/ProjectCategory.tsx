@@ -35,7 +35,6 @@ export default function PortfolioCategory({
         <div className="flex justify-end mb-4">
           <Button
             variant="outline"
-            className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
             asChild
           >
             <Link href={githubProfile} target="_blank">

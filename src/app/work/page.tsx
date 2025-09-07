@@ -12,10 +12,10 @@ import SoftwareDevContent from "@/components/work/SoftwareDevContent";
 import UIUXContent from "@/components/work/UIUXContent";
 
 const tabs = [
-  { label: "Software Development", content: <SoftwareDevContent /> },
-  { label: "UI/UX & Content Strategy", content: <UIUXContent /> },
-  { label: "Multimedia & Motion", content: <MultimediaContent /> },
-  { label: "Creative & Performance", content: <CreativeContent /> },
+  { label: "Software", content: <SoftwareDevContent /> },
+  { label: "UI/UX", content: <UIUXContent /> },
+  { label: "Multimedia", content: <MultimediaContent /> },
+  { label: "Creative", content: <CreativeContent /> },
   { label: "Marketing & Strategy", content: <MarketingContent /> },
 ];
 
@@ -23,14 +23,14 @@ export default function WorkContent() {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-pink-700 to-pink-900 text-white relative">
+    <main className="min-h-screen relative">
       <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
         <Window title="Work">
           <p className="mb-4 portfolio-font">
             Explore selected work by category.
           </p>
           <nav className="mb-6">
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <ul className="grid grid-cols-1 sm:grid-cols-5 gap-3">
               {tabs.map((item) => (
                 <motion.li
                   key={item.label}

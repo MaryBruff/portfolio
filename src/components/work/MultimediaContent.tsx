@@ -42,7 +42,7 @@ export default function MultimediaContent() {
 
   return (
     <PortfolioCategory
-      windowTitle="Multimedia & Motion"
+      windowTitle="Multimedia"
       introText="Showcasing dynamic multimedia projects with visual effects, motion graphics, and engaging video content."
       projects={projects}
     />

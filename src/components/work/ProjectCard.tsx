@@ -33,11 +33,9 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
   const githubBELabel = "GitHub (BE)";
 
   return (
-    <Card
-      className="border-pink-500 bg-pink-800 bg-opacity-50 portfolio-font transition-transform hover:scale-105 hover:shadow-lg hover:shadow-pink-500/50"
-    >
+    <Card>
       <CardHeader>
-        <CardTitle className="text-xl text-pink-300 animate-blink">
+        <CardTitle>
           <Link href={url} target="_blank" className="hover:underline">
             {title}
           </Link>
@@ -66,7 +64,6 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
         {hasMainButton && (
           <Button
             variant="outline"
-            className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
             asChild
           >
             <Link href={url} target="_blank">
@@ -77,7 +74,6 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
         {hasGithub && (
           <Button
             variant="outline"
-            className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
             asChild
           >
             <Link href={github} target="_blank">
@@ -88,7 +84,6 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
         {hasGithubBE && (
           <Button
             variant="outline"
-            className="border-pink-500 hover:bg-pink-300 hover:text-pink-950 portfolio-font"
             asChild
           >
             <Link href={githubBE} target="_blank">

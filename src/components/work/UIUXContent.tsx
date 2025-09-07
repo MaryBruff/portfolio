@@ -37,7 +37,7 @@ export default function UIUXContent() {
 
   return (
     <PortfolioCategory
-      windowTitle="UI/UX & Content Strategy"
+      windowTitle="UI/UX"
       introText="Showcasing skills in user experience, interface design, content strategy, and audience engagement."
       projects={projects}
     />
