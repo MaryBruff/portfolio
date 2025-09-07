@@ -22,11 +22,8 @@ interface ProjectCardProps {
 export default function ProjectCard({ project, isDev = false }: ProjectCardProps) {
   const { title, description, url, github, githubBE, thumbnail, isVideo = false } = project;
   const effectiveThumbnail = isVideo ? getYouTubeThumbnail(url) || thumbnail : thumbnail;
-  const mainButtonText = isVideo ? "View Video" : (isDev && url.includes("vercel") ? "Open Live Demo" : "View Project");
-  let hasMainButton = !!url;
-  if (isDev && url.includes("github.com")) {
-    hasMainButton = false;
-  }
+  const mainButtonText = isVideo ? "View Video" : "View Project";
+  const hasMainButton = !!url && !isDev; // Only show main button for non-dev projects or videos
   const hasGithub = !!github;
   const hasGithubBE = !!githubBE;
   const githubLabel = isDev ? "GitHub (FE)" : "View GitHub";
