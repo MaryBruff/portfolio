@@ -38,8 +38,8 @@ export default function WorkContent() {
                   animate={{
                     backgroundColor:
                       item === selectedTab
-                        ? "var(--sidebar-accent)"
-                        : "var(--sidebar)",
+                        ? "var(--sidebar-border)"
+                        : "var(--sidebar-accent)",
                     color:
                       item === selectedTab
                         ? "var(--sidebar-accent-foreground)"
@@ -54,7 +54,7 @@ export default function WorkContent() {
                   {item.label}
                   {item === selectedTab ? (
                     <motion.div
-                      className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-sidebar-primary"
+                      className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-chart-2"
                       layoutId="underline"
                       id="underline"
                       transition={{ duration: 0.2 }}

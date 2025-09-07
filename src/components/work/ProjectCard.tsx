@@ -45,7 +45,7 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
             {isVideo && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <svg
-                  className="w-12 h-12 text-chart-4 opacity-80 hover:opacity-100"
+                  className="w-12 h-12 text-chart-2 opacity-80 hover:opacity-100"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
