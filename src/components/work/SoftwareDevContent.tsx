@@ -51,7 +51,7 @@ export default function SoftwareDevContent() {
 
   return (
     <PortfolioCategory
-      windowTitle="Software"
+      windowTitle="Software Development"
       introText="Projects showcasing skills in software development, including front-end, full-stack, and interactive applications."
       projects={projects}
       githubProfile="https://github.com/MaryBruff"

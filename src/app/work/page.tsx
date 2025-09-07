@@ -29,22 +29,27 @@ export default function WorkContent() {
           <p className="mb-4 portfolio-font">
             Explore selected work by category.
           </p>
-          <nav className="mb-6">
-            <ul className="grid grid-cols-2 sm:grid-cols-6 gap-3">
-              {tabs.map((item) => (
+          <nav>
+            <ul className="grid grid-cols-2 sm:grid-cols-6 gap-0 sm:gap-0">
+              {tabs.map((item, index) => (
                 <motion.li
                   key={item.label}
-                  className={`relative px-4 py-2 border border-pink-500 rounded-md cursor-pointer portfolio-font transition-colors ${
+                  className={`relative flex items-center justify-center h-9 px-4 py-2 border-t border-x border-foreground bg-background hover:bg-pink-300 hover:text-pink-950 dark:bg-input/30 rounded-t-md cursor-pointer portfolio-font transition-all outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:bg-pink-300 ${
                     selectedTab.label === item.label
-                      ? "bg-pink-300 text-pink-950"
-                      : "text-white hover:bg-pink-300 hover:text-pink-950"
+                      ? "bg-pink-300 text-pink-950 font-semibold translate-y-0 z-20"
+                      : "text-foreground z-10 sm:translate-y-0 " +
+                        (index === 0 || index === 1
+                          ? "translate-y-4"
+                          : index === 2 || index === 3
+                          ? "translate-y-2"
+                          : "translate-y-0")
                   }`}
                   onClick={() => setSelectedTab(item)}
                 >
                   {item.label}
                   {selectedTab.label === item.label ? (
                     <motion.div
-                      className="absolute bottom-[-1px] left-0 right-0 h-[3px] bg-pink-500"
+                      className="absolute bottom-[-4px] left-0 right-0 h-[4px] z-10 bg-pink-500" 
                       layoutId="underline"
                     />
                   ) : null}
@@ -55,6 +60,7 @@ export default function WorkContent() {
           <AnimatePresence mode="wait">
             <motion.div
               key={selectedTab ? selectedTab.label : "empty"}
+              className="bg-background shadow-xs rounded-b-md p-4 pt-0 border-x border-b border-foreground mt-0"
               initial={{ y: 10, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: -10, opacity: 0 }}

@@ -42,7 +42,7 @@ export default function CreativeContent() {
 
   return (
     <PortfolioCategory
-      windowTitle="Creative"
+      windowTitle="Creative & Performance"
       introText="Showcasing artistic vision through performance art, cinematic storytelling, and socially conscious multimedia projects."
       projects={projects}
     />

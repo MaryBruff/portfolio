@@ -11,13 +11,6 @@ interface Project {
 export default function MultimediaContent() {
   const projects: Project[] = [
     {
-      title: "Multimedia Project 1",
-      description: "Broadcast-ready videos with visual effects, animated titles, and dynamic motion graphics using Adobe After Effects.",
-      url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
-      thumbnail: "/thumbnails/multimedia-project-1.png",
-      isVideo: true,
-    },
-    {
       title: "Adobe After Effects Motion Graphics Reel",
       description: "Broadcast-ready videos featuring visual effects, animated titles, and dynamic motion graphics using Adobe After Effects.",
       url: "https://youtu.be/Vck7ggcrFyY?si=6wlzvhmTbe2M9Y4y",
@@ -42,7 +35,7 @@ export default function MultimediaContent() {
 
   return (
     <PortfolioCategory
-      windowTitle="Multimedia"
+      windowTitle="Multimedia & Motion"
       introText="Showcasing dynamic multimedia projects with visual effects, motion graphics, and engaging video content."
       projects={projects}
     />
