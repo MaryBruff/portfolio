@@ -25,7 +25,7 @@ export default function MarketingContent() {
 
   return (
     <PortfolioCategory
-      windowTitle="Marketing & Strategy"
+      windowTitle="Marketing"
       introText="Showcasing expertise in marketing, branding, and strategic planning for targeted audience engagement."
       projects={projects}
     />

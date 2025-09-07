@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import Window from "@/components/Window";
 import ProjectCard from "./ProjectCard";
 
 interface Project {
@@ -29,12 +28,14 @@ export default function PortfolioCategory({
   isDev = false,
 }: PortfolioCategoryProps) {
   return (
-    <Window title={windowTitle}>
+    <div>
+      <h2 className="text-2xl font-bold mb-4 portfolio-font">{windowTitle}</h2>
       <p className="mb-6 portfolio-font text-lg">{introText}</p>
       {githubProfile && (
         <div className="flex justify-end mb-4">
           <Button
             variant="outline"
+            className="portfolio-font"
             asChild
           >
             <Link href={githubProfile} target="_blank">
@@ -48,6 +49,6 @@ export default function PortfolioCategory({
           <ProjectCard key={project.title} project={project} isDev={isDev} />
         ))}
       </div>
-    </Window>
+    </div>
   );
 }
