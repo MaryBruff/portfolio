@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning className="min-h-screen scrollbar">
+      <body suppressHydrationWarning className="min-h-screen">
         <TheCube
           scale={7.0}
           speed={0.25}
