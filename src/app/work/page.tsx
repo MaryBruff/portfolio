@@ -2,14 +2,13 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import Window from "@/components/Window";
-import Link from "next/link";
 import CreativeContent from "@/components/work/CreativeContent";
 import MarketingContent from "@/components/work/MarketingContent";
 import MultimediaContent from "@/components/work/MultimediaContent";
 import SoftwareDevContent from "@/components/work/SoftwareDevContent";
 import UIUXContent from "@/components/work/UIUXContent";
+import ResumeContent from "@/components/work/ResumeContent";
 
 const tabs = [
   { label: "Software", content: <SoftwareDevContent /> },
@@ -17,7 +16,7 @@ const tabs = [
   { label: "Multimedia", content: <MultimediaContent /> },
   { label: "Creative", content: <CreativeContent /> },
   { label: "Marketing", content: <MarketingContent /> },
-  { label: "Resume", content: null, link: "/resume" },
+  { label: "Resume", content: <ResumeContent /> },
 ];
 
 export default function WorkContent() {
@@ -40,13 +39,7 @@ export default function WorkContent() {
                       ? "bg-pink-300 text-pink-950"
                       : "text-white hover:bg-pink-300 hover:text-pink-950"
                   }`}
-                  onClick={() => {
-                    if (item.link) {
-                      window.location.href = item.link; // Navigate to the link for Resume tab
-                    } else {
-                      setSelectedTab(item); // Switch to tab content for other tabs
-                    }
-                  }}
+                  onClick={() => setSelectedTab(item)}
                 >
                   {item.label}
                   {selectedTab.label === item.label ? (
@@ -60,17 +53,15 @@ export default function WorkContent() {
             </ul>
           </nav>
           <AnimatePresence mode="wait">
-            {selectedTab.content && (
-              <motion.div
-                key={selectedTab.label}
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -10, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-              >
-                {selectedTab.content}
-              </motion.div>
-            )}
+            <motion.div
+              key={selectedTab ? selectedTab.label : "empty"}
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {selectedTab ? selectedTab.content : null}
+            </motion.div>
           </AnimatePresence>
         </Window>
       </div>
