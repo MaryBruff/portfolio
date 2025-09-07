@@ -11,12 +11,12 @@ import UIUXContent from "@/components/work/UIUXContent";
 import ResumeContent from "@/components/work/ResumeContent";
 
 const tabs = [
-  { label: "Software", content: <SoftwareDevContent /> },
-  { label: "UI/UX", content: <UIUXContent /> },
-  { label: "Multimedia", content: <MultimediaContent /> },
-  { label: "Creative", content: <CreativeContent /> },
-  { label: "Marketing", content: <MarketingContent /> },
-  { label: "Resume", content: <ResumeContent /> },
+  { icon: "💻", label: "Software", content: <SoftwareDevContent /> },
+  { icon: "🎨", label: "UI/UX", content: <UIUXContent /> },
+  { icon: "🎥", label: "Multimedia", content: <MultimediaContent /> },
+  { icon: "✍️", label: "Creative", content: <CreativeContent /> },
+  { icon: "📈", label: "Marketing", content: <MarketingContent /> },
+  { icon: "📄", label: "Resume", content: <ResumeContent /> },
 ];
 
 export default function WorkContent() {
@@ -26,49 +26,58 @@ export default function WorkContent() {
     <main className="min-h-screen relative">
       <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
         <Window title="Work">
-          <p className="mb-4 portfolio-font">
+          <p className="mb-4 portfolio-font text-muted-foreground">
             Explore selected work by category.
           </p>
-          <nav>
-            <ul className="grid grid-cols-2 sm:grid-cols-6 gap-0 sm:gap-0">
-              {tabs.map((item, index) => (
+          <nav className="bg-card rounded-t-lg border-b border-sidebar-border">
+            <ul className="flex flex-col sm:flex-row list-none p-0 m-0 font-medium text-sm w-full">
+              {tabs.map((item) => (
                 <motion.li
                   key={item.label}
-                  className={`relative flex items-center justify-center h-9 px-4 py-2 border-t border-x border-foreground bg-background hover:bg-pink-300 hover:text-pink-950 dark:bg-input/30 rounded-t-md cursor-pointer portfolio-font transition-all outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] focus-visible:bg-pink-300 ${
-                    selectedTab.label === item.label
-                      ? "bg-pink-300 text-pink-950 font-semibold translate-y-0 z-20"
-                      : "text-foreground z-10 sm:translate-y-0 " +
-                        (index === 0 || index === 1
-                          ? "translate-y-4"
-                          : index === 2 || index === 3
-                          ? "translate-y-2"
-                          : "translate-y-0")
+                  initial={false}
+                  animate={{
+                    backgroundColor:
+                      item === selectedTab
+                        ? "var(--sidebar-accent)"
+                        : "var(--sidebar)",
+                    color:
+                      item === selectedTab
+                        ? "var(--sidebar-accent-foreground)"
+                        : "var(--sidebar-foreground)",
+                  }}
+                  className={`relative flex items-center justify-center px-4 py-3 cursor-pointer transition-all duration-200 ease-in-out rounded-t-md w-full sm:w-auto flex-1 outline-none focus-visible:ring-[3px] focus-visible:ring-sidebar-ring focus-visible:bg-sidebar-accent hover:bg-sidebar-accent hover:text-sidebar-accent-foreground portfolio-font border-b sm:border-b-0 border-sidebar-border sm:border-r last:border-r-0 ${
+                    item === selectedTab ? "font-semibold z-20" : "z-10"
                   }`}
                   onClick={() => setSelectedTab(item)}
                 >
+                  <span className="mr-2">{item.icon}</span>
                   {item.label}
-                  {selectedTab.label === item.label ? (
+                  {item === selectedTab ? (
                     <motion.div
-                      className="absolute bottom-[-4px] left-0 right-0 h-[4px] z-10 bg-pink-500" 
+                      className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-sidebar-primary"
                       layoutId="underline"
+                      id="underline"
+                      transition={{ duration: 0.2 }}
                     />
                   ) : null}
                 </motion.li>
               ))}
             </ul>
           </nav>
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={selectedTab ? selectedTab.label : "empty"}
-              className="bg-background shadow-xs rounded-b-md p-4 pt-0 border-x border-b border-foreground mt-0"
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              {selectedTab ? selectedTab.content : null}
-            </motion.div>
-          </AnimatePresence>
+          <div className="bg-card rounded-b-lg p-4 pt-6 border-x border-b border-sidebar-border shadow-xs scrollbar">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={selectedTab ? selectedTab.label : "empty"}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -10, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="text-foreground w-full"
+              >
+                {selectedTab ? selectedTab.content : null}
+              </motion.div>
+            </AnimatePresence>
+          </div>
         </Window>
       </div>
     </main>

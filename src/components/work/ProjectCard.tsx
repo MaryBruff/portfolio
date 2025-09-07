@@ -30,7 +30,7 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
   const githubBELabel = "GitHub (BE)";
 
   return (
-    <Card>
+    <Card className="bg-accent shadow-md">
       <CardHeader>
         <CardTitle>
           <Link href={url} target="_blank" className="hover:underline">
@@ -40,12 +40,12 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
       </CardHeader>
       <CardContent>
         <Link href={url} target="_blank">
-          <div className="relative w-full h-48 overflow-hidden rounded-lg border-2 border-pink-500 mb-4">
+          <div className="relative w-full h-48 overflow-hidden rounded-lg border-2 border-chart-2 mb-4">
             <Image src={effectiveThumbnail} alt={title} fill className="object-cover" />
             {isVideo && (
               <div className="absolute inset-0 flex items-center justify-center">
                 <svg
-                  className="w-12 h-12 text-pink-500 opacity-80 hover:opacity-100"
+                  className="w-12 h-12 text-chart-4 opacity-80 hover:opacity-100"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -60,7 +60,7 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
       <CardFooter className="flex gap-2">
         {hasMainButton && (
           <Button
-            variant="outline"
+            variant="default"
             asChild
           >
             <Link href={url} target="_blank">
@@ -70,7 +70,7 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
         )}
         {hasGithub && (
           <Button
-            variant="outline"
+            variant="default"
             asChild
           >
             <Link href={github} target="_blank">
@@ -80,7 +80,7 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
         )}
         {hasGithubBE && (
           <Button
-            variant="outline"
+            variant="default"
             asChild
           >
             <Link href={githubBE} target="_blank">

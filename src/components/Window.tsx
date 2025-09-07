@@ -38,17 +38,17 @@ export default function Window({
       dragTransition={isMobile ? {} : { bounceStiffness: 400, bounceDamping: 18 }}
       initial={{ scale: 1 }}
       animate={{ scale: 1 }}
-      // whileHover={{ scale: 1.02, cursor: isMobile ? "default" : "grab" }}
-      whileDrag={{ scale: isMobile ? 1 : 1.05, cursor: isMobile ? "default" : "grabbing" }}
+      whileHover={{ cursor: isMobile ? "default" : "grab" }}
+      whileDrag={{ cursor: isMobile ? "default" : "grabbing" }}
     >
-      <Card className={`border-black border p-0 rounded-xl shadow-[5px_5px_0_0_rgba(0,0,0,1)] ${className}`}>
+      <Card className={`border p-0 rounded-xl shadow-[5px_5px_0_0_var(--border)] ${className}`}>
         <CardHeader className="bg-primary rounded-t-xl p-3">
-          <CardTitle className="text-black flex justify-between items-center portfolio-font">
+          <CardTitle className="text-primary-foreground flex justify-between items-center font-sans">
             <span>{title}</span>
             <div className="flex space-x-2">
-              <div className="w-4 h-4 border-black border rounded-full bg-chart-4" />
-              <div className="w-4 h-4 border-black border rounded-full bg-chart-5" />
-              <div className="w-4 h-4 border-black border rounded-full bg-chart-3" />
+              <div className="w-4 h-4 border border-foreground rounded-full bg-chart-5" />
+              <div className="w-4 h-4 border border-foreground rounded-full bg-chart-3" />
+              <div className="w-4 h-4 border border-foreground rounded-full bg-chart-2" />
             </div>
           </CardTitle>
         </CardHeader>

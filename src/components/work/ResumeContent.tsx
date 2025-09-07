@@ -5,22 +5,22 @@ export default function ResumeContent() {
   return (
     <div className="space-y-6">
       {/* Summary */}
-      <Card className="border-pink-500 bg-pink-800 bg-opacity-50 portfolio-font">
+      <Card className="bg-accent shadow-md border border-border">
         <CardHeader>
-          <CardTitle className="text-xl text-pink-300 animate-blink">Summary</CardTitle>
+          <CardTitle className="text-xl text-foreground">Summary</CardTitle>
         </CardHeader>
         <CardContent>
           <p className="font-medium text-lg mb-2">
             QA Analyst & Frontend Engineer with strengths in accessibility, test automation, and data quality.
           </p>
-          <p>Tools: React, TypeScript, GraphQL, Cypress, Jest, SQL, Figma, WCAG/ARIA.</p>
+          <p className="text-foreground">Tools: React, TypeScript, GraphQL, Cypress, Jest, SQL, Figma, WCAG/ARIA.</p>
         </CardContent>
       </Card>
 
       {/* Skills */}
-      <Card className="border-pink-500 bg-pink-800 bg-opacity-50 portfolio-font">
+      <Card className="bg-accent shadow-md border border-border">
         <CardHeader>
-          <CardTitle className="text-xl text-pink-300 animate-blink">Technical Skills</CardTitle>
+          <CardTitle className="text-xl text-foreground">Technical Skills</CardTitle>
         </CardHeader>
         <CardContent>
           <Table>
@@ -34,7 +34,7 @@ export default function ResumeContent() {
                 "Customer Experience & Communication",
               ].map((skill) => (
                 <TableRow key={skill}>
-                  <TableCell>{skill}</TableCell>
+                  <TableCell className="text-foreground">{skill}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
@@ -43,9 +43,9 @@ export default function ResumeContent() {
       </Card>
 
       {/* Education */}
-      <Card className="border-pink-500 bg-pink-800 bg-opacity-50 portfolio-font">
+      <Card className="bg-accent shadow-md border border-border">
         <CardHeader>
-          <CardTitle className="text-xl text-pink-300 animate-blink">Education</CardTitle>
+          <CardTitle className="text-xl text-foreground">Education</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           {[
@@ -66,18 +66,18 @@ export default function ResumeContent() {
             },
           ].map((edu) => (
             <div key={edu.institution} className="space-y-1">
-              <div className="font-semibold">{edu.institution}</div>
-              <div>{edu.degree}</div>
-              <div className="text-sm opacity-80">{edu.date}</div>
+              <div className="font-semibold text-foreground">{edu.institution}</div>
+              <div className="text-foreground">{edu.degree}</div>
+              <div className="text-sm text-muted-foreground">{edu.date}</div>
             </div>
           ))}
         </CardContent>
       </Card>
 
       {/* Experience */}
-      <Card className="border-pink-500 bg-pink-800 bg-opacity-50 portfolio-font">
+      <Card className="bg-accent shadow-md border border-border">
         <CardHeader>
-          <CardTitle className="text-xl text-pink-300 animate-blink">Professional Experience</CardTitle>
+          <CardTitle className="text-xl text-foreground">Professional Experience</CardTitle>
         </CardHeader>
         <CardContent className="space-y-6">
           {[
@@ -114,13 +114,13 @@ export default function ResumeContent() {
             },
           ].map((exp) => (
             <section key={exp.title}>
-              <h3 className="font-semibold text-lg">{exp.title}</h3>
-              <div className="text-sm opacity-80">{exp.location}</div>
+              <h3 className="font-semibold text-lg text-foreground">{exp.title}</h3>
+              <div className="text-sm text-muted-foreground">{exp.location}</div>
               <Table className="mt-2">
                 <TableBody>
                   {exp.responsibilities.map((resp, index) => (
                     <TableRow key={index}>
-                      <TableCell>{resp}</TableCell>
+                      <TableCell className="text-foreground">{resp}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
