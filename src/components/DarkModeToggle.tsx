@@ -22,16 +22,16 @@ function DarkModeToggle() {
   return (
     <div className="fixed top-4 right-4 z-50">
       <div
-        className="w-16 h-8 bg-primary flex items-center rounded-full p-1 cursor-pointer"
+        className="w-16 h-8 bg-primary border border-ring  flex items-center rounded-full p-1 cursor-pointer"
         onClick={toggleDarkMode}
       >
         <motion.div
-          className="w-6 h-6 bg-accent rounded-full shadow-md flex items-center justify-center"
+          className="w-6 h-6 bg-chart-4 rounded-full shadow-md flex items-center justify-center"
           animate={{ x: isDark ? 32 : 0 }} // Translate 32px (w-16 - w-6 - 2*p-1)
           transition={isDark ? spring : bounce}
         >
           <SunIcon
-            className={`w-4 h-4 text-primary transition-opacity duration-300 ${
+            className={`w-4 h-4 text-foreground transition-opacity duration-300 ${
               isDark ? "opacity-0" : "opacity-100"
             }`}
           />
