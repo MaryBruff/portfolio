@@ -23,7 +23,7 @@ export default function WorkContent() {
   const [selectedTab, setSelectedTab] = useState(tabs[0]);
 
   return (
-    <main className="min-h-screen relative">
+    <main className="min-h-screen relative mb-12">
       <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
         <Window title="Work">
           <p className="mb-4 portfolio-font text-muted-foreground">
