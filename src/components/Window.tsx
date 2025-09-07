@@ -43,7 +43,7 @@ export default function Window({
     >
       <Card className={`border p-0 rounded-xl shadow-[5px_5px_0_0_var(--border)] ${className}`}>
         <CardHeader className="bg-primary rounded-t-xl p-3">
-          <CardTitle className="text-primary-foreground flex justify-between items-center font-sans">
+          <CardTitle className="text-primary-foreground flex justify-between items-center font-mono text-lg">
             <span>{title}</span>
             <div className="flex space-x-2">
               <div className="w-4 h-4 border border-foreground rounded-full bg-chart-5" />

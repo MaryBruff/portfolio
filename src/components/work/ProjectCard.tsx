@@ -31,14 +31,14 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
 
   return (
     <Card className="bg-accent shadow-md">
-      <CardHeader>
+      <CardHeader className="px-2 pt-4">
         <CardTitle>
-          <Link href={url} target="_blank" className="hover:underline">
+          <Link href={url} target="_blank" className="text-xl hover:underline">
             {title}
           </Link>
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="px-2">
         <Link href={url} target="_blank">
           <div className="relative w-full h-48 overflow-hidden rounded-lg border-2 border-chart-2 mb-4">
             <Image src={effectiveThumbnail} alt={title} fill className="object-cover" />
@@ -57,7 +57,7 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
         </Link>
         <p>{description}</p>
       </CardContent>
-      <CardFooter className="flex gap-2">
+      <CardFooter className="flex gap-2 px-2 pb-4">
         {hasMainButton && (
           <Button
             variant="default"
