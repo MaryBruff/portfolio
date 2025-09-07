@@ -46,9 +46,9 @@ export default function Window({
           <CardTitle className="text-primary-foreground flex justify-between items-center font-mono text-lg">
             <span>{title}</span>
             <div className="flex space-x-2">
-              <div className="w-4 h-4 border border-foreground rounded-full bg-chart-5" />
-              <div className="w-4 h-4 border border-foreground rounded-full bg-chart-3" />
-              <div className="w-4 h-4 border border-foreground rounded-full bg-chart-2" />
+              <div className="w-4 h-4 border border-foreground rounded-full bg-red-600" />
+              <div className="w-4 h-4 border border-foreground rounded-full bg-amber-600" />
+              <div className="w-4 h-4 border border-foreground rounded-full bg-green-600" />
             </div>
           </CardTitle>
         </CardHeader>
