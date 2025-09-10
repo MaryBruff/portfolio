@@ -19,7 +19,7 @@ export default function UIUXContent() {
       title: "Clay Script Look Book",
       description: "A visually engaging look book created using Adobe Photoshop, Illustrator, and Spark.",
       url: "https://portfolium.com/entry/clay-script-look-book",
-      thumbnail: "/clay_script.png",
+      thumbnail: "/LookBook.png",
     },
     {
       title: "Skincare Website Concept & Design",
@@ -27,18 +27,12 @@ export default function UIUXContent() {
       url: "https://portfolium.com/entry/skincare-website-concept-design",
       thumbnail: "/skincare_website.png",
     },
-    {
-      title: "Content Strategy for NoAgenda Podcast",
-      description: "A strategic content plan for a popular podcast, enhancing user engagement.",
-      url: "https://portfolium.com/entry/content-strategy-for-noagenda-podcast",
-      thumbnail: "/placeholder.png",
-    },
   ];
 
   return (
     <PortfolioCategory
-      windowTitle="UI/UX & Content Strategy"
-      introText="Showcasing skills in user experience, interface design, content strategy, and audience engagement."
+      windowTitle="Visual Design"
+      introText="Highlighting projects in visual storytelling, design principles, and creative communication across multiple mediums."
       projects={projects}
     />
   );

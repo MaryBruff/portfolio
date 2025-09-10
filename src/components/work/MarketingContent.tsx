@@ -21,6 +21,12 @@ export default function MarketingContent() {
       url: "https://portfolium.com/entry/video-marketing-strategy-guide",
       thumbnail: "/marketing_guide.png",
     },
+    {
+      title: "Content Strategy for NoAgenda Podcast",
+      description: "A strategic content plan for a popular podcast, enhancing user engagement.",
+      url: "https://portfolium.com/entry/content-strategy-for-noagenda-podcast",
+      thumbnail: "/Content NoAgenda.png",
+    },
   ];
 
   return (
