@@ -35,7 +35,6 @@ export default function PortfolioCategory({
         <div className="flex justify-end mb-4">
           <Button
             variant="outline"
-            className=""
             asChild
           >
             <Link href={githubProfile} target="_blank">
@@ -44,7 +43,7 @@ export default function PortfolioCategory({
           </Button>
         </div>
       )}
-      <div className={`grid ${isDev ? "p-2grid-cols-1 md:grid-cols-2 lg:grid-cols-3" : "grid-cols-1 md:grid-cols-2"} gap-6`}>
+      <div className={`grid ${isDev ? "p-2 grid-cols-1 md:grid-cols-2" : "grid-cols-1 md:grid-cols-2"} gap-6`}>
         {projects.map((project) => (
           <ProjectCard key={project.title} project={project} isDev={isDev} />
         ))}
