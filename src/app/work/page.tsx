@@ -12,7 +12,7 @@ import ResumeContent from "@/components/work/ResumeContent";
 
 const tabs = [
   { icon: "💻", label: "Software", content: <SoftwareDevContent /> },
-  { icon: "🎨", label: "UI/UX", content: <UIUXContent /> },
+  { icon: "🎨", label: "Design", content: <UIUXContent /> },
   { icon: "🎥", label: "Multimedia", content: <MultimediaContent /> },
   { icon: "✍️", label: "Creative", content: <CreativeContent /> },
   { icon: "📈", label: "Marketing", content: <MarketingContent /> },
@@ -24,7 +24,7 @@ export default function WorkContent() {
 
   return (
     <main className="min-h-screen relative mb-12">
-      <div className="mx-auto max-w-6xl px-4 md:px-6 py-6">
+      <div className="mx-auto max-w-4xl px-4 md:px-6 py-6">
         <Window title="Work">
           <p className="mb-4 portfolio-font text-muted-foreground">
             Explore selected work by category.
