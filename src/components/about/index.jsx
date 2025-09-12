@@ -5,3 +5,4 @@ export { default as MySpaceTop3 } from './MyspaceTop3';
 export { default as Blog } from './Blog';
 export { default as Education } from './Education';
 export { default as Guestbook } from './Guestbook';
+export { default as NewAbout } from './NewAbout';
