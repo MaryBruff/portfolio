@@ -9,7 +9,8 @@ export default function Welcome() {
         <span
           className="block w-[435px] h-[75px] bg-center bg-no-repeat"
           style={{
-            backgroundImage: "url('http://dl2.glitter-graphics.net/pub/1131/1131312rnznvr0irr.jpg')",
+            backgroundImage:
+              "url('https://dl.glitter-graphics.com/pub/2670/2670560e3z842dbcp.gif')",
             visibility: "visible",
             backgroundColor: "transparent",
             fontSize: "0px",

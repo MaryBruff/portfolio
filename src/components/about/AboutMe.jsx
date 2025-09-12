@@ -10,9 +10,6 @@ export default function AboutMe() {
     <Window title="Mary Bruff">
       <div className="text-sm grid grid-cols-2 gap-6">
         <div className="space-y-4">
-          {/* <h1 className="text-2xl font-bold animate-blink text-foreground mb-4">
-            Mary Bruff
-          </h1> */}
           <Image
             src="/Me_Toon.png"
             alt="Profile Picture"
@@ -24,19 +21,36 @@ export default function AboutMe() {
             <b>Mood:</b> Groovy :-)
           </p>
         </div>
-        <div className="space-y-1">
-            <p>&quot;I need coffee! ☕️&quot;</p>
-            <p>Female</p>
-            <p>United States</p>
-            <p>She/Her</p>
-        <div className="space-y-4 my-4">
-          <Image
-            src="https://dl.glitter-graphics.com/pub/745/745455rvacxjsot2.gif"
-            alt="Online Now"
-            width={70}
-            height={70}
-            unoptimized
-          />
+        <div className="space-y-1 my-auto">
+          <p>
+            <Image
+              src="https://dl.glitter-graphics.com/pub/365/365653mpvh1aa95w.gif"
+              alt="Glitter Graphic"
+              width={15}
+              height={15}
+              unoptimized
+              className="inline-block mr-2"
+            />
+            Fail fast, fail often!
+            <Image
+              src="https://dl.glitter-graphics.com/pub/365/365653mpvh1aa95w.gif"
+              alt="Glitter Graphic"
+              width={15}
+              height={15}
+              unoptimized
+              className="inline-block ml-2"
+            />
+          </p>
+          <p>United States</p>
+          <p>She/Her</p>
+          <div className="space-y-4 my-4">
+            <Image
+              src="http://www.myspacegens.com/images/online_now/148.gif"
+              alt="Online Now"
+              width={70}
+              height={70}
+              unoptimized
+            />
           </div>
         </div>
       </div>
