@@ -6,9 +6,8 @@ import Link from "next/link";
 
 export default function Interests() {
   return (
-    <Window
-      title="Mary's Interests"
-    >
+    <div>
+      <h4 className="font-semibold">Mary's Interests</h4>
       <Table>
         <TableBody>
           <TableRow>
@@ -82,9 +81,7 @@ export default function Interests() {
               <div className="grid grid-cols-1 gap-4">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg">
-                      Currently Reading
-                    </CardTitle>
+                    <CardTitle className="text-lg">Currently Reading</CardTitle>
                   </CardHeader>
                   <CardContent className="flex items-center gap-4">
                     <Image
@@ -103,9 +100,7 @@ export default function Interests() {
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle className="text-lg">
-                      Up Next
-                    </CardTitle>
+                    <CardTitle className="text-lg">Up Next</CardTitle>
                   </CardHeader>
                   <CardContent className="flex items-center gap-4">
                     <Image
@@ -131,6 +126,6 @@ export default function Interests() {
           </TableRow>
         </TableBody>
       </Table>
-    </Window>
+    </div>
   );
 }

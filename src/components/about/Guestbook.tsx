@@ -60,7 +60,8 @@ export default function Guestbook() {
   }
 
   return (
-    <Window title="Guestbook">
+    <div>
+      <h4 className="font-bold mb-3">Guestbook</h4>
       <form onSubmit={onSubmit} className="space-y-3 mb-6">
         {/* Honeypot */}
         <input
@@ -72,14 +73,14 @@ export default function Guestbook() {
         />
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-            <Input
+          <Input
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="Your name"
             className="col-span-4 md:col-span-2"
             maxLength={40}
             aria-label="Your name"
-            />
+          />
           <Textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -90,10 +91,7 @@ export default function Guestbook() {
           />
         </div>
         <div className="flex items-center gap-3">
-          <button
-            type="submit"
-            disabled={submitting}
-          >
+          <button type="submit" disabled={submitting}>
             {submitting ? "Posting…" : "Post Comment"}
           </button>
           {error && (
@@ -130,7 +128,7 @@ export default function Guestbook() {
           </li>
         ))}
       </ul>
-    </Window>
+    </div>
   );
 }
 

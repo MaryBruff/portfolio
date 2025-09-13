@@ -2,7 +2,8 @@ import Window from "@/components/Window";
 
 export default function MyJams() {
   return (
-    <Window title="Currently Listenin' To" className="max-w-3xl mx-auto">
+    <div>
+      <h4 className="font-bold mb-2">Currently Listenin&apos; To</h4>
       <div className="bg-accent border border-foreground p-2 rounded-lg">
         <div className="w-full max-w-xl mx-auto aspect-[350/100] overflow-hidden rounded-md">
           <iframe
@@ -13,6 +14,6 @@ export default function MyJams() {
           />
         </div>
       </div>
-    </Window>
+    </div>
   );
 }

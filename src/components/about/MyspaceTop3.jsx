@@ -1,11 +1,16 @@
 import Window from "@/components/Window";
 import Link from "next/link";
 import EmailCopy from "@/components/about/EmailCopy";
-import { GitHubLogoIcon, EnvelopeClosedIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import {
+  GitHubLogoIcon,
+  EnvelopeClosedIcon,
+  LinkedInLogoIcon,
+} from "@radix-ui/react-icons";
 
 export default function MySpaceTop3() {
   return (
-    <Window title="MySpace Top 3 (Links)">
+    <div>
+      <h4 className="mb-2 font-semibold">MySpace Top 3 (Links)</h4>
       <ul className="space-y-2 text-sm">
         <li className="flex items-center justify-between bg-accent border border-foreground p-2 rounded-lg">
           <span className="flex items-center gap-2 portfolio-font">
@@ -41,6 +46,6 @@ export default function MySpaceTop3() {
           <EmailCopy email="marybruff5@gmail.com" />
         </li>
       </ul>
-    </Window>
+    </div>
   );
 }

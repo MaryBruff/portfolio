@@ -3,7 +3,8 @@ import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 export default function Education() {
   return (
-    <Window title="My Education">
+    <div>
+      <h4 className="mb-2 font-semibold">My Education</h4>
       <Table>
         <TableBody>
           <TableRow>
@@ -24,6 +25,6 @@ export default function Education() {
           </TableRow>
         </TableBody>
       </Table>
-    </Window>
+    </div>
   );
 }
