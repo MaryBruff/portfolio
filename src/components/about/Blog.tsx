@@ -34,7 +34,7 @@ export default function Blog() {
               5 Underrated Alternative Albums from the 90s
             </Link>
           </li>
-          <Button variant="outline">
+          <Button variant="outline" className="mt-3">
             <Link href="https://mbruff.wixsite.com/letstalkabooutmusic" target="_blank">
               View Blog
             </Link>
