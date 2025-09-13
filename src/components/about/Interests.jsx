@@ -8,7 +8,6 @@ export default function Interests() {
   return (
     <Window
       title="Mary's Interests"
-      bodyClassName="pr-2"
     >
       <Table>
         <TableBody>

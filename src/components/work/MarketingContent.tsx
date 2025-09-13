@@ -34,16 +34,6 @@ export default function MarketingContent() {
       windowTitle="Marketing & Strategy"
       introText="Showcasing expertise in marketing, branding, and strategic planning for targeted audience engagement."
       projects={projects}
-      bodyClassName="relative" // Enables absolute positioning in Window's CardContent
-      footerContent={
-        <div className="absolute bottom-4 right-4 pointer-events-none z-10">
-          <img
-            src="https://dl.glitter-graphics.com/pub/807/807829f9klyngz3q.gif"
-            alt="Decorative sparkle graphic"
-            className="w-20 h-20 md:w-24 md:h-24 opacity-80 animate-pulse" // Responsive size, subtle opacity, gentle pulse for extra flair
-          />
-        </div>
-      }
     />
   );
 }
