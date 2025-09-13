@@ -156,6 +156,10 @@ img[alt="Clay Script Look Book"] {
   height: 2rem; /* I'll DO IT MYSELF */
 }
 
+button {
+  cursor: pointer;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -163,7 +167,7 @@ body::before {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-image: url('/backgrounds/azul.jpg');
+  background-image: url('/backgrounds/bliss.jpg');
   background-size: cover;
   background-position: center;
   z-index: -1;
@@ -172,7 +176,8 @@ body::before {
 .nav-start-button {
   width: 125px;
   height: 40px;
-  margin-left: -3px;   /* cancels wrapper px-[3px] */
+  margin-left: -3px;
+  /* transform: translateY(1px); */
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
