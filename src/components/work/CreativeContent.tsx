@@ -32,9 +32,9 @@ export default function CreativeContent() {
       isVideo: true,
     },
     {
-      title: "1950’s Depression PSA for 2019",
-      description: "A modern PSA on depression using reimagined 1950s footage to highlight its ongoing relevance and need for awareness.",
-      url: "https://youtu.be/i3pcaunZCkM?si=sTSKR5kW-gfJHJ3J",
+      title: "Riverside Cemetery Soundscape",
+      description: "An immersive soundscape artwork created with the Adobe Suite, blending original Riverside Cemetery footage and layered audio design to evoke its haunting stillness.",
+      url: "https://youtu.be/fL0-xu3VKuk?si=xdPa0foJDiqlfGsx",
       thumbnail: "/placeholder.png",
       isVideo: true,
     },

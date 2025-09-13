@@ -6,10 +6,7 @@ export default function Blog() {
   return (
     <Window title="Latest Blog Entries">
       <div className="space-y-2">
-        <h4 className="text-lg font-bold portfolio-font">
-          Mary&apos;s Latest Blog Entries
-        </h4>
-        <ul className="list-disc pl-5 space-y-1">
+        <ul className="list-disc pl-5 space-y-1 text-sm">
           <li>
             <Link
               href="https://mbruff.wixsite.com/letstalkabooutmusic/post/6-albums-to-get-you-into-jazz"
@@ -37,7 +34,7 @@ export default function Blog() {
               5 Underrated Alternative Albums from the 90s
             </Link>
           </li>
-          <Button variant="outline">
+          <Button className="mt-3">
             <Link href="https://mbruff.wixsite.com/letstalkabooutmusic" target="_blank">
               View Blog
             </Link>

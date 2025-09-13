@@ -38,12 +38,11 @@ export default function Window({
       dragTransition={isMobile ? {} : { bounceStiffness: 400, bounceDamping: 18 }}
       initial={{ scale: 1 }}
       animate={{ scale: 1 }}
-      whileHover={{ cursor: isMobile ? "default" : "grab" }}
       whileDrag={{ cursor: isMobile ? "default" : "grabbing" }}
     >
-      <Card className={`border p-0 rounded-xl shadow-[5px_5px_0_0_var(--border)] ${className}`}>
-        <CardHeader className="bg-primary rounded-t-xl p-3">
-          <CardTitle className="text-primary-foreground flex justify-between items-center font-mono text-lg">
+      <Card className={`border p-0 shadow-[5px_5px_0_0_var(--border)] ${className}`}>
+        <CardHeader className="bg-primary rounded-t-sm p-2 px-4">
+          <CardTitle className="text-primary-foreground flex gap-0 justify-between items-center font-mono text-md">
             <span>{title}</span>
             <div className="flex space-x-2">
               <div className="w-4 h-4 border border-foreground rounded-full bg-red-600" />

@@ -7,7 +7,7 @@ import { useRef, useState, useEffect } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 export default function Home() {
-  const constraintsRef = useRef<HTMLDivElement>(null);
+  const constraintsRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -16,16 +16,14 @@ export default function Home() {
     };
 
     handleResize();
-
     window.addEventListener("resize", handleResize);
-
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
     <motion.div
       ref={constraintsRef}
-      className="flex min-h-screen flex-col items-center justify-center p-4"
+      className="relative flex min-h-screen flex-col items-center justify-center p-4 overflow-hidden"
     >
       <motion.div
         drag={!isMobile}
@@ -48,14 +46,17 @@ export default function Home() {
             </CardTitle>
           </CardHeader>
           <CardContent className="p-4 md:p-5 lg:p-6">
-            <h1 className="text-2xl font-bold mb-4">Hey there, I&apos;m Mary!</h1>
-            <p className="mb-4">Explore my work in a retro Windows style.</p>
+            <h1 className="text-2xl font-bold mb-4">Hey there! I&apos;m Mary Bruff!</h1>
+            <p className="mb-4">Take a look at my About page to learn more about me, or jump right into my work or resume!</p>
             <div className="flex space-x-4">
-              <Button variant="default" size="lg" asChild>
+              <Button size="lg" asChild>
                 <Link href="/about">About Me</Link>
               </Button>
-              <Button variant="default" size="lg" asChild>
+              <Button size="lg" asChild>
                 <Link href="/work">My Work</Link>
+              </Button>
+              <Button size="lg" asChild>
+                <Link href="/work">Resume</Link>
               </Button>
             </div>
           </CardContent>

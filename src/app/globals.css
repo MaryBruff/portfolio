@@ -143,3 +143,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Fix Clay Script Look Book image positioning */
+img[alt="Clay Script Look Book"] {
+  object-position: 5% 0% !important;
+  object-fit: cover;
+}

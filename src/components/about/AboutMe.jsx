@@ -1,43 +1,57 @@
+"use client";
+
 import Window from "@/components/Window";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function AboutMe() {
   return (
-    <Window title="About Me">
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <h1 className="text-2xl font-bold animate-blink text-foreground portfolio-font mb-4">
-            Mary Bruff
-          </h1>
+    <Window title="Mary Bruff">
+      <div className="text-sm grid grid-cols-2 gap-6">
+        <div className="space-y-4">
           <Image
             src="/Me_Toon.png"
             alt="Profile Picture"
-            width={256}
-            height={256}
-            className="w-full max-w-64 h-auto mx-auto rounded-lg shadow-md border border-black"
+            width={180}
+            height={180}
+            className="w-full max-h-36 h-full max-w-36 object-top object-cover rounded-lg shadow-md border border-black"
           />
-        </div>
-        <div className="space-y-4">
-          <Image
-            src="https://dl.glitter-graphics.com/pub/745/745455rvacxjsot2.gif"
-            alt="Online Now"
-            width={90}
-            height={90}
-            unoptimized
-            className="mx-auto"
-          />
-          <div className="text-sm space-y-2 portfolio-font">
-            <p>&quot;lala&quot;</p>
-            <p>United States</p>
-            <p>
-              Last active: <br />
-              <time className="opacity-80">4 months ago</time>
-            </p>
-          </div>
-          <p className="text-sm portfolio-font">
+          <p>
             <b>Mood:</b> Groovy :-)
           </p>
+        </div>
+        <div className="space-y-1 my-auto">
+          <p>
+            <Image
+              src="https://dl.glitter-graphics.com/pub/365/365653mpvh1aa95w.gif"
+              alt="Glitter Graphic"
+              width={15}
+              height={15}
+              unoptimized
+              className="inline-block mr-2"
+            />
+            Fail fast, fail often!
+            <Image
+              src="https://dl.glitter-graphics.com/pub/365/365653mpvh1aa95w.gif"
+              alt="Glitter Graphic"
+              width={15}
+              height={15}
+              unoptimized
+              className="inline-block ml-2"
+            />
+          </p>
+          <p>United States</p>
+          <p>She/Her</p>
+          <div className="space-y-4 my-4">
+            <Image
+              src="http://www.myspacegens.com/images/online_now/148.gif"
+              alt="Online Now"
+              width={70}
+              height={70}
+              unoptimized
+            />
+          </div>
         </div>
       </div>
     </Window>
