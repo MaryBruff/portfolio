@@ -6,30 +6,34 @@ import Link from "next/link";
 
 export default function Interests() {
   return (
-    <Window title="Mary's Interests" bodyClassName="max-h-[400px] overflow-y-auto overflow-x-hidden pr-2">
+    <Window
+      title="Mary's Interests"
+      bodyClassName="pr-2"
+    >
       <Table>
         <TableBody>
           <TableRow>
-            <TableCell className="font-bold w-1/4 portfolio-font">
+            <TableCell className="font-bold w-1/4 bg-ring whitespace-normal break-words">
               Soft Skills
             </TableCell>
-            <TableCell className="portfolio-font">
-              Leadership, Collaboration & Teamwork, Data
-              Analysis & Quality Management, Technical Communication &
-              Documentation
+            <TableCell className="whitespace-normal bg-accent break-words">
+              Leadership, Collaboration & Teamwork, Data Analysis & Quality
+              Management, Technical Communication & Documentation
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold w-1/4 portfolio-font">
+            <TableCell className="font-bold w-1/4 bg-ring whitespace-normal break-words">
               Tech Skills
             </TableCell>
-            <TableCell className="portfolio-font">
+            <TableCell className="whitespace-normal bg-accent break-words">
               JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold portfolio-font">Music</TableCell>
-            <TableCell className="portfolio-font">
+            <TableCell className="font-bold bg-ring whitespace-normal break-words">
+              Music
+            </TableCell>
+            <TableCell className="whitespace-normal bg-accent break-words">
               Check out my tunes on{" "}
               <Link
                 href="https://open.spotify.com/user/poptartmarbear"
@@ -49,8 +53,10 @@ export default function Interests() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold portfolio-font">Movies</TableCell>
-            <TableCell className="portfolio-font">
+            <TableCell className="font-bold bg-ring whitespace-normal break-words">
+              Movies
+            </TableCell>
+            <TableCell className="whitespace-normal bg-accent break-words">
               See my favorite films on{" "}
               <Link
                 href="https://letterboxd.com/Poptartmarbear/"
@@ -62,58 +68,56 @@ export default function Interests() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Activities</TableCell>
-            <TableCell>Music, Films, Video Games, Always Learning</TableCell>
+            <TableCell className="font-bold bg-ring whitespace-normal break-words">
+              Activities
+            </TableCell>
+            <TableCell className="whitespace-normal bg-accent break-words">
+              Music, Films, Video Games, Always Learning
+            </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold portfolio-font">Books</TableCell>
-            <TableCell>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <TableCell className="font-bold bg-ring whitespace-normal break-words">
+              Books
+            </TableCell>
+            <TableCell className="whitespace-normal bg-accent break-words">
+              <div className="grid grid-cols-1 gap-4">
                 <Card>
                   <CardHeader>
-                    <CardTitle className="portfolio-font text-lg">
+                    <CardTitle className="text-lg">
                       Currently Reading
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="flex items-center gap-4">
                     <Image
-                      src="/Unicorn.png" // Replace with actual book cover image
+                      src="/Unicorn.png"
                       alt="Currently Reading Book Cover"
                       width={80}
                       height={120}
                       className="object-cover"
                     />
                     <div>
-                      <p className="portfolio-font font-medium">
-                      The Killing of the Unicorn: Dorothy Stratten
+                      <p className="font-medium">
+                        The Killing of the Unicorn: Dorothy Stratten
                       </p>
-                      {/* <p className="portfolio-font text-sm text-muted-foreground">
-                        A sci-fi epic about politics, religion, and survival.
-                      </p> */}
                     </div>
                   </CardContent>
                 </Card>
                 <Card>
                   <CardHeader>
-                    <CardTitle className="portfolio-font text-lg">
+                    <CardTitle className="text-lg">
                       Up Next
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="flex items-center gap-4">
                     <Image
-                      src="/Harpo.jpg" 
+                      src="/Harpo.jpg"
                       alt="Up Next Book Cover"
                       width={80}
                       height={120}
                       className="object-cover"
                     />
                     <div>
-                      <p className="portfolio-font font-medium">
-                        Harpo Speaks!
-                      </p>
-                      {/* <p className="portfolio-font text-sm text-muted-foreground">
-                        A thrilling tale of a lone astronaut's mission.
-                      </p> */}
+                      <p className="font-medium">Harpo Speaks!</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -121,12 +125,13 @@ export default function Interests() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Heroes</TableCell>
-            <TableCell></TableCell>
+            <TableCell className="font-bold bg-ring whitespace-normal break-words">
+              Heroes
+            </TableCell>
+            <TableCell className="whitespace-normal bg-accent break-words"></TableCell>
           </TableRow>
         </TableBody>
       </Table>
     </Window>
   );
 }
-
