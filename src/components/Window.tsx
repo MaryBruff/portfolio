@@ -1,8 +1,9 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import { Button } from "./ui/button";
 import { motion } from "framer-motion";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { cn } from "@/lib/utils"; // if you have it; otherwise inline template strings
 
 export default function Window({
   title,
@@ -18,15 +19,9 @@ export default function Window({
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     handleResize();
-
     window.addEventListener("resize", handleResize);
-
-    // Cleanup
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -39,22 +34,21 @@ export default function Window({
       initial={{ scale: 1 }}
       animate={{ scale: 1 }}
       whileDrag={{ cursor: isMobile ? "default" : "grabbing" }}
+      className={cn(className)}
     >
-      <Card className={`border p-0 shadow-[5px_5px_0_0_var(--border)] ${className}`}>
-        <CardHeader className="bg-primary rounded-t-sm p-2 px-4">
-          <CardTitle className="text-primary-foreground flex gap-0 justify-between items-center font-mono text-md">
-            <span>{title}</span>
-            <div className="flex space-x-2">
-              <div className="w-4 h-4 border border-foreground rounded-full bg-red-600" />
-              <div className="w-4 h-4 border border-foreground rounded-full bg-amber-600" />
-              <div className="w-4 h-4 border border-foreground rounded-full bg-green-600" />
-            </div>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className={`p-4 md:p-5 lg:p-6 ${bodyClassName}`}>
+      <div className="window xp-tweaks">
+        <div className="title-bar">
+          <div className="title-bar-text">{title}</div>
+          <div className="title-bar-controls">
+            <button aria-label="Minimize" />
+            <button aria-label="Maximize" />
+            <button aria-label="Close" />
+          </div>
+        </div>
+        <div className={cn("window-body p-4 md:p-5 lg:p-6", bodyClassName)}>
           {children}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </motion.div>
   );
 }
