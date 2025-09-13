@@ -60,7 +60,6 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
       <CardFooter className="flex gap-2 px-2 pb-4">
         {hasMainButton && (
           <Button
-            variant="default"
             asChild
           >
             <Link href={url} target="_blank">
@@ -70,7 +69,6 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
         )}
         {hasGithub && (
           <Button
-            variant="default"
             asChild
           >
             <Link href={github} target="_blank">
@@ -80,7 +78,6 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
         )}
         {hasGithubBE && (
           <Button
-            variant="default"
             asChild
           >
             <Link href={githubBE} target="_blank">

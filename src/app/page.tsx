@@ -93,13 +93,13 @@ export default function Home() {
             <h1 className="text-2xl font-bold mb-4">Hey there! I&apos;m Mary Bruff!</h1>
             <p className="mb-4">Take a look at my About page to learn more about me, or jump right into my work or resume!</p>
             <div className="flex space-x-4">
-              <Button variant="default" size="lg" asChild>
+              <Button size="lg" asChild>
                 <Link href="/about">About Me</Link>
               </Button>
-              <Button variant="default" size="lg" asChild>
+              <Button size="lg" asChild>
                 <Link href="/work">My Work</Link>
               </Button>
-              <Button variant="default" size="lg" asChild>
+              <Button size="lg" asChild>
                 <Link href="/work">Resume</Link>
               </Button>
             </div>

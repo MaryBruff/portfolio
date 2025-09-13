@@ -93,7 +93,6 @@ export default function Guestbook() {
           <Button
             type="submit"
             disabled={submitting}
-            variant="outline"
           >
             {submitting ? "Posting…" : "Post Comment"}
           </Button>
