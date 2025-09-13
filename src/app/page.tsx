@@ -42,13 +42,13 @@ export default function Home() {
                 <button aria-label="Close" />
               </div>
             </div>
-            <div className="window-body p-4 md:p-6">
+            <div className="window-body p-2">
               <h3 className="text-2xl font-bold mb-4">Hey there! I&apos;m Mary Bruff!</h3>
               <p className="mb-4">Take a look at my About page…</p>
-              <div className="flex gap-3 flex-wrap">
-                <Button><Link href="/about">About Me</Link></Button>
-                <Button><Link href="/work">My Work</Link></Button>
-                <Button><Link href="/work">Resume</Link></Button>
+              <div className="flex gap-3 flex-row-reverse">
+                <Link href="/about"><button>About Me</button></Link>
+                <Link href="/work"><button>My Work</button></Link>
+                <Link href="/work"><button>Resume</button></Link>
               </div>
             </div>
           </div>

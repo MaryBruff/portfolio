@@ -34,11 +34,14 @@ export default function Blog() {
               5 Underrated Alternative Albums from the 90s
             </Link>
           </li>
-          <Button className="mt-3">
-            <Link href="https://mbruff.wixsite.com/letstalkabooutmusic" target="_blank">
+          <Link
+            href="https://mbruff.wixsite.com/letstalkabooutmusic"
+            target="_blank"
+          >
+            <button className="bg-transparent border border-current text-current py-1 px-2 rounded">
               View Blog
-            </Link>
-          </Button>
+            </button>
+          </Link>
         </ul>
       </div>
     </Window>

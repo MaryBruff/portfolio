@@ -90,12 +90,12 @@ export default function Guestbook() {
           />
         </div>
         <div className="flex items-center gap-3">
-          <Button
+          <button
             type="submit"
             disabled={submitting}
           >
             {submitting ? "Posting…" : "Post Comment"}
-          </Button>
+          </button>
           {error && (
             <span className="text-red-200 text-sm portfolio-font">{error}</span>
           )}

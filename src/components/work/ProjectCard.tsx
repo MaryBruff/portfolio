@@ -57,25 +57,19 @@ export default function ProjectCard({ project, isDev = false }: ProjectCardProps
       </CardContent>
       <CardFooter className="flex gap-2 px-2 pb-4">
         {hasMainButton && (
-          <Button>
-            <Link href={url} target="_blank">
-              {mainButtonText}
-            </Link>
-          </Button>
+          <Link href={url} target="_blank">
+            <button>{mainButtonText}</button>
+          </Link>
         )}
         {hasGithub && (
-          <Button>
-            <Link href={github} target="_blank">
-              {githubLabel}
-            </Link>
-          </Button>
+          <Link href={github} target="_blank">
+            <button>{githubLabel}</button>
+          </Link>
         )}
         {hasGithubBE && (
-          <Button>
-            <Link href={githubBE} target="_blank">
-              {githubBELabel}
-            </Link>
-          </Button>
+          <Link href={githubBE} target="_blank">
+            <button>{githubBELabel}</button>
+          </Link>
         )}
       </CardFooter>
     </fieldset>
