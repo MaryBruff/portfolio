@@ -28,14 +28,13 @@ export default function PortfolioCategory({
   isDev = false,
 }: PortfolioCategoryProps) {
   return (
-    <div className="font-sans">
-      <h2 className="text-2xl font-bold mb-4">{windowTitle}</h2>
+    <div className="tabpanel">
+      <h2 className="text-2xl font-bold my-4">{windowTitle}</h2>
       <p className="mb-6 text-lg">{introText}</p>
       {githubProfile && (
         <div className="flex justify-end mb-4">
           <Button
             variant="outline"
-            asChild
           >
             <Link href={githubProfile} target="_blank">
               View My GitHub Profile
