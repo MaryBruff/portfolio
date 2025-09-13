@@ -45,7 +45,7 @@ export default function Window({
             <button aria-label="Close" />
           </div>
         </div>
-        <div className={cn("window-body p-4 md:p-5 lg:p-6", bodyClassName)}>
+        <div className={cn("p-2", bodyClassName)}>
           {children}
         </div>
       </div>
