@@ -11,7 +11,7 @@ interface Project {
 export default function MultimediaContent() {
   const projects: Project[] = [
     {
-      title: "Adobe After Effects Motion Graphics Reel",
+      title: "Adobe After Effects Reel",
       description: "Broadcast-ready videos featuring visual effects, animated titles, and dynamic motion graphics using Adobe After Effects.",
       url: "https://youtu.be/Vck7ggcrFyY?si=6wlzvhmTbe2M9Y4y",
       thumbnail: "/thumbnails/multimedia-project-2.png",
@@ -25,7 +25,7 @@ export default function MultimediaContent() {
       isVideo: true,
     },
     {
-      title: "Metro Caring Zoom Training Video",
+      title: "Metro Caring Zoom Training",
       description: "Engaging training videos for Metro Caring, focusing on community outreach and support.",
       url: "https://youtu.be/OdmXvqIyn4c?si=QFPzf0SfPH5D18xT",
       thumbnail: "/thumbnails/multimedia-project-4.png",

@@ -29,21 +29,19 @@ export default function PortfolioCategory({
 }: PortfolioCategoryProps) {
   return (
     <div className="tabpanel">
-      <h2 className="text-2xl font-bold my-4">{windowTitle}</h2>
-      <p className="mb-6 text-lg">{introText}</p>
-      {githubProfile && (
-        <div className="flex justify-end mb-4">
-          <Link href={githubProfile} target="_blank">
-            <button>View My GitHub Profile</button>
-          </Link>
-        </div>
-      )}
+      <div className="flex justify-start items-center gap-4 mb-2">
+        <h4 className="font-bold">{windowTitle}</h4>
+        {githubProfile && (
+          <div>
+            <Link href={githubProfile} target="_blank">
+              <button>View My GitHub Profile</button>
+            </Link>
+          </div>
+        )}
+      </div>
+      <p className="mb-2">{introText}</p>
       <div
-        className={`grid ${
-          isDev
-            ? "p-2 grid-cols-1 md:grid-cols-2"
-            : "grid-cols-1 md:grid-cols-2"
-        } gap-6`}
+        className="grid grid-cols-1 md:grid-cols-3 gap-6"
       >
         {projects.map((project) => (
           <ProjectCard key={project.title} project={project} isDev={isDev} />

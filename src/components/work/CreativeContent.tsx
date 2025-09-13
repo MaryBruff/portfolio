@@ -11,14 +11,14 @@ interface Project {
 export default function CreativeContent() {
   const projects: Project[] = [
     {
-      title: "Out of Touch: COVID Performance Art Piece",
+      title: "COVID Performance Art Piece",
       description: "A performance art piece exploring isolation and social disconnect during COVID-19, reflecting on communication, self, and reality.",
       url: "https://youtu.be/bsOcefGbpsc?si=-I1DAyg4sqlZNObY",
       thumbnail: "/placeholder.png",
       isVideo: true,
     },
     {
-      title: "Cigarettes After Sex - Affection Music Video",
+      title: "Cigarettes After Sex Music Video",
       description: "A creative reinterpretation of Jean-Luc Godard's 'Vivre sa vie,' blending music and cinematic storytelling.",
       url: "https://youtu.be/ZhWqYnR9Tlw?si=OGeigsQCzTQtH2hu",
       thumbnail: "/placeholder.png",
