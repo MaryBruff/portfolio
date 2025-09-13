@@ -1,8 +1,9 @@
 "use client";
 
+import React, { useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
 import Window from "@/components/Window";
+
 import CreativeContent from "@/components/work/CreativeContent";
 import MarketingContent from "@/components/work/MarketingContent";
 import MultimediaContent from "@/components/work/MultimediaContent";
@@ -10,7 +11,9 @@ import SoftwareDevContent from "@/components/work/SoftwareDevContent";
 import UIUXContent from "@/components/work/UIUXContent";
 import ResumeContent from "@/components/work/ResumeContent";
 
-const tabs = [
+type TabDef = { icon: string; label: string; content: React.ReactNode };
+
+const tabs: TabDef[] = [
   { icon: "💻", label: "Software", content: <SoftwareDevContent /> },
   { icon: "🎨", label: "Design", content: <UIUXContent /> },
   { icon: "🎥", label: "Multimedia", content: <MultimediaContent /> },
@@ -19,8 +22,35 @@ const tabs = [
   { icon: "📄", label: "Resume", content: <ResumeContent /> },
 ];
 
+function slugify(s: string) {
+  return s.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+}
+
 export default function WorkContent() {
-  const [selectedTab, setSelectedTab] = useState(tabs[0]);
+  const [index, setIndex] = useState(0);
+  const btnRefs = useRef<Array<HTMLButtonElement | null>>([]);
+
+  const ids = useMemo(
+    () =>
+      tabs.map((t) => {
+        const base = slugify(t.label);
+        return { tabId: `tab-${base}`, panelId: `panel-${base}` };
+      }),
+    []
+  );
+
+  const onKeyDown: React.KeyboardEventHandler<HTMLMenuElement> = (e) => {
+    if (!["ArrowRight", "ArrowLeft", "Home", "End"].includes(e.key)) return;
+    e.preventDefault();
+    const last = tabs.length - 1;
+    let next = index;
+    if (e.key === "ArrowRight") next = index === last ? 0 : index + 1;
+    if (e.key === "ArrowLeft") next = index === 0 ? last : index - 1;
+    if (e.key === "Home") next = 0;
+    if (e.key === "End") next = last;
+    setIndex(next);
+    btnRefs.current[next]?.focus();
+  };
 
   return (
     <main className="min-h-screen relative mb-12">
@@ -29,55 +59,56 @@ export default function WorkContent() {
           <p className="mb-4 portfolio-font text-muted-foreground">
             Explore selected work by category.
           </p>
-          <nav className="bg-card rounded-t-lg border-b border-sidebar-border">
-            <ul className="flex flex-col sm:flex-row list-none p-0 m-0 font-medium text-sm w-full">
-              {tabs.map((item) => (
-                <motion.li
-                  key={item.label}
-                  initial={false}
-                  animate={{
-                    backgroundColor:
-                      item === selectedTab
-                        ? "var(--sidebar-border)"
-                        : "var(--sidebar-accent)",
-                    color:
-                      item === selectedTab
-                        ? "var(--sidebar-accent-foreground)"
-                        : "var(--sidebar-foreground)",
-                  }}
-                  className={`relative flex items-center justify-center px-4 py-3 cursor-pointer transition-all duration-200 ease-in-out rounded-t-md w-full sm:w-auto flex-1 outline-none focus-visible:ring-[3px] focus-visible:ring-sidebar-ring focus-visible:bg-sidebar-accent hover:bg-sidebar-accent hover:text-sidebar-accent-foreground portfolio-font border-b sm:border-b-0 border-sidebar-border sm:border-r last:border-r-0 ${
-                    item === selectedTab ? "font-semibold z-20" : "z-10"
+
+          {/* XP.css Tabs */}
+          <section className="tabs w-full" style={{ maxWidth: "100%" }}>
+            <menu
+              role="tablist"
+              aria-label="Work categories"
+              onKeyDown={onKeyDown}
+              className="flex flex-col sm:flex-row gap-0 sm:gap-0"
+            >
+              {tabs.map((t, i) => (
+                <button
+                  key={t.label}
+                  ref={(el) => { btnRefs.current[i] = el; }}
+                  role="tab"
+                  id={ids[i].tabId}
+                  aria-controls={ids[i].panelId}
+                  aria-selected={index === i}
+                  onClick={() => setIndex(i)}
+                  className={`flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2 ${
+                    index === i ? "font-semibold" : ""
                   }`}
-                  onClick={() => setSelectedTab(item)}
                 >
-                  <span className="mr-2">{item.icon}</span>
-                  {item.label}
-                  {item === selectedTab ? (
-                    <motion.div
-                      className="absolute bottom-[-2px] left-0 right-0 h-[2px] bg-chart-2"
-                      layoutId="underline"
-                      id="underline"
-                      transition={{ duration: 0.2 }}
-                    />
-                  ) : null}
-                </motion.li>
+                  <span aria-hidden="true">{t.icon}</span>
+                  {t.label}
+                </button>
               ))}
-            </ul>
-          </nav>
-          <div className="bg-card rounded-b-lg p-4 pt-6 border-x border-b border-sidebar-border shadow-xs scrollbar">
+            </menu>
+
+            {/* Panels: render only the active one so we can animate */}
             <AnimatePresence mode="wait">
-              <motion.div
-                key={selectedTab ? selectedTab.label : "empty"}
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -10, opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className="text-foreground w-full"
-              >
-                {selectedTab ? selectedTab.content : null}
-              </motion.div>
+              {tabs.map((t, i) =>
+                i === index ? (
+                  <motion.article
+                    key={t.label}
+                    role="tabpanel"
+                    id={ids[i].panelId}
+                    aria-labelledby={ids[i].tabId}
+                    // XP.css doesn’t animate; we do, while keeping semantics
+                    initial={{ opacity: 0, y: 8 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.18 }}
+                    className="w-full !mx-0"
+                  >
+                    {t.content}
+                  </motion.article>
+                ) : null
+              )}
             </AnimatePresence>
-          </div>
+          </section>
         </Window>
       </div>
     </main>
