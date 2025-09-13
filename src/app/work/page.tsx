@@ -23,7 +23,10 @@ const tabs: TabDef[] = [
 ];
 
 function slugify(s: string) {
-  return s.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+  return s
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]/g, "");
 }
 
 export default function WorkContent() {
@@ -53,63 +56,83 @@ export default function WorkContent() {
   };
 
   return (
-    <main className="min-h-screen relative mb-12">
-      <div className="mx-auto max-w-4xl px-4 md:px-6 py-6">
-        <Window title="Work">
-          <p className="mb-4 portfolio-font text-muted-foreground">
-            Explore selected work by category.
-          </p>
+    <main className="relative">
+      <div className="mx-auto max-w-4xl px-4 md:px-6 py-4">
+        <div
+          className="min-h-0 max-h-[530px] h-[calc(100svh-60px-16px)] sm:h-[calc(100dvh-80px-16px)]"
+          style={{ marginTop: 8, marginBottom: 8 }}
+        >
+          <Window
+            title="Work"
+            className="h-full flex flex-col min-h-0"
+            bodyClassName="flex flex-col min-h-0"
+          >
+            <div className="shrink-0">
+              <p className="mb-4 portfolio-font text-muted-foreground">
+                Explore selected work by category.
+              </p>
 
-          {/* XP.css Tabs */}
-          <section className="tabs w-full" style={{ maxWidth: "100%" }}>
-            <menu
-              role="tablist"
-              aria-label="Work categories"
-              onKeyDown={onKeyDown}
-              className="flex flex-col sm:flex-row gap-0 sm:gap-0"
-            >
-              {tabs.map((t, i) => (
-                <button
-                  key={t.label}
-                  ref={(el) => { btnRefs.current[i] = el; }}
-                  role="tab"
-                  id={ids[i].tabId}
-                  aria-controls={ids[i].panelId}
-                  aria-selected={index === i}
-                  onClick={() => setIndex(i)}
-                  className={`flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2 ${
-                    index === i ? "font-semibold" : ""
-                  }`}
+              <section className="tabs w-full shrink-0 ">
+                <menu
+                  role="tablist"
+                  aria-label="Work categories"
+                  onKeyDown={onKeyDown}
+                  className="flex flex-wrap-reverse flex-row sm:flex-wrap sm:flex-row gap-0"
                 >
-                  <span aria-hidden="true">{t.icon}</span>
-                  {t.label}
-                </button>
-              ))}
-            </menu>
+                  {tabs.map((t, i) => (
+                    <button
+                      key={t.label}
+                      ref={(el) => {
+                        btnRefs.current[i] = el;
+                      }}
+                      role="tab"
+                      id={ids[i].tabId}
+                      aria-controls={ids[i].panelId}
+                      aria-selected={index === i}
+                      onClick={() => setIndex(i)}
+                      className={`flex items-center justify-center gap-2 px-3 py-2 sm:px-4 sm:py-2 ${
+                        index === i ? "font-semibold" : ""
+                      }`}
+                    >
+                      <span aria-hidden="true">{t.icon}</span>
+                      {t.label}
+                    </button>
+                  ))}
+                </menu>
+              </section>
+            </div>
 
-            {/* Panels: render only the active one so we can animate */}
-            <AnimatePresence mode="wait">
-              {tabs.map((t, i) =>
-                i === index ? (
-                  <motion.article
-                    key={t.label}
-                    role="tabpanel"
-                    id={ids[i].panelId}
-                    aria-labelledby={ids[i].tabId}
-                    // XP.css doesn’t animate; we do, while keeping semantics
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.18 }}
-                    className="w-full !mx-0"
-                  >
-                    {t.content}
-                  </motion.article>
-                ) : null
-              )}
-            </AnimatePresence>
-          </section>
-        </Window>
+            <div
+              className="flex-1 min-h-0 overflow-y-auto pr-2"
+              style={{ scrollbarGutter: "stable" }}
+            >
+              <AnimatePresence mode="wait">
+                {tabs.map((t, i) =>
+                  i === index ? (
+                    <motion.article
+                      key={t.label}
+                      role="tabpanel"
+                      id={ids[i].panelId}
+                      aria-labelledby={ids[i].tabId}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.18 }}
+                      className="w-full !mx-0"
+                    >
+                      {t.content}
+                    </motion.article>
+                  ) : null
+                )}
+              </AnimatePresence>
+            </div>
+            <div className="flex mt-3 gap-3 justify-end">
+              <button>Ok</button>
+              <button>Cancel</button>
+              <button disabled>Apply</button>
+            </div>
+          </Window>
+        </div>
       </div>
     </main>
   );

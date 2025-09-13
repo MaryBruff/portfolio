@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Button } from "./ui/button";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils"; // if you have it; otherwise inline template strings
+import { cn } from "@/lib/utils";
 
 export default function Window({
   title,
@@ -34,10 +33,10 @@ export default function Window({
       initial={{ scale: 1 }}
       animate={{ scale: 1 }}
       whileDrag={{ cursor: isMobile ? "default" : "grabbing" }}
-      className={cn(className)}
+      className={cn("flex flex-col min-h-0", className)} 
     >
-      <div className="window xp-tweaks">
-        <div className="title-bar">
+      <div className="window xp-tweaks flex flex-col min-h-0 h-full"> 
+        <div className="title-bar shrink-0">
           <div className="title-bar-text">{title}</div>
           <div className="title-bar-controls">
             <button aria-label="Minimize" />
@@ -45,7 +44,8 @@ export default function Window({
             <button aria-label="Close" />
           </div>
         </div>
-        <div className={cn("p-2", bodyClassName)}>
+
+        <div className={cn("p-2 flex-1 min-h-0", bodyClassName)}>
           {children}
         </div>
       </div>
