@@ -1,7 +1,6 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Navigation from '@/components/Navigation';
-import DarkModeToggle from '@/components/DarkModeToggle';
 
 export const metadata: Metadata = {
   title: "Mary Bruff Portfolio",
@@ -13,7 +12,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body suppressHydrationWarning className="min-h-screen bg-transparent">
         <div className="min-h-screen relative z-10">
-          <DarkModeToggle />
           {children}
           <Navigation />
         </div>

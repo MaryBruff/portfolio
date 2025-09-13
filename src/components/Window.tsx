@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useDragControls } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 export default function Window({
@@ -16,6 +16,7 @@ export default function Window({
   bodyClassName?: string;
 }) {
   const [isMobile, setIsMobile] = useState(false);
+  const dragControls = useDragControls();
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -24,19 +25,32 @@ export default function Window({
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const startDrag = (e: React.PointerEvent) => {
+    if (isMobile) return;
+    // don’t start a drag when clicking the window control buttons
+    if ((e.target as HTMLElement).closest(".title-bar-controls")) return;
+    e.preventDefault();
+    dragControls.start(e);
+  };
+
   return (
     <motion.div
       drag={!isMobile}
+      dragControls={dragControls}
+      dragListener={false} // <-- only draggable when we manually start via title bar
       dragConstraints={isMobile ? false : { top: 0, left: 0, right: 0, bottom: 0 }}
       dragElastic={isMobile ? 0 : 0.5}
       dragTransition={isMobile ? {} : { bounceStiffness: 400, bounceDamping: 18 }}
       initial={{ scale: 1 }}
       animate={{ scale: 1 }}
       whileDrag={{ cursor: isMobile ? "default" : "grabbing" }}
-      className={cn("flex flex-col min-h-0", className)} 
+      className={cn("flex flex-col min-h-0", className)}
     >
-      <div className="window xp-tweaks flex flex-col min-h-0 h-full"> 
-        <div className="title-bar shrink-0">
+      <div className="window xp-tweaks flex flex-col min-h-0 h-full">
+        <div
+          className="title-bar shrink-0 cursor-grab active:cursor-grabbing select-none"
+          onPointerDown={startDrag}
+        >
           <div className="title-bar-text">{title}</div>
           <div className="title-bar-controls">
             <button aria-label="Minimize" />
@@ -45,9 +59,7 @@ export default function Window({
           </div>
         </div>
 
-        <div className={cn("p-2 flex-1 min-h-0", bodyClassName)}>
-          {children}
-        </div>
+        <div className={cn("p-2 flex-1 min-h-0", bodyClassName)}>{children}</div>
       </div>
     </motion.div>
   );

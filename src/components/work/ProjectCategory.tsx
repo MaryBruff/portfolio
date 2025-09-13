@@ -29,7 +29,7 @@ export default function PortfolioCategory({
 }: PortfolioCategoryProps) {
   return (
     <div className="tabpanel">
-      <div className="flex justify-start items-center gap-4 mb-2">
+      <div className="flex sm:justify-start flex-wrap items-center gap-4 mb-2">
         <h4 className="font-bold">{windowTitle}</h4>
         {githubProfile && (
           <div>
