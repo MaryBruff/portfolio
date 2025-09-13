@@ -168,3 +168,32 @@ body::before {
   background-position: center;
   z-index: -1;
 }
+
+.nav-start-button {
+  width: 125px;
+  height: 40px;
+  margin-left: -3px;   /* cancels wrapper px-[3px] */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.nav-start-button:focus,
+.nav-start-button:hover,
+.nav-start-button:active {
+  box-shadow: none !important;
+}
+
+.nav-start-button[aria-label="Home"] {
+  background-image: url("/start-button/Default.svg");
+}
+.nav-start-button[aria-label="Home"]:hover {
+  background-image: url("/start-button/Hover.svg");
+}
+.nav-start-button[aria-label="Home"]:active {
+  background-image: url("/start-button/Press.svg");
+}
