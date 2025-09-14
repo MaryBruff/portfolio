@@ -1,49 +1,30 @@
 "use client";
 
-import Window from "@/components/Window";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 
 export default function AboutMe() {
   return (
-    <div className="text-sm grid grid-cols-2 gap-6">
-      <div className="space-y-4">
-        <h4 className="font-semibold">Mary Bruff</h4>
-        <Image
-          src="/Me_Toon.png"
-          alt="Profile Picture"
-          width={180}
-          height={180}
-          className="w-full max-h-36 h-full max-w-36 object-top object-cover rounded-lg shadow-md border border-black"
-        />
-        <p>
-          <b>Mood:</b> Groovy :-)
-        </p>
-      </div>
-      <div className="space-y-1 my-auto">
-        <p>
+    <div className="general-about">
+      {/* Name */}
+      <h4 className="font-bold">Mary Bruff</h4>
+
+      {/* Profile pic + details row */}
+      <div className="grid grid-cols-[160px_1fr] gap-4">
+        <div className="profile-pic">
           <Image
-            src="https://dl.glitter-graphics.com/pub/365/365653mpvh1aa95w.gif"
-            alt="Glitter Graphic"
-            width={15}
-            height={15}
-            unoptimized
-            className="inline-block mr-2"
+            src="/Me_Toon.png"
+            alt="Mary Bruff's profile picture"
+            width={160}
+            height={160}
+            className="w-[160px] h-[160px] object-cover object-top border border-black"
+            priority
           />
-          Fail fast, fail often!
-          <Image
-            src="https://dl.glitter-graphics.com/pub/365/365653mpvh1aa95w.gif"
-            alt="Glitter Graphic"
-            width={15}
-            height={15}
-            unoptimized
-            className="inline-block ml-2"
-          />
-        </p>
-        <p>United States</p>
-        <p>She/Her</p>
-        <div className="space-y-4 my-4">
+        </div>
+
+        <div className="details space-y-2">
+          <p className="italic">"Fail fast, fail often!"</p>
+          <p>United States • She/Her</p>
           <Image
             src="http://www.myspacegens.com/images/online_now/148.gif"
             alt="Online Now"
@@ -52,6 +33,23 @@ export default function AboutMe() {
             unoptimized
           />
         </div>
+      </div>
+
+      {/* Mood + View my */}
+      <div className="mt-3 space-y-1">
+        <p>
+          <b>Mood:</b> Groovy :-)
+        </p>
+        <p>
+          <b>View my:</b>{" "}
+          <Link href="#" className="underline">
+            Pics
+          </Link>
+          <span className="mx-1">|</span>
+          <Link href="#" className="underline">
+            Music
+          </Link>
+        </p>
       </div>
     </div>
   );
