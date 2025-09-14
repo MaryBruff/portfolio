@@ -202,3 +202,14 @@ body::before {
 .nav-start-button[aria-label="Home"]:active {
   background-image: url("/start-button/Press.svg");
 }
+
+.myspace-nav .top .right,
+.myspace-nav .top .right span { 
+  color: #fff !important;
+}
+
+.myspace-nav .top .right a,
+.myspace-nav .links a {
+  color: #fff !important;
+  text-decoration-color: #fff !important; 
+}
