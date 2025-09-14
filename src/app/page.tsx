@@ -45,9 +45,8 @@ export default function Home() {
               <h3 className="text-2xl font-bold mb-4">Hey there! I&apos;m Mary Bruff!</h3>
               <p className="mb-4">Take a look at my About page…</p>
               <div className="flex gap-3 flex-row-reverse">
-                <Link href="/about"><button>About Me</button></Link>
                 <Link href="/work"><button>My Work</button></Link>
-                <Link href="/work"><button>Resume</button></Link>
+                <Link href="/about"><button>About Me</button></Link>
               </div>
             </div>
           </div>
