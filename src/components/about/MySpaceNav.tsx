@@ -52,7 +52,7 @@ export default function MySpaceNav({
             <Image
               src={logoSrc}
               alt={logoAlt}
-              width={200}
+              width={140}
               height={28}
               style={{ aspectRatio: "55/14", height: "auto", width: "auto" }}
               priority
@@ -65,7 +65,7 @@ export default function MySpaceNav({
           <form
             role="search"
             onSubmit={onSearch}
-            className="flex items-start gap-4"
+            className="flex items-center gap-4"
           >
             {/* Radios (hide second, at <md) */}
             <div className="hidden md:flex flex-col">

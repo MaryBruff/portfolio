@@ -39,7 +39,6 @@ export default function About() {
                 <div className="space-y-4">
                   <AboutMe />
                   <Contact />
-                  <MySpaceTop3 />
                   <MyJams />
                   <Interests />
                 </div>
@@ -48,6 +47,7 @@ export default function About() {
                 <div className="space-y-6">
                   <Welcome />
                   <Blog />
+                  <MySpaceTop3 />
                   <NewAbout />
                   <Education />
                   <Guestbook />
