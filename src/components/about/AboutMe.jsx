@@ -10,7 +10,7 @@ export default function AboutMe() {
       <h4 className="font-bold">Mary Bruff</h4>
 
       {/* Profile pic + details row */}
-      <div className="grid grid-cols-[160px_1fr] gap-4">
+      <div className="grid grid-cols-[160px_1fr] gap-4 text-sm">
         <div className="profile-pic">
           <Image
             src="/Me_Toon.png"
@@ -36,7 +36,7 @@ export default function AboutMe() {
       </div>
 
       {/* Mood + View my */}
-      <div className="mt-3 space-y-1">
+      <div className="mt-3 space-y-1 text-sm">
         <p>
           <b>Mood:</b> Groovy :-)
         </p>

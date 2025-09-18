@@ -1,46 +1,70 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
-export default function Blog() {
-  const posts = [
-    {
-      t: "6 Albums to Get You into Jazz",
-      u: "https://mbruff.wixsite.com/letstalkabooutmusic/post/6-albums-to-get-you-into-jazz",
-    },
-    {
-      t: "Not Your Cliché Jangle Pop Song Recommendation (Pt. 1)",
-      u: "https://mbruff.wixsite.com/letstalkabooutmusic/post/not-your-cliché-jangle-pop-song-recommendation-pt-1",
-    },
-    {
-      t: "5 Underrated Alternative Albums from the 90s",
-      u: "https://mbruff.wixsite.com/letstalkabooutmusic/post/5-underrated-alternative-albums-from-the-90s",
-    },
-  ];
+type Post = { t: string; u: string };
 
+export default function Blog({
+  posts = [
+    { t: "6 Albums to Get You into Jazz", u: "https://mbruff.wixsite.com/letstalkabooutmusic/post/6-albums-to-get-you-into-jazz" },
+    { t: "Not Your Cliché Jangle Pop Song Recommendation (Pt. 1)", u: "https://mbruff.wixsite.com/letstalkabooutmusic/post/not-your-cliché-jangle-pop-song-recommendation-pt-1" },
+    { t: "5 Underrated Alternative Albums from the 90s", u: "https://mbruff.wixsite.com/letstalkabooutmusic/post/5-underrated-alternative-albums-from-the-90s" },
+  ],
+  title = "Mary’s Latest Blog Entry",
+  subscribeUrl, // e.g. your RSS or Wix subscribe page (optional)
+  viewAllUrl = "https://mbruff.wixsite.com/letstalkabooutmusic",
+}: {
+  posts?: Post[];
+  title?: string;
+  subscribeUrl?: string;
+  viewAllUrl?: string;
+}) {
   return (
-    <div className="space-y-3">
-      <ul className="space-y-2 text-sm">
-        {posts.map((x) => (
-          <li key={x.t} className="flex items-start gap-2">
-            <span className="mt-1">💖</span>
-            <Link
-              href={x.u}
-              target="_blank"
-              className="underline hover:opacity-90"
-            >
-              {x.t}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <Link
-        href="https://mbruff.wixsite.com/letstalkabooutmusic"
-        target="_blank"
+    <div className="mx-auto w-full text-sm">
+      <table
+        className="mx-auto w-full"
       >
-        <button className="bg-transparent border border-current text-current py-1 px-2 rounded">
-          View Blog
-        </button>
-      </Link>
+        <tbody>
+          <tr>
+            <td style={{ wordWrap: "break-word" }}>
+              <span className="font-bold">{title} </span>
+              {subscribeUrl ? (
+                <>
+                  [
+                  <Link href={subscribeUrl} target="_blank" className="underline hover:opacity-90">
+                    Subscribe to this Blog
+                  </Link>
+                  ]
+                </>
+              ) : null}
+              <br />
+              <br />
+            </td>
+          </tr>
+
+          {posts.map((p) => (
+            <tr key={p.t}>
+              <td style={{ wordWrap: "break-word", verticalAlign: "top" }}>
+                {p.t}&nbsp;(
+                <Link href={p.u} target="_blank" className="underline hover:opacity-90">
+                  view more
+                </Link>
+                )
+                <br />
+                <br />
+              </td>
+            </tr>
+          ))}
+
+          <tr>
+            <td valign="top" align="left" height={25}>
+              [
+              <Link href={viewAllUrl} target="_blank" className="underline hover:opacity-90">
+                View All Blog Entries
+              </Link>
+              ]
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }
