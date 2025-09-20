@@ -8,7 +8,7 @@ function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (
     <div
       data-slot="table-container"
-      className="relative w-full overflow-x-auto border-2 border-blue-500 bg-white text-sm"
+      className="relative w-full overflow-x-auto border-2 border-blue-400 bg-white text-sm"
     >
       <table
         data-slot="table"

@@ -106,7 +106,6 @@ export default function MySpaceNav({
             {/* Submit */}
             <button
               type="submit"
-              className="h-7 px-3 border border-black bg-[#e6e6e6] text-black"
             >
               Search
             </button>
@@ -127,7 +126,7 @@ export default function MySpaceNav({
       </div>
 
       {/* Main link row */}
-      <ul className="links hidden sm:flex flex-wrap items-center gap-x-4 gap-y-2 bg-blue-500 px-3 py-2">
+      <ul className="links hidden text-xs sm:flex flex-wrap items-center gap-x-4 gap-y-2 bg-blue-400 px-3 py-2">
         {mainLinks.map((label) => (
           <li key={label}>
             <Link href="#" className="underline text-white">

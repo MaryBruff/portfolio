@@ -18,7 +18,7 @@ const books = [
 export default function Interests() {
   return (
     <div>
-      <div className="heading bg-blue-500 text-white text-sm font-bold px-2 py-1">
+      <div className="heading bg-blue-400 text-white text-sm font-bold px-2 py-1">
         <h5>Mary Bruff's Interests</h5>
       </div>
       <Table>

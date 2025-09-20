@@ -41,15 +41,15 @@ export default function About() {
                   <Contact />
                   <MyJams />
                   <Interests />
+                  <Education />
                 </div>
 
                 {/* Right Column */}
                 <div className="space-y-6">
                   <Welcome />
                   <Blog />
-                  <MySpaceTop3 />
                   <NewAbout />
-                  <Education />
+                  <MySpaceTop3 />
                   <Guestbook />
                 </div>
               </div>

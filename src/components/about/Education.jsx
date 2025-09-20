@@ -1,27 +1,38 @@
 import Window from "@/components/Window";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import Link from "next/link";
 
 export default function Education() {
   return (
     <div>
-      <h4 className="mb-2 font-semibold">My Education</h4>
+      <div className="heading bg-blue-400 text-white text-sm font-bold px-2 py-1">
+        <h5>Mary Bruff's Schools</h5>
+      </div>
       <Table>
         <TableBody>
           <TableRow>
-            <TableCell>Degree:</TableCell>
-            <TableCell>Bachelor of Science</TableCell>
+            <TableCell className="font-bold w-1/4 bg-blue-300 text-blue-800 whitespace-normal break-words">University:</TableCell>
+            <TableCell className="whitespace-normal bg-blue-200 break-words">
+              <Link href="https://www.msudenver.edu/" target="_blank" rel="noopener noreferrer" className="underline">
+                MSU Denver
+              </Link>
+            </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Major:</TableCell>
-            <TableCell>Technical Communication</TableCell>
+            <TableCell className="font-bold w-1/4 bg-blue-300 text-blue-800 whitespace-normal break-words">Degree:</TableCell>
+            <TableCell className="whitespace-normal bg-blue-200 break-words">Bachelor of Science</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Minor:</TableCell>
-            <TableCell>Digital Art</TableCell>
+            <TableCell className="font-bold w-1/4 bg-blue-300 text-blue-800 whitespace-normal break-words">Major:</TableCell>
+            <TableCell className="whitespace-normal bg-blue-200 break-words">Technical Communication</TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Graduation:</TableCell>
-            <TableCell>2021</TableCell>
+            <TableCell className="font-bold w-1/4 bg-blue-300 text-blue-800 whitespace-normal break-words">Minor:</TableCell>
+            <TableCell className="whitespace-normal bg-blue-200 break-words">Digital Art</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell className="font-bold w-1/4 bg-blue-300 text-blue-800 whitespace-normal break-words">Graduation:</TableCell>
+            <TableCell className="whitespace-normal bg-blue-200 break-words">2021</TableCell>
           </TableRow>
         </TableBody>
       </Table>

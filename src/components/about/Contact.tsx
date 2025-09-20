@@ -64,3 +64,44 @@ export default function ContactActions() {
     </>
   );
 }
+
+/* SAVING FOR LATER USE
+import Link from "next/link";
+import { EnvelopeClosedIcon, GitHubLogoIcon, LinkedInLogoIcon } from "@radix-ui/react-icons";
+import EmailCopy from "../EmailCopy";
+<ul className="space-y-2 text-sm">
+        <li className="flex items-center justify-between bg-accent border border-foreground p-2 rounded-lg">
+          <span className="flex items-center gap-2 portfolio-font">
+            <LinkedInLogoIcon className="h-4 w-4" />
+            LinkedIn
+          </span>
+          <Link
+            href="https://www.linkedin.com/in/mary-bruff/"
+            target="_blank"
+            className="underline hover:text-chart-5 transition portfolio-font"
+          >
+            /marybruff
+          </Link>
+        </li>
+        <li className="flex items-center justify-between bg-accent border border-foreground p-2 rounded-lg">
+          <span className="flex items-center gap-2 portfolio-font">
+            <GitHubLogoIcon className="h-4 w-4" />
+            GitHub
+          </span>
+          <Link
+            href="https://github.com/MaryBruff"
+            target="_blank"
+            className="underline hover:text-chart-5 transition portfolio-font"
+          >
+            @MaryBruff
+          </Link>
+        </li>
+        <li className="flex items-center justify-between bg-accent border border-foreground p-2 rounded-lg">
+          <span className="flex items-center gap-2 portfolio-font">
+            <EnvelopeClosedIcon className="h-4 w-4" />
+            Email
+          </span>
+          <EmailCopy email="marybruff5@gmail.com" />
+        </li>
+      </ul>
+*/
