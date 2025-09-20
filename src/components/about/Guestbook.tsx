@@ -1,28 +1,33 @@
 "use client";
 import * as React from "react";
-import Window from "@/components/Window";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import Turnstile from "react-turnstile";
+import { ICONS, type Icon } from "@/lib/icons";
 
 type Entry = {
   id: string;
   name: string;
   message: string;
-  createdAt: string; // ISO
+  icon?: string;          // <-- added
+  createdAt: string;      // ISO
 };
+
+const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY; // <-- note the NEXT_PUBLIC_ prefix
 
 export default function Guestbook() {
   const [entries, setEntries] = React.useState<Entry[]>([]);
   const [name, setName] = React.useState("");
   const [message, setMessage] = React.useState("");
+  const [icon, setIcon] = React.useState<Icon>(ICONS[0]);       // <-- icon state
+  const [turnstileToken, setTurnstileToken] = React.useState<string | null>(null); // <-- token
   const [submitting, setSubmitting] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
   const load = React.useCallback(async () => {
     try {
-      const res = await fetch("/api/guestbook");
+      const res = await fetch("/api/guestbook", { cache: "no-store" });
       const data = await res.json();
       setEntries(data.entries || []);
     } catch {
@@ -40,17 +45,36 @@ export default function Guestbook() {
       setError("Name and message are required.");
       return;
     }
+    if (siteKey && !turnstileToken) {
+      setError("Please complete the captcha.");
+      return;
+    }
+
     setSubmitting(true);
     setError(null);
     try {
       const res = await fetch("/api/guestbook", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, message }),
+        body: JSON.stringify({
+          name,
+          message,
+          icon,
+          nickname: "",              // honeypot field (keep empty)
+          turnstileToken,            // server verifies this
+        }),
       });
-      if (!res.ok) throw new Error("Failed to post");
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data?.error || "Failed to post");
+      }
+
+      // reset form
       setName("");
       setMessage("");
+      setIcon(ICONS[0]);
+      setTurnstileToken(null);
       await load();
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Something went wrong");
@@ -62,6 +86,7 @@ export default function Guestbook() {
   return (
     <div>
       <h4 className="font-bold mb-3">Guestbook</h4>
+
       <form onSubmit={onSubmit} className="space-y-3 mb-6">
         {/* Honeypot */}
         <input
@@ -81,6 +106,30 @@ export default function Guestbook() {
             maxLength={40}
             aria-label="Your name"
           />
+
+          {/* Icon picker */}
+          <div className="col-span-4 md:col-span-2 flex items-center gap-2 overflow-x-auto">
+            <span className="text-xs opacity-80 whitespace-nowrap portfolio-font">
+              Choose an icon:
+            </span>
+            <div className="flex items-center gap-1">
+              {ICONS.map((ic) => (
+                <button
+                  key={ic}
+                  type="button"
+                  onClick={() => setIcon(ic)}
+                  className={`px-2 py-1 rounded border ${
+                    icon === ic ? "border-pink-500" : "border-transparent"
+                  } bg-pink-950/60 hover:bg-pink-900/60`}
+                  aria-pressed={icon === ic}
+                  title={`Use ${ic}`}
+                >
+                  <span className="text-lg leading-none">{ic}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
           <Textarea
             value={message}
             onChange={(e) => setMessage(e.target.value)}
@@ -90,8 +139,24 @@ export default function Guestbook() {
             aria-label="Your message"
           />
         </div>
+
+        {/* Turnstile renders only if site key exists; skip in dev if not configured */}
+        {siteKey ? (
+          <div className="pt-1">
+            <Turnstile
+              sitekey={siteKey}
+              onVerify={(token) => setTurnstileToken(token)}
+              onExpire={() => setTurnstileToken(null)}
+              theme="dark"
+            />
+          </div>
+        ) : null}
+
         <div className="flex items-center gap-3">
-          <button type="submit" disabled={submitting}>
+          <button
+            type="submit"
+            disabled={submitting || (siteKey ? !turnstileToken : false)}
+          >
             {submitting ? "Posting…" : "Post Comment"}
           </button>
           {error && (
@@ -112,7 +177,7 @@ export default function Guestbook() {
             className="border border-pink-500 p-3 bg-pink-950/80 backdrop-blur-sm rounded-lg"
           >
             <div className="flex items-start gap-3">
-              <AvatarComponent name={e.name} />
+              <AvatarComponent name={e.name} icon={e.icon} />
               <div className="flex-1">
                 <div className="flex items-center gap-2 text-sm opacity-90">
                   <strong className="portfolio-font">{e.name}</strong>
@@ -132,17 +197,18 @@ export default function Guestbook() {
   );
 }
 
-function AvatarComponent({ name }: { name: string }) {
-  const initials = name
-    .split(" ")
-    .map((n) => n[0])
-    .slice(0, 2)
-    .join("")
-    .toUpperCase();
+function AvatarComponent({ name, icon }: { name: string; icon?: string }) {
+  const initials =
+    name
+      .split(" ")
+      .map((n) => n[0])
+      .slice(0, 2)
+      .join("")
+      .toUpperCase() || ":)";
   return (
-    <Avatar className="w-10 h-10 border-2 border-pink-500 bg-pink-950/80">
-      <AvatarFallback className="portfolio-font text-white">
-        {initials || ":)"}
+    <Avatar className="w-10 h-10 border-2 border-pink-500 bg-pink-950/80 flex items-center justify-center">
+      <AvatarFallback className="portfolio-font text-white text-lg">
+        {icon ?? initials}
       </AvatarFallback>
     </Avatar>
   );
