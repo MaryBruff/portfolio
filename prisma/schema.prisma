@@ -13,3 +13,17 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model GuestbookEntry {
+  id         Int      @id @default(autoincrement())
+  name       String
+  message    String
+  icon       String   @default("🙂")
+  ipHash     String   @map("ip_hash")
+  userAgent  String?  @map("user_agent")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt])
+  @@index([ipHash, createdAt])
+  @@index([name, createdAt])
+}
