@@ -6,3 +6,5 @@ node_modules
 .yarnrc.yml
 .next
 .vercel
+
+/src/generated/prisma
