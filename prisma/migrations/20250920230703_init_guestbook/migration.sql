@@ -3,7 +3,7 @@ CREATE TABLE "public"."GuestbookEntry" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
     "message" TEXT NOT NULL,
-    "icon" TEXT NOT NULL DEFAULT '🙂',
+    "icon" TEXT NOT NULL DEFAULT '😎',
     "ip_hash" TEXT NOT NULL,
     "user_agent" TEXT,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,

@@ -18,7 +18,7 @@ model GuestbookEntry {
   id         Int      @id @default(autoincrement())
   name       String
   message    String
-  icon       String   @default("🙂")
+  icon       String   @default("🌈")
   ipHash     String   @map("ip_hash")
   userAgent  String?  @map("user_agent")
   createdAt  DateTime @default(now()) @map("created_at")
