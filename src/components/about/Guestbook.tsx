@@ -1,8 +1,5 @@
 "use client";
 import * as React from "react";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import Turnstile from "react-turnstile";
 import { ICONS, type Icon } from "@/lib/icons";
 
@@ -10,18 +7,20 @@ type Entry = {
   id: string;
   name: string;
   message: string;
-  icon?: string;          // <-- added
-  createdAt: string;      // ISO
+  icon?: string;
+  createdAt: string;
 };
 
-const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY; // <-- note the NEXT_PUBLIC_ prefix
+const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
 
 export default function Guestbook() {
   const [entries, setEntries] = React.useState<Entry[]>([]);
   const [name, setName] = React.useState("");
   const [message, setMessage] = React.useState("");
-  const [icon, setIcon] = React.useState<Icon>(ICONS[0]);       // <-- icon state
-  const [turnstileToken, setTurnstileToken] = React.useState<string | null>(null); // <-- token
+  const [icon, setIcon] = React.useState<Icon>(ICONS[0]);
+  const [turnstileToken, setTurnstileToken] = React.useState<string | null>(
+    null
+  );
   const [submitting, setSubmitting] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
 
@@ -60,8 +59,8 @@ export default function Guestbook() {
           name,
           message,
           icon,
-          nickname: "",              // honeypot field (keep empty)
-          turnstileToken,            // server verifies this
+          nickname: "", // honeypot
+          turnstileToken,
         }),
       });
 
@@ -70,7 +69,6 @@ export default function Guestbook() {
         throw new Error(data?.error || "Failed to post");
       }
 
-      // reset form
       setName("");
       setMessage("");
       setIcon(ICONS[0]);
@@ -84,10 +82,86 @@ export default function Guestbook() {
   }
 
   return (
-    <div>
-      <h4 className="font-bold mb-3">Guestbook</h4>
+    <section className="comment-wall">
+      {/* Header */}
+      <header className="bg-orange-200 text-orange-500 text-sm font-bold px-2 py-1 mb-3">
+        <h5>Mary&apos;s Friend&apos;s Comments</h5>
+      </header>
 
-      <form onSubmit={onSubmit} className="space-y-3 mb-6">
+      {/* Counter + View/Edit link */}
+      <p className="mb-4 text-sm">
+        <b>
+          Displaying{" "}
+          <span className="px-1 rounded text-red-700 text-base">
+            {entries.length}
+          </span>{" "}
+          of{" "}
+          <span className="px-1 rounded text-red-700 text-base">
+            {entries.length}
+          </span>{" "}
+          comments (
+          <a href="#add-comment-form" className="underline hover:text-red-700">
+            Add Comment
+          </a>
+          {` / `}
+          <a href="#" className="underline hover:no-underline">
+            View/Edit All Comments
+          </a>
+          )
+        </b>
+      </p>
+
+      {/* Comments “table” */}
+      <ul className="w-full border border-white divide-y divide-white">
+        {entries.length === 0 && (
+          <li className="p-4 text-sm opacity-80 bg-orange-400 text-white">
+            No comments yet. Be the first! ✍️
+          </li>
+        )}
+
+        {entries.map((e) => (
+          <li
+            key={e.id}
+            className="grid grid-cols-[110px_1fr] gap-0 bg-orange-300 text-white"
+          >
+            {/* Left: profile column */}
+            <div className="p-2 flex flex-col items-center justify-start">
+              <figure className="text-center">
+                <figcaption className="mb-1 text-xs font-bold underline">
+                  <a href="#" aria-label={`${e.name}'s profile`}>
+                    {e.name}
+                  </a>
+                </figcaption>
+
+                {/* Emoji-as-avatar tile */}
+                <div className="mx-auto flex h-20 w-20 items-center justify-center text-5xl">
+                  <span className="text-black" aria-hidden="true">
+                    {e.icon ?? initialsFromName(e.name)}
+                  </span>
+                </div>
+              </figure>
+            </div>
+
+            {/* Right: message column */}
+            <div className="p-3 bg-orange-100 text-black">
+              <p className="text-xs font-bold">{formatDate(e.createdAt)}</p>
+              <p className="mt-1 whitespace-pre-wrap text-sm leading-5">
+                {e.message}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      {/* Form */}
+      <form
+        id="add-comment-form"
+        onSubmit={onSubmit}
+        className="mt-6 space-y-3 border-t border-black/10 pt-4"
+      >
+        <h5 className="text-base mb-0">Add a Comment</h5>
+        <p className="text-sm opacity-80">
+          Please be respectful and kind. Spam or inappropriate content will be removed! ✨
+        </p>
         {/* Honeypot */}
         <input
           type="text"
@@ -97,44 +171,54 @@ export default function Guestbook() {
           autoComplete="off"
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-          <Input
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Your name"
-            className="col-span-4 md:col-span-2"
-            maxLength={40}
-            aria-label="Your name"
-          />
-
-          {/* Icon picker */}
-          <div className="col-span-4 md:col-span-2 flex items-center gap-2 overflow-x-auto">
-            <span className="text-xs opacity-80 whitespace-nowrap portfolio-font">
-              Choose an icon:
-            </span>
-            <div className="flex items-center gap-1">
-              {ICONS.map((ic) => (
-                <button
-                  key={ic}
-                  type="button"
-                  onClick={() => setIcon(ic)}
-                  className={`px-2 py-1 rounded border ${
-                    icon === ic ? "border-pink-500" : "border-transparent"
-                  } bg-pink-950/60 hover:bg-pink-900/60`}
-                  aria-pressed={icon === ic}
-                  title={`Use ${ic}`}
-                >
-                  <span className="text-lg leading-none">{ic}</span>
-                </button>
-              ))}
-            </div>
+        {/* Row 1: Name + Icon */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div>
+            <label htmlFor="name" className="mb-1 block text-xs opacity-80">
+              Name:
+            </label>
+            <input
+              id="name"
+              value={name}
+              type="text"
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Your name"
+              maxLength={40}
+              aria-label="Your name"
+              className="w-full"
+            />
           </div>
 
-          <Textarea
+          <div>
+            <label htmlFor="icon" className="mb-1 block opacity-80">
+              Choose an icon:
+            </label>
+            <select
+              id="icon"
+              value={icon}
+              onChange={(e) => setIcon(e.target.value as Icon)}
+              className="block"
+            >
+              {ICONS.map((ic) => (
+                <option key={ic} value={ic}>
+                  {ic}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Row 2: Message */}
+        <div>
+          <label htmlFor="message" className="mb-1 block text-xs opacity-80">
+            Message:
+          </label>
+          <textarea
+            id="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Leave a note like it’s 2005…"
-            className="col-span-4 min-h-[80px]"
+            className="w-full min-h-[80px] rounded !border !border-[#7f9db9]"
             maxLength={280}
             aria-label="Your message"
           />
@@ -147,6 +231,7 @@ export default function Guestbook() {
               onVerify={(token) => setTurnstileToken(token)}
               onExpire={() => setTurnstileToken(null)}
               theme="light"
+              size="invisible"
             />
           </div>
         ) : null}
@@ -158,45 +243,15 @@ export default function Guestbook() {
           >
             {submitting ? "Posting…" : "Post Comment"}
           </button>
-          {error && (
-            <span className="text-red-200 text-sm portfolio-font">{error}</span>
-          )}
+          {error && <span className="text-red-600 text-sm">{error}</span>}
         </div>
       </form>
-
-      <ul className="space-y-3">
-        {entries.length === 0 && (
-          <li className="opacity-80 portfolio-font">
-            No comments yet. Be the first! ✍️
-          </li>
-        )}
-        {entries.map((e) => (
-          <li
-            key={e.id}
-            className="border border-pink-500 p-3 bg-pink-950/80 backdrop-blur-sm rounded-lg"
-          >
-            <div className="flex items-start gap-3">
-              <AvatarComponent name={e.name} icon={e.icon} />
-              <div className="flex-1">
-                <div className="flex items-center gap-2 text-sm opacity-90">
-                  <strong className="portfolio-font">{e.name}</strong>
-                  <time dateTime={e.createdAt} className="portfolio-font">
-                    {formatDate(e.createdAt)}
-                  </time>
-                </div>
-                <p className="mt-1 whitespace-pre-wrap portfolio-font">
-                  {e.message}
-                </p>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
+    </section>
   );
 }
 
-function AvatarComponent({ name, icon }: { name: string; icon?: string }) {
+/* Helpers */
+function initialsFromName(name: string) {
   const initials =
     name
       .split(" ")
@@ -204,22 +259,16 @@ function AvatarComponent({ name, icon }: { name: string; icon?: string }) {
       .slice(0, 2)
       .join("")
       .toUpperCase() || ":)";
-  return (
-    <Avatar className="w-10 h-10 border-2 border-pink-500 bg-pink-950/80 flex items-center justify-center">
-      <AvatarFallback className="portfolio-font text-white text-lg">
-        {icon ?? initials}
-      </AvatarFallback>
-    </Avatar>
-  );
+  return initials;
 }
 
 function formatDate(iso: string) {
   const d = new Date(iso);
   return d.toLocaleString(undefined, {
     year: "numeric",
-    month: "short",
-    day: "2-digit",
-    hour: "2-digit",
+    month: "numeric",
+    day: "numeric",
+    hour: "numeric",
     minute: "2-digit",
   });
 }
