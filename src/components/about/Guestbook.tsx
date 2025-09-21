@@ -146,7 +146,7 @@ export default function Guestbook() {
               sitekey={siteKey}
               onVerify={(token) => setTurnstileToken(token)}
               onExpire={() => setTurnstileToken(null)}
-              theme="dark"
+              theme="light"
             />
           </div>
         ) : null}
