@@ -12,20 +12,32 @@ function hashIp(ip: string) {
   return crypto.createHash("sha256").update(ip).digest("hex");
 }
 
-async function verifyTurnstile(token: string | null) {
+async function verifyTurnstile(token: string | null, ip?: string | null) {
   const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return false;
-  if (!token) return false;
+  if (!secret || !token) return false;
 
   try {
-    const res = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({ secret, response: token }),
-    });
+    const form = new URLSearchParams();
+    form.append("secret", secret);
+    form.append("response", token);
+    if (ip) form.append("remoteip", ip);
+
+    const res = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "content-type": "application/x-www-form-urlencoded" },
+        body: form.toString(),
+      }
+    );
+
     const data = await res.json();
+    if (!data?.success) {
+      console.warn("Turnstile failed", { data }); // shows error-codes/hostname on dev
+    }
     return !!data?.success;
-  } catch {
+  } catch (e) {
+    console.error("Turnstile verify error", e);
     return false;
   }
 }
@@ -34,9 +46,15 @@ export async function GET() {
   const entries = await prisma.guestbookEntry.findMany({
     orderBy: { createdAt: "desc" },
     take: 50,
-    select: { id: true, name: true, message: true, icon: true, createdAt: true },
+    select: {
+      id: true,
+      name: true,
+      message: true,
+      icon: true,
+      createdAt: true,
+    },
   });
-  
+
   return NextResponse.json({
     entries: (entries as GuestbookEntry[]).map(
       (e: GuestbookEntry): GuestbookEntryResponse => ({
@@ -63,7 +81,10 @@ export async function POST(req: NextRequest) {
     // Turnstile
     const captchaOK = await verifyTurnstile(turnstileToken ?? null);
     if (!captchaOK) {
-      return NextResponse.json({ error: "Captcha failed. Please try again." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Captcha failed. Please try again." },
+        { status: 400 }
+      );
     }
 
     // Validate/sanitize
@@ -72,18 +93,23 @@ export async function POST(req: NextRequest) {
     const chosenIcon = ICONS.includes(icon) ? icon : ICONS[0];
 
     if (!cleanName || !cleanMessage) {
-      return NextResponse.json({ error: "Name and message are required." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Name and message are required." },
+        { status: 400 }
+      );
     }
 
     // Optional: disallow links (reduce spam/phish)
     if (/\bhttps?:\/\//i.test(cleanMessage)) {
-      return NextResponse.json({ error: "Links are not allowed in the guestbook." }, { status: 400 });
+      return NextResponse.json(
+        { error: "Links are not allowed in the guestbook." },
+        { status: 400 }
+      );
     }
 
     // Basic rate limiting: max 2 comments / 5 min per IP and per name
     const ip =
-      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-      "0.0.0.0";
+      req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "0.0.0.0";
     const ipHash = hashIp(ip);
     const ua = req.headers.get("user-agent") || undefined;
 
@@ -118,7 +144,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   } catch (e) {
     console.error(e);
-    return NextResponse.json({ error: "Something went wrong." }, { status: 500 });
+    return NextResponse.json(
+      { error: "Something went wrong." },
+      { status: 500 }
+    );
   }
 }
 
@@ -126,7 +155,7 @@ interface GuestbookEntry {
   id: number;
   name: string;
   message: string;
-  icon: typeof ICONS[number];
+  icon: (typeof ICONS)[number];
   createdAt: Date;
 }
 
@@ -134,6 +163,6 @@ interface GuestbookEntryResponse {
   id: number;
   name: string;
   message: string;
-  icon: typeof ICONS[number];
+  icon: (typeof ICONS)[number];
   createdAt: string;
 }

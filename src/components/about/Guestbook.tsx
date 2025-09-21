@@ -140,7 +140,6 @@ export default function Guestbook() {
           />
         </div>
 
-        {/* Turnstile renders only if site key exists; skip in dev if not configured */}
         {siteKey ? (
           <div className="pt-1">
             <Turnstile
