@@ -22,7 +22,7 @@ export default function MySpaceTop3() {
       {/* Friend count */}
       <p className="mb-4 text-sm">
         <b>
-          Mary has <span className="text-red-700">73090713</span> Friends.
+          Mary has <span className="text-base text-red-700">73090713</span> Friends.
         </b>
       </p>
 
