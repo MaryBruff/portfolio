@@ -252,7 +252,6 @@ export default function Guestbook() {
               onVerify={(token) => setTurnstileToken(token)}
               onExpire={() => setTurnstileToken(null)}
               theme="light"
-              size="invisible"
             />
           </div>
         ) : null}
