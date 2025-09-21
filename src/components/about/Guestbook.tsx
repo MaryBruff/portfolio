@@ -12,17 +12,19 @@ type Entry = {
 };
 
 const siteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY;
+const PAGE_SIZE = 5;
 
 export default function Guestbook() {
   const [entries, setEntries] = React.useState<Entry[]>([]);
   const [name, setName] = React.useState("");
   const [message, setMessage] = React.useState("");
   const [icon, setIcon] = React.useState<Icon>(ICONS[0]);
-  const [turnstileToken, setTurnstileToken] = React.useState<string | null>(
-    null
-  );
+  const [turnstileToken, setTurnstileToken] = React.useState<string | null>(null);
   const [submitting, setSubmitting] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
+
+  // PAGINATION state
+  const [page, setPage] = React.useState(1);
 
   const load = React.useCallback(async () => {
     try {
@@ -55,13 +57,7 @@ export default function Guestbook() {
       const res = await fetch("/api/guestbook", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          message,
-          icon,
-          nickname: "", // honeypot
-          turnstileToken,
-        }),
+        body: JSON.stringify({ name, message, icon, nickname: "", turnstileToken }),
       });
 
       if (!res.ok) {
@@ -74,6 +70,8 @@ export default function Guestbook() {
       setIcon(ICONS[0]);
       setTurnstileToken(null);
       await load();
+
+      setPage(1); // PAGINATION: jump to first page to show newest
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : "Something went wrong");
     } finally {
@@ -81,59 +79,68 @@ export default function Guestbook() {
     }
   }
 
+  // ===== PAGINATION DERIVED DATA =====
+  const sorted = React.useMemo(
+    () =>
+      [...entries].sort(
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      ),
+    [entries]
+  );
+  const total = sorted.length;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+  const clampedPage = Math.min(page, totalPages);
+  const startIdx = (clampedPage - 1) * PAGE_SIZE;
+  const pageEntries = sorted.slice(startIdx, startIdx + PAGE_SIZE);
+  const from = total === 0 ? 0 : startIdx + 1;
+  const to = Math.min(startIdx + pageEntries.length, total);
+
+  function goto(p: number) {
+    const np = Math.min(Math.max(1, p), totalPages);
+    setPage(np);
+    document.getElementById("guestbook-top")?.scrollIntoView({ behavior: "smooth" });
+  }
+
   return (
     <section className="comment-wall">
+      <div id="guestbook-top" />
       {/* Header */}
       <header className="bg-orange-200 text-orange-500 text-sm font-bold px-2 py-1 mb-3">
         <h5>Mary&apos;s Friend&apos;s Comments</h5>
       </header>
 
-      {/* Counter + View/Edit link */}
+      {/* Counter + Add link */}
       <p className="mb-4 text-sm">
         <b>
           Displaying{" "}
-          <span className="px-1 rounded text-red-700 text-base">
-            {entries.length}
-          </span>{" "}
-          of{" "}
-          <span className="px-1 rounded text-red-700 text-base">
-            {entries.length}
-          </span>{" "}
+          <span className="px-1 rounded text-red-700 text-base">{from}</span>–
+          <span className="px-1 rounded text-red-700 text-base">{to}</span> of{" "}
+          <span className="px-1 rounded text-red-700 text-base">{total}</span>{" "}
           comments (
           <a href="#add-comment-form" className="underline hover:text-red-700">
             Add Comment
           </a>
           {` / `}
-          <a href="#" className="underline hover:no-underline">
-            View/Edit All Comments
-          </a>
-          )
+          <a href="#" className="underline hover:no-underline">View/Edit All Comments</a>)
         </b>
       </p>
 
-      {/* Comments “table” */}
+      {/* Comments list */}
       <ul className="w-full border border-white divide-y divide-white">
-        {entries.length === 0 && (
+        {total === 0 && (
           <li className="p-4 text-sm opacity-80 bg-orange-400 text-white">
             No comments yet. Be the first! ✍️
           </li>
         )}
 
-        {entries.map((e) => (
-          <li
-            key={e.id}
-            className="grid grid-cols-[110px_1fr] gap-0 bg-orange-300 text-white"
-          >
-            {/* Left: profile column */}
+        {pageEntries.map((e) => (
+          <li key={e.id} className="grid grid-cols-[110px_1fr] gap-0 bg-orange-300 text-white">
+            {/* Left: profile */}
             <div className="p-2 flex flex-col items-center justify-start">
               <figure className="text-center">
                 <figcaption className="mb-1 text-xs font-bold underline">
-                  <a href="#" aria-label={`${e.name}'s profile`}>
-                    {e.name}
-                  </a>
+                  <a href="#" aria-label={`${e.name}'s profile`}>{e.name}</a>
                 </figcaption>
-
-                {/* Emoji-as-avatar tile */}
                 <div className="mx-auto flex h-20 w-20 items-center justify-center text-5xl">
                   <span className="text-black" aria-hidden="true">
                     {e.icon ?? initialsFromName(e.name)}
@@ -142,16 +149,43 @@ export default function Guestbook() {
               </figure>
             </div>
 
-            {/* Right: message column */}
+            {/* Right: message */}
             <div className="p-3 bg-orange-100 text-black">
               <p className="text-xs font-bold">{formatDate(e.createdAt)}</p>
-              <p className="mt-1 whitespace-pre-wrap text-sm leading-5">
-                {e.message}
-              </p>
+              <p className="mt-1 whitespace-pre-wrap text-sm leading-5">{e.message}</p>
             </div>
           </li>
         ))}
       </ul>
+
+      {/* ===== PAGINATION CONTROLS ===== */}
+      {total > PAGE_SIZE && (
+        <div className="mt-3 flex items-center justify-between gap-3 text-sm">
+          <button
+            onClick={() => goto(clampedPage - 1)}
+            disabled={clampedPage <= 1}
+            className="rounded border border-black/20 bg-neutral-100 px-3 py-1 disabled:opacity-50"
+          >
+            ‹ Prev
+          </button>
+
+          <div className="flex items-center gap-2">
+            <span>Page</span>
+            <span className="font-semibold">{clampedPage}</span>
+            <span>of</span>
+            <span className="font-semibold">{totalPages}</span>
+          </div>
+
+          <button
+            onClick={() => goto(clampedPage + 1)}
+            disabled={clampedPage >= totalPages}
+            className="rounded border border-black/20 bg-neutral-100 px-3 py-1 disabled:opacity-50"
+          >
+            Next ›
+          </button>
+        </div>
+      )}
+
       {/* Form */}
       <form
         id="add-comment-form"
@@ -162,21 +196,14 @@ export default function Guestbook() {
         <p className="text-sm opacity-80">
           Please be respectful and kind. Spam or inappropriate content will be removed! ✨
         </p>
+
         {/* Honeypot */}
-        <input
-          type="text"
-          name="nickname"
-          className="hidden"
-          tabIndex={-1}
-          autoComplete="off"
-        />
+        <input type="text" name="nickname" className="hidden" tabIndex={-1} autoComplete="off" />
 
         {/* Row 1: Name + Icon */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
-            <label htmlFor="name" className="mb-1 block text-xs opacity-80">
-              Name:
-            </label>
+            <label htmlFor="name" className="mb-1 block text-xs opacity-80">Name:</label>
             <input
               id="name"
               value={name}
@@ -190,9 +217,7 @@ export default function Guestbook() {
           </div>
 
           <div>
-            <label htmlFor="icon" className="mb-1 block opacity-80">
-              Choose an icon:
-            </label>
+            <label htmlFor="icon" className="mb-1 block opacity-80">Choose an icon:</label>
             <select
               id="icon"
               value={icon}
@@ -200,9 +225,7 @@ export default function Guestbook() {
               className="block"
             >
               {ICONS.map((ic) => (
-                <option key={ic} value={ic}>
-                  {ic}
-                </option>
+                <option key={ic} value={ic}>{ic}</option>
               ))}
             </select>
           </div>
@@ -210,9 +233,7 @@ export default function Guestbook() {
 
         {/* Row 2: Message */}
         <div>
-          <label htmlFor="message" className="mb-1 block text-xs opacity-80">
-            Message:
-          </label>
+          <label htmlFor="message" className="mb-1 block text-xs opacity-80">Message:</label>
           <textarea
             id="message"
             value={message}
@@ -237,10 +258,7 @@ export default function Guestbook() {
         ) : null}
 
         <div className="flex items-center gap-3">
-          <button
-            type="submit"
-            disabled={submitting || (siteKey ? !turnstileToken : false)}
-          >
+          <button type="submit" disabled={submitting || (siteKey ? !turnstileToken : false)}>
             {submitting ? "Posting…" : "Post Comment"}
           </button>
           {error && <span className="text-red-600 text-sm">{error}</span>}
@@ -253,22 +271,22 @@ export default function Guestbook() {
 /* Helpers */
 function initialsFromName(name: string) {
   const initials =
-    name
-      .split(" ")
-      .map((n) => n[0])
-      .slice(0, 2)
-      .join("")
-      .toUpperCase() || ":)";
+    name.split(" ").map((n) => n[0]).slice(0, 2).join("").toUpperCase() || ":)";
   return initials;
 }
-
 function formatDate(iso: string) {
   const d = new Date(iso);
-  return d.toLocaleString(undefined, {
+  let formatted = d.toLocaleString(undefined, {
     year: "numeric",
     month: "numeric",
     day: "numeric",
     hour: "numeric",
     minute: "2-digit",
   });
+
+  // replace the 3rd digit of the year with "0" to make it Myspace-core
+  formatted = formatted.replace(/(\d{2})(\d)(\d)/, (_, a, _b, c) => `${a}0${c}`);
+
+  return formatted;
 }
+
