@@ -6,3 +6,5 @@ export { default as Blog } from './Blog';
 export { default as Education } from './Education';
 export { default as Guestbook } from './Guestbook';
 export { default as NewAbout } from './NewAbout';
+export { default as Contact } from './Contact';
+export { default as MySpaceNav } from './MySpaceNav';

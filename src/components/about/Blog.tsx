@@ -1,46 +1,70 @@
-import Window from "@/components/Window";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
-export default function Blog() {
+type Post = { t: string; u: string };
+
+export default function Blog({
+  posts = [
+    { t: "6 Albums to Get You into Jazz", u: "https://mbruff.wixsite.com/letstalkabooutmusic/post/6-albums-to-get-you-into-jazz" },
+    { t: "Not Your Cliché Jangle Pop Song Recommendation (Pt. 1)", u: "https://mbruff.wixsite.com/letstalkabooutmusic/post/not-your-cliché-jangle-pop-song-recommendation-pt-1" },
+    { t: "5 Underrated Alternative Albums from the 90s", u: "https://mbruff.wixsite.com/letstalkabooutmusic/post/5-underrated-alternative-albums-from-the-90s" },
+  ],
+  title = "Mary’s Latest Blog Entry",
+  subscribeUrl, // e.g. your RSS or Wix subscribe page (optional)
+  viewAllUrl = "https://mbruff.wixsite.com/letstalkabooutmusic",
+}: {
+  posts?: Post[];
+  title?: string;
+  subscribeUrl?: string;
+  viewAllUrl?: string;
+}) {
   return (
-    <Window title="Latest Blog Entries">
-      <div className="space-y-2">
-        <ul className="list-disc pl-5 space-y-1 text-sm">
-          <li>
-            <Link
-              href="https://mbruff.wixsite.com/letstalkabooutmusic/post/6-albums-to-get-you-into-jazz"
-              target="_blank"
-              className="underline hover:text-chart-4 transition portfolio-font"
-            >
-              6 Albums to Get You into Jazz
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="https://mbruff.wixsite.com/letstalkabooutmusic/post/not-your-cliché-jangle-pop-song-recommendation-pt-1"
-              target="_blank"
-              className="underline hover:text-chart-4 transition portfolio-font"
-            >
-              Not Your Cliché Jangle Pop Song Recommendation (Pt. 1)
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="https://mbruff.wixsite.com/letstalkabooutmusic/post/5-underrated-alternative-albums-from-the-90s"
-              target="_blank"
-              className="underline hover:text-chart-4 transition portfolio-font"
-            >
-              5 Underrated Alternative Albums from the 90s
-            </Link>
-          </li>
-          <Button className="mt-3">
-            <Link href="https://mbruff.wixsite.com/letstalkabooutmusic" target="_blank">
-              View Blog
-            </Link>
-          </Button>
-        </ul>
-      </div>
-    </Window>
+    <div className="mx-auto w-full text-sm">
+      <table
+        className="mx-auto w-full"
+      >
+        <tbody>
+          <tr>
+            <td style={{ wordWrap: "break-word" }}>
+              <span className="font-bold">{title} </span>
+              {subscribeUrl ? (
+                <>
+                  [
+                  <Link href={subscribeUrl} target="_blank" className="underline hover:opacity-90">
+                    Subscribe to this Blog
+                  </Link>
+                  ]
+                </>
+              ) : null}
+              <br />
+              <br />
+            </td>
+          </tr>
+
+          {posts.map((p) => (
+            <tr key={p.t}>
+              <td style={{ wordWrap: "break-word", verticalAlign: "top" }}>
+                {p.t}&nbsp;(
+                <Link href={p.u} target="_blank" className="underline hover:opacity-90">
+                  view more
+                </Link>
+                )
+                <br />
+                <br />
+              </td>
+            </tr>
+          ))}
+
+          <tr>
+            <td valign="top" align="left" height={25}>
+              [
+              <Link href={viewAllUrl} target="_blank" className="underline hover:opacity-90">
+                View All Blog Entries
+              </Link>
+              ]
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   );
 }

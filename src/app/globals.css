@@ -1,3 +1,5 @@
+@import "xp.css/dist/XP.css";
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -148,4 +150,66 @@
 img[alt="Clay Script Look Book"] {
   object-position: 5% 0% !important;
   object-fit: cover;
+}
+
+.title-bar {
+  height: 2rem; /* I'll DO IT MYSELF */
+}
+
+button {
+  cursor: pointer;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('/backgrounds/bliss.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.nav-start-button {
+  width: 125px;
+  height: 40px;
+  margin-left: -3px;
+  /* transform: translateY(1px); */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: transparent;
+  border: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.nav-start-button:focus,
+.nav-start-button:hover,
+.nav-start-button:active {
+  box-shadow: none !important;
+}
+
+.nav-start-button[aria-label="Home"] {
+  background-image: url("/start-button/Default.svg");
+}
+.nav-start-button[aria-label="Home"]:hover {
+  background-image: url("/start-button/Hover.svg");
+}
+.nav-start-button[aria-label="Home"]:active {
+  background-image: url("/start-button/Press.svg");
+}
+
+.myspace-nav .top .right,
+.myspace-nav .top .right span { 
+  color: #fff !important;
+}
+
+.myspace-nav .top .right a,
+.myspace-nav .links a {
+  color: #fff !important;
+  text-decoration-color: #fff !important; 
 }

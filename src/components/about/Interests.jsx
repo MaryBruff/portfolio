@@ -4,35 +4,47 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 
+const books = [
+  {
+    src: "/Unicorn.png",
+    alt: "Currently Reading Book Cover",
+  },
+  {
+    src: "/Harpo.jpg",
+    alt: "Up Next Book Cover",
+  },
+];
+
 export default function Interests() {
   return (
-    <Window
-      title="Mary's Interests"
-    >
+    <div>
+      <div className="heading bg-blue-400 text-white text-sm font-bold px-2 py-1">
+        <h5>Mary Bruff's Interests</h5>
+      </div>
       <Table>
         <TableBody>
           <TableRow>
-            <TableCell className="font-bold w-1/4 bg-ring whitespace-normal break-words">
+            <TableCell className="font-bold w-1/4 bg-blue-300 text-blue-800 whitespace-normal break-words">
               Soft Skills
             </TableCell>
-            <TableCell className="whitespace-normal bg-accent break-words">
+            <TableCell className="whitespace-normal bg-blue-200 break-words">
               Leadership, Collaboration & Teamwork, Data Analysis & Quality
               Management, Technical Communication & Documentation
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold w-1/4 bg-ring whitespace-normal break-words">
+            <TableCell className="font-bold w-1/4 bg-blue-300 text-blue-800 whitespace-normal break-words">
               Tech Skills
             </TableCell>
-            <TableCell className="whitespace-normal bg-accent break-words">
+            <TableCell className="whitespace-normal bg-blue-200 break-words">
               JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold bg-ring whitespace-normal break-words">
+            <TableCell className="font-bold bg-blue-300 text-blue-800 whitespace-normal break-words">
               Music
             </TableCell>
-            <TableCell className="whitespace-normal bg-accent break-words">
+            <TableCell className="whitespace-normal bg-blue-200 break-words">
               Check out my tunes on{" "}
               <Link
                 href="https://open.spotify.com/user/poptartmarbear"
@@ -52,10 +64,10 @@ export default function Interests() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold bg-ring whitespace-normal break-words">
+            <TableCell className="font-bold bg-blue-300 text-blue-800 whitespace-normal break-words">
               Movies
             </TableCell>
-            <TableCell className="whitespace-normal bg-accent break-words">
+            <TableCell className="whitespace-normal bg-blue-200 break-words">
               See my favorite films on{" "}
               <Link
                 href="https://letterboxd.com/Poptartmarbear/"
@@ -67,70 +79,46 @@ export default function Interests() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold bg-ring whitespace-normal break-words">
+            <TableCell className="font-bold bg-blue-300 text-blue-800 whitespace-normal break-words">
               Activities
             </TableCell>
-            <TableCell className="whitespace-normal bg-accent break-words">
+            <TableCell className="whitespace-normal bg-blue-200 break-words">
               Music, Films, Video Games, Always Learning
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold bg-ring whitespace-normal break-words">
+            <TableCell className="font-bold bg-blue-300 text-blue-800 whitespace-normal break-words">
               Books
             </TableCell>
-            <TableCell className="whitespace-normal bg-accent break-words">
-              <div className="grid grid-cols-1 gap-4">
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg">
-                      Currently Reading
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex items-center gap-4">
+            <TableCell className="whitespace-normal bg-blue-200 break-words">
+              <div className="grid grid-cols-2 gap-2">
+                {books.map((book, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col items-center justify-center"
+                  >
                     <Image
-                      src="/Unicorn.png"
-                      alt="Currently Reading Book Cover"
+                      src={book.src}
+                      alt={book.alt}
                       width={80}
                       height={120}
-                      className="object-cover"
+                      className="w-20 h-30 object-contain"
                     />
-                    <div>
-                      <p className="font-medium">
-                        The Killing of the Unicorn: Dorothy Stratten
-                      </p>
-                    </div>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader>
-                    <CardTitle className="text-lg">
-                      Up Next
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="flex items-center gap-4">
-                    <Image
-                      src="/Harpo.jpg"
-                      alt="Up Next Book Cover"
-                      width={80}
-                      height={120}
-                      className="object-cover"
-                    />
-                    <div>
-                      <p className="font-medium">Harpo Speaks!</p>
-                    </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                ))}
               </div>
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold bg-ring whitespace-normal break-words">
+            <TableCell className="font-bold bg-blue-300 text-blue-800 whitespace-normal break-words">
               Heroes
             </TableCell>
-            <TableCell className="whitespace-normal bg-accent break-words"></TableCell>
+            <TableCell className="whitespace-normal bg-blue-200 break-words">
+              Harpo, Groucho, Chico, Zeppo, and Gummo
+            </TableCell>
           </TableRow>
         </TableBody>
       </Table>
-    </Window>
+    </div>
   );
 }

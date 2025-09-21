@@ -28,22 +28,21 @@ export default function PortfolioCategory({
   isDev = false,
 }: PortfolioCategoryProps) {
   return (
-    <div className="font-sans">
-      <h2 className="text-2xl font-bold mb-4">{windowTitle}</h2>
-      <p className="mb-6 text-lg">{introText}</p>
-      {githubProfile && (
-        <div className="flex justify-end mb-4">
-          <Button
-            variant="outline"
-            asChild
-          >
+    <div className="tabpanel">
+      <div className="flex sm:justify-start flex-wrap items-center gap-4 mb-2">
+        <h4 className="font-bold">{windowTitle}</h4>
+        {githubProfile && (
+          <div>
             <Link href={githubProfile} target="_blank">
-              View My GitHub Profile
+              <button>View My GitHub Profile</button>
             </Link>
-          </Button>
-        </div>
-      )}
-      <div className={`grid ${isDev ? "p-2 grid-cols-1 md:grid-cols-2" : "grid-cols-1 md:grid-cols-2"} gap-6`}>
+          </div>
+        )}
+      </div>
+      <p className="mb-2">{introText}</p>
+      <div
+        className="grid grid-cols-1 md:grid-cols-3 gap-6"
+      >
         {projects.map((project) => (
           <ProjectCard key={project.title} project={project} isDev={isDev} />
         ))}

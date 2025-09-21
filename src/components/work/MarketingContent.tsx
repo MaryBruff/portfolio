@@ -10,7 +10,7 @@ interface Project {
 export default function MarketingContent() {
   const projects: Project[] = [
     {
-      title: "Marketing Strategy for Senior Citizens",
+      title: "Senior Citizens Marketing",
       description: "A targeted marketing strategy tailored to senior citizens, emphasizing audience awareness and engagement.",
       url: "https://portfolium.com/entry/marketing-strategy-for-senior-citizens",
       thumbnail: "/senior_marketing.jpg",
@@ -22,7 +22,7 @@ export default function MarketingContent() {
       thumbnail: "/marketing_guide.png",
     },
     {
-      title: "Content Strategy for NoAgenda Podcast",
+      title: "NoAgenda Content Strategy",
       description: "A strategic content plan for a popular podcast, enhancing user engagement.",
       url: "https://portfolium.com/entry/content-strategy-for-noagenda-podcast",
       thumbnail: "/Content NoAgenda.png",

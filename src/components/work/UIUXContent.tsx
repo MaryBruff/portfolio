@@ -22,7 +22,7 @@ export default function UIUXContent() {
       thumbnail: "/LookBook.png",
     },
     {
-      title: "Skincare Website Concept & Design",
+      title: "Website Concept & Design",
       description: "A user-focused website design with personas, audience analysis, and multi-device interfaces.",
       url: "https://portfolium.com/entry/skincare-website-concept-design",
       thumbnail: "/skincare_website.png",
