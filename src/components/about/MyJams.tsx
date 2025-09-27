@@ -17,11 +17,25 @@ export default function MyJams() {
         />
       </div>
       <Image
+        src="/2008/hampter-guitar.gif"
+        alt="Hampter Guitar"
+        width={36}
+        height={40}
+        className="absolute bottom-1 right-40 z-[12]"
+      />
+      <Image
+        src="/2008/kirby-groove.gif"
+        alt="Kirby Groove"
+        width={28}
+        height={40}
+        className="absolute bottom-1 right-25 z-[12]"
+      />
+      <Image
         src="/2008/drummz.gif"
         alt="Drum guy!"
         width={40}
         height={40}
-        className="absolute bottom-2 right-0 z-[12]"
+        className="absolute bottom-2 right-10 z-[12]"
       />
     </div>
   );
