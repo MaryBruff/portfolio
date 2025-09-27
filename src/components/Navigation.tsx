@@ -28,31 +28,50 @@ export default function Navigation() {
           )`,
         }}
       >
-        <Link href="/" className="nav-start-button" aria-label="Home"></Link>
-        <Link href="/about" className={`nav-app-link ${pathname === "/about" ? "nav-app-link-active" : "nav-app-link-minimized"}`}>
-          <div className="flex items-center gap-1">
-            <Image
-              src="/icons/about-me-icon.png"
-              width={18}
-              height={18}
-              alt="About"
-              className="nav-icon"
-            />
-            <span>About</span>
-          </div>
-        </Link>
-        <Link href="/work" className={`nav-app-link ${pathname === "/work" ? "nav-app-link-active" : "nav-app-link-minimized"}`}>
-          <div className="flex items-center gap-1">
-            <Image
-              src="/icons/work-icon.png"
-              width={18}
-              height={18}
-              alt="Work"
-              className="nav-icon"
-            />
-            <span>Work</span>
-          </div>
-        </Link>
+        <Link
+          rel="preload"
+          href="/"
+          className="nav-start-button"
+          aria-label="Home"
+        ></Link>
+        {pathname !== "/" && (
+          <Link
+            href="/about"
+            className={`nav-app-link ${
+              pathname === "/about" ? "nav-app-link-active" : "nav-app-link-minimized"
+            }`}
+          >
+            <div className="flex items-center gap-1">
+              <Image
+                src="/icons/about-me-icon.png"
+                width={18}
+                height={18}
+                alt="About"
+                className="nav-icon"
+              />
+              <span>About</span>
+            </div>
+          </Link>
+        )}
+        {pathname !== "/" && (
+          <Link
+            href="/work"
+            className={`nav-app-link ${
+              pathname === "/work" ? "nav-app-link-active" : "nav-app-link-minimized"
+            }`}
+          >
+            <div className="flex items-center gap-1">
+              <Image
+                src="/icons/work-icon.png"
+                width={18}
+                height={18}
+                alt="Work"
+                className="nav-icon"
+              />
+              <span>Work</span>
+            </div>
+          </Link>
+        )}
       </div>
     </nav>
   );
