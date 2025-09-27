@@ -252,22 +252,3 @@ body::before {
 .nav-icon {
   margin-right: 4px;
 }
-
-input, textarea {
-  -webkit-text-size-adjust: 100%;
-  touch-action: manipulation;
-}
-
-#add-comment-form {
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Optional: Adjust form padding for small screens */
-@media (max-width: 640px) {
-  input, textarea {
-    width: 100%;
-    box-sizing: border-box;
-  }
-}

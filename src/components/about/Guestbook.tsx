@@ -19,9 +19,7 @@ export default function Guestbook() {
   const [name, setName] = React.useState("");
   const [message, setMessage] = React.useState("");
   const [icon, setIcon] = React.useState<Icon>(ICONS[0]);
-  const [turnstileToken, setTurnstileToken] = React.useState<string | null>(
-    null
-  );
+  const [turnstileToken, setTurnstileToken] = React.useState<string | null>(null);
   const [submitting, setSubmitting] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -63,13 +61,7 @@ export default function Guestbook() {
       const res = await fetch("/api/guestbook", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name,
-          message,
-          icon,
-          nickname: "",
-          turnstileToken,
-        }),
+        body: JSON.stringify({ name, message, icon, nickname: "", turnstileToken }),
       });
 
       if (!res.ok) {
@@ -95,8 +87,7 @@ export default function Guestbook() {
   const sorted = React.useMemo(
     () =>
       [...entries].sort(
-        (a, b) =>
-          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
       ),
     [entries]
   );
@@ -111,9 +102,7 @@ export default function Guestbook() {
   function goto(p: number) {
     const np = Math.min(Math.max(1, p), totalPages);
     setPage(np);
-    document
-      .getElementById("guestbook-top")
-      ?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("guestbook-top")?.scrollIntoView({ behavior: "smooth" });
   }
 
   return (
@@ -136,10 +125,7 @@ export default function Guestbook() {
             Add Comment
           </a>
           {` / `}
-          <a href="#" className="underline hover:no-underline">
-            View/Edit All Comments
-          </a>
-          )
+          <a href="#" className="underline hover:no-underline">View/Edit All Comments</a>)
         </b>
       </p>
 
@@ -157,17 +143,12 @@ export default function Guestbook() {
           )}
 
           {pageEntries.map((e) => (
-            <li
-              key={e.id}
-              className="grid grid-cols-[110px_1fr] gap-0 bg-orange-300 text-white"
-            >
+            <li key={e.id} className="grid grid-cols-[110px_1fr] gap-0 bg-orange-300 text-white">
               {/* Left: profile */}
               <div className="p-2 flex flex-col items-center justify-start">
                 <figure className="text-center">
                   <figcaption className="mb-1 text-xs font-bold underline">
-                    <a href="#" aria-label={`${e.name}'s profile`}>
-                      {e.name}
-                    </a>
+                    <a href="#" aria-label={`${e.name}'s profile`}>{e.name}</a>
                   </figcaption>
                   <div className="mx-auto flex h-20 w-20 items-center justify-center text-5xl">
                     <span className="text-black" aria-hidden="true">
@@ -180,9 +161,7 @@ export default function Guestbook() {
               {/* Right: message */}
               <div className="p-3 bg-orange-100 text-black">
                 <p className="text-xs font-bold">{formatDate(e.createdAt)}</p>
-                <p className="mt-1 whitespace-pre-wrap text-sm leading-5">
-                  {e.message}
-                </p>
+                <p className="mt-1 whitespace-pre-wrap text-sm leading-5">{e.message}</p>
               </div>
             </li>
           ))}
@@ -225,36 +204,21 @@ export default function Guestbook() {
       >
         <h5 className="text-base mb-0">Add a Comment</h5>
         <p className="text-sm opacity-80">
-          Please be respectful and kind. Spam or inappropriate content will be
-          removed! ✨
+          Please be respectful and kind. Spam or inappropriate content will be removed! ✨
         </p>
 
         {/* Honeypot */}
-        <input
-          type="text"
-          name="nickname"
-          className="hidden"
-          tabIndex={-1}
-          autoComplete="off"
-        />
+        <input type="text" name="nickname" className="hidden" tabIndex={-1} autoComplete="off" />
 
         {/* Row 1: Name + Icon */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
-            <label htmlFor="name" className="mb-1 block text-xs opacity-80">
-              Name:
-            </label>
+            <label htmlFor="name" className="mb-1 block text-xs opacity-80">Name:</label>
             <input
               id="name"
               value={name}
               type="text"
               onChange={(e) => setName(e.target.value)}
-              onFocus={() => {
-                document.getElementById("add-comment-form")?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "center", // Center the form in the viewport
-                });
-              }}
               placeholder="Your name"
               maxLength={40}
               aria-label="Your name"
@@ -263,9 +227,7 @@ export default function Guestbook() {
           </div>
 
           <div>
-            <label htmlFor="icon" className="mb-1 block opacity-80">
-              Choose an icon:
-            </label>
+            <label htmlFor="icon" className="mb-1 block opacity-80">Choose an icon:</label>
             <select
               id="icon"
               value={icon}
@@ -273,9 +235,7 @@ export default function Guestbook() {
               className="block"
             >
               {ICONS.map((ic) => (
-                <option key={ic} value={ic}>
-                  {ic}
-                </option>
+                <option key={ic} value={ic}>{ic}</option>
               ))}
             </select>
           </div>
@@ -283,19 +243,11 @@ export default function Guestbook() {
 
         {/* Row 2: Message */}
         <div>
-          <label htmlFor="message" className="mb-1 block text-xs opacity-80">
-            Message:
-          </label>
+          <label htmlFor="message" className="mb-1 block text-xs opacity-80">Message:</label>
           <textarea
             id="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
-            onFocus={() => {
-              document.getElementById("add-comment-form")?.scrollIntoView({
-                behavior: "smooth",
-                block: "center", // Center the form in the viewport
-              });
-            }}
             placeholder="Leave a note like it’s 2005…"
             className="w-full min-h-[80px] rounded !border !border-[#7f9db9]"
             maxLength={280}
@@ -315,10 +267,7 @@ export default function Guestbook() {
         ) : null}
 
         <div className="flex items-center gap-3">
-          <button
-            type="submit"
-            disabled={submitting || (siteKey ? !turnstileToken : false)}
-          >
+          <button type="submit" disabled={submitting || (siteKey ? !turnstileToken : false)}>
             {submitting ? "Posting…" : "Post Comment"}
           </button>
           {error && <span className="text-red-600 text-sm">{error}</span>}
@@ -331,12 +280,7 @@ export default function Guestbook() {
 /* Helpers */
 function initialsFromName(name: string) {
   const initials =
-    name
-      .split(" ")
-      .map((n) => n[0])
-      .slice(0, 2)
-      .join("")
-      .toUpperCase() || ":)";
+    name.split(" ").map((n) => n[0]).slice(0, 2).join("").toUpperCase() || ":)";
   return initials;
 }
 function formatDate(iso: string) {
@@ -350,10 +294,7 @@ function formatDate(iso: string) {
   });
 
   // replace the 3rd digit of the year with "0" to make it Myspace-core
-  formatted = formatted.replace(
-    /(\d{2})(\d)(\d)/,
-    (_, a, _b, c) => `${a}0${c}`
-  );
+  formatted = formatted.replace(/(\d{2})(\d)(\d)/, (_, a, _b, c) => `${a}0${c}`);
 
   return formatted;
 }
