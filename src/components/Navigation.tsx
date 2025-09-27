@@ -1,8 +1,12 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 export default function Navigation() {
+  const pathname = usePathname();
+
   return (
     <nav
       aria-label="Primary"
@@ -25,11 +29,29 @@ export default function Navigation() {
         }}
       >
         <Link href="/" className="nav-start-button" aria-label="Home"></Link>
-        <Link href="/about">
-          <button>About</button>
+        <Link href="/about" className={`nav-app-link ${pathname === "/about" ? "nav-app-link-active" : "nav-app-link-minimized"}`}>
+          <div className="flex items-center gap-1">
+            <Image
+              src="/icons/about-me-icon.png"
+              width={18}
+              height={18}
+              alt="About"
+              className="nav-icon"
+            />
+            <span>About</span>
+          </div>
         </Link>
-        <Link href="/work">
-          <button>Work</button>
+        <Link href="/work" className={`nav-app-link ${pathname === "/work" ? "nav-app-link-active" : "nav-app-link-minimized"}`}>
+          <div className="flex items-center gap-1">
+            <Image
+              src="/icons/work-icon.png"
+              width={18}
+              height={18}
+              alt="Work"
+              className="nav-icon"
+            />
+            <span>Work</span>
+          </div>
         </Link>
       </div>
     </nav>

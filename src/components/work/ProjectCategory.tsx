@@ -41,7 +41,7 @@ export default function PortfolioCategory({
       </div>
       <p className="mb-2">{introText}</p>
       <div
-        className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        className="grid grid-cols-1 md:grid-cols-3 gap-2"
       >
         {projects.map((project) => (
           <ProjectCard key={project.title} project={project} isDev={isDev} />
