@@ -13,7 +13,7 @@ export default function Navigation() {
       className="fixed bottom-0 left-0 right-0 z-[1000]"
     >
       <div
-        className="flex items-center gap-2 h-[39px]"
+        className="flex items-center gap-0 h-[39px]"
         style={{
           background: `linear-gradient(
             180deg,
