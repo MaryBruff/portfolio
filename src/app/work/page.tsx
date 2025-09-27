@@ -9,7 +9,6 @@ import MarketingContent from "@/components/work/MarketingContent";
 import MultimediaContent from "@/components/work/MultimediaContent";
 import SoftwareDevContent from "@/components/work/SoftwareDevContent";
 import UIUXContent from "@/components/work/UIUXContent";
-import ResumeContent from "@/components/work/ResumeContent";
 
 type TabDef = { icon: string; label: string; content: React.ReactNode };
 
@@ -19,7 +18,6 @@ const tabs: TabDef[] = [
   { icon: "🎥", label: "Multimedia", content: <MultimediaContent /> },
   { icon: "✍️", label: "Creative", content: <CreativeContent /> },
   { icon: "📈", label: "Marketing", content: <MarketingContent /> },
-  { icon: "📄", label: "Resume", content: <ResumeContent /> },
 ];
 
 function slugify(s: string) {
@@ -94,7 +92,6 @@ export default function WorkContent() {
                         index === i ? "font-semibold" : ""
                       }`}
                     >
-                      <span aria-hidden="true">{t.icon}</span>
                       {t.label}
                     </button>
                   ))}

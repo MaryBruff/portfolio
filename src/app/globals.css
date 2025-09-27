@@ -151,6 +151,10 @@ img[alt="Clay Script Look Book"] {
   object-fit: cover;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 .title-bar {
   height: 2rem; /* I'll DO IT MYSELF */
 }
