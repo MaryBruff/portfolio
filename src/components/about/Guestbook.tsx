@@ -121,7 +121,7 @@ export default function Guestbook() {
     <section className="comment-wall">
       <div id="guestbook-top" />
       {/* Header */}
-      <header className="bg-orange-200 text-orange-500 text-sm font-bold px-2 py-1 mb-3">
+      <header className="bg-pink-200 text-pink-500 text-sm font-bold px-2 py-1 mb-3">
         <h5>Mary&apos;s Friend&apos;s Comments</h5>
       </header>
 
@@ -129,9 +129,9 @@ export default function Guestbook() {
       <p className="mb-4 text-sm">
         <b>
           Displaying{" "}
-          <span className="px-1 rounded text-red-700 text-base">{from}</span>–
-          <span className="px-1 rounded text-red-700 text-base">{to}</span> of{" "}
-          <span className="px-1 rounded text-red-700 text-base">{total}</span>{" "}
+          <span className="px-1 rounded text-purple-700 text-base">{from}</span>–
+          <span className="px-1 rounded text-purple-700 text-base">{to}</span> of{" "}
+          <span className="px-1 rounded text-purple-700 text-base">{total}</span>{" "}
           comments (
           <span className="hidden md:inline">
             <a
@@ -152,12 +152,12 @@ export default function Guestbook() {
       {/* Spinner or Comments list */}
       {isLoading ? (
         <div className="flex justify-center items-center py-4">
-          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-orange-500"></div>
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-purple-500"></div>
         </div>
       ) : (
         <ul className="w-full border border-white divide-y divide-white">
           {total === 0 && (
-            <li className="p-4 text-sm opacity-80 bg-orange-400 text-white">
+            <li className="p-4 text-sm opacity-80 bg-purple-400 text-white">
               No comments yet. Be the first! ✍️
             </li>
           )}
@@ -165,7 +165,7 @@ export default function Guestbook() {
           {pageEntries.map((e) => (
             <li
               key={e.id}
-              className="grid grid-cols-[110px_1fr] gap-0 bg-orange-300 text-white"
+              className="grid grid-cols-[110px_1fr] gap-0 bg-pink-300 text-white"
             >
               {/* Left: profile */}
               <div className="p-2 flex flex-col items-center justify-start">
@@ -184,7 +184,7 @@ export default function Guestbook() {
               </div>
 
               {/* Right: message */}
-              <div className="p-3 bg-orange-100 text-black">
+              <div className="p-3 bg-pink-100 text-black">
                 <p className="text-xs font-bold">{formatDate(e.createdAt)}</p>
                 <p className="mt-1 whitespace-pre-wrap text-sm leading-5">
                   {e.message}
@@ -328,7 +328,7 @@ export default function Guestbook() {
             >
               {submitting ? "Posting…" : "Post Comment"}
             </button>
-            {error && <span className="text-red-600 text-sm">{error}</span>}
+            {error && <span className="text-pink-600 text-sm">{error}</span>}
           </div>
         </form>
       </div>

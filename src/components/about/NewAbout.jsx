@@ -5,7 +5,7 @@ import { aboutGlitterText, meetGlitterText } from "./data/glitterText";
 export default function NewAbout() {
   return (
     <div className="text-sm space-y-4">
-      <div className="heading bg-orange-200 text-orange-500 text-sm font-bold px-2 py-1">
+      <div className="heading bg-pink-200 text-pink-500 text-sm font-bold px-2 py-1">
         <h5>Mary Bruff's Blurbs</h5>
       </div>
       <div>

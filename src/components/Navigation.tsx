@@ -13,7 +13,7 @@ export default function Navigation() {
       className="fixed bottom-0 left-0 right-0 z-[1000]"
     >
       <div
-        className="flex items-center gap-2 h-[39px]"
+        className="flex items-center gap-0 h-[39px]"
         style={{
           background: `linear-gradient(
             180deg,
@@ -28,31 +28,50 @@ export default function Navigation() {
           )`,
         }}
       >
-        <Link href="/" className="nav-start-button" aria-label="Home"></Link>
-        <Link href="/about" className={`nav-app-link ${pathname === "/about" ? "nav-app-link-active" : "nav-app-link-minimized"}`}>
-          <div className="flex items-center gap-1">
-            <Image
-              src="/icons/about-me-icon.png"
-              width={18}
-              height={18}
-              alt="About"
-              className="nav-icon"
-            />
-            <span>About</span>
-          </div>
-        </Link>
-        <Link href="/work" className={`nav-app-link ${pathname === "/work" ? "nav-app-link-active" : "nav-app-link-minimized"}`}>
-          <div className="flex items-center gap-1">
-            <Image
-              src="/icons/work-icon.png"
-              width={18}
-              height={18}
-              alt="Work"
-              className="nav-icon"
-            />
-            <span>Work</span>
-          </div>
-        </Link>
+        <Link
+          rel="preload"
+          href="/"
+          className="nav-start-button"
+          aria-label="Home"
+        ></Link>
+        {pathname !== "/" && (
+          <Link
+            href="/about"
+            className={`nav-app-link ${
+              pathname === "/about" ? "nav-app-link-active" : "nav-app-link-minimized"
+            }`}
+          >
+            <div className="flex items-center gap-1">
+              <Image
+                src="/icons/ie-icon.png"
+                width={16}
+                height={16}
+                alt="About"
+                className="nav-icon"
+              />
+              <span>About</span>
+            </div>
+          </Link>
+        )}
+        {pathname !== "/" && (
+          <Link
+            href="/work"
+            className={`nav-app-link ${
+              pathname === "/work" ? "nav-app-link-active" : "nav-app-link-minimized"
+            }`}
+          >
+            <div className="flex items-center gap-1">
+              <Image
+                src="/icons/work-icon.png"
+                width={18}
+                height={18}
+                alt="Work"
+                className="nav-icon"
+              />
+              <span>Work</span>
+            </div>
+          </Link>
+        )}
       </div>
     </nav>
   );

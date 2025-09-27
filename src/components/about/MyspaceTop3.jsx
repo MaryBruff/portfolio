@@ -15,14 +15,14 @@ export default function MySpaceTop3() {
   return (
     <section>
       {/* Header */}
-      <header className="bg-orange-200 text-orange-500 text-sm font-bold px-2 py-1 mb-3">
+      <header className="bg-pink-200 text-pink-500 text-sm font-bold px-2 py-1 mb-3">
         <h5>Mary Bruff&apos;s Friend Space</h5>
       </header>
 
       {/* Friend count */}
       <p className="mb-4 text-sm">
         <b>
-          Mary has <span className="text-base text-red-700">73090713</span> Friends.
+          Mary has <span className="text-base text-purple-700">73090713</span> Friends.
         </b>
       </p>
 
@@ -50,7 +50,7 @@ export default function MySpaceTop3() {
       <p className="flex justify-end mt-4 text-sm">
         <a
           href="#"
-          className="!text-red-700 visited:!text-red-700 hover:underline"
+          className="!text-purple-700 visited:!text-purple-700 hover:underline"
         >
           View All of Mary&apos;s Friends
         </a>
