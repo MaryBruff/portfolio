@@ -22,17 +22,21 @@ export default function Guestbook() {
   const [turnstileToken, setTurnstileToken] = React.useState<string | null>(null);
   const [submitting, setSubmitting] = React.useState(false);
   const [error, setError] = React.useState<string | null>(null);
+  const [isLoading, setIsLoading] = React.useState(true);
 
   // PAGINATION state
   const [page, setPage] = React.useState(1);
 
   const load = React.useCallback(async () => {
+    setIsLoading(true);
     try {
       const res = await fetch("/api/guestbook", { cache: "no-store" });
       const data = await res.json();
       setEntries(data.entries || []);
     } catch {
       // noop
+    } finally {
+      setIsLoading(false);
     }
   }, []);
 
@@ -125,38 +129,44 @@ export default function Guestbook() {
         </b>
       </p>
 
-      {/* Comments list */}
-      <ul className="w-full border border-white divide-y divide-white">
-        {total === 0 && (
-          <li className="p-4 text-sm opacity-80 bg-orange-400 text-white">
-            No comments yet. Be the first! ✍️
-          </li>
-        )}
+      {/* Spinner or Comments list */}
+      {isLoading ? (
+        <div className="flex justify-center items-center py-4">
+          <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-orange-500"></div>
+        </div>
+      ) : (
+        <ul className="w-full border border-white divide-y divide-white">
+          {total === 0 && (
+            <li className="p-4 text-sm opacity-80 bg-orange-400 text-white">
+              No comments yet. Be the first! ✍️
+            </li>
+          )}
 
-        {pageEntries.map((e) => (
-          <li key={e.id} className="grid grid-cols-[110px_1fr] gap-0 bg-orange-300 text-white">
-            {/* Left: profile */}
-            <div className="p-2 flex flex-col items-center justify-start">
-              <figure className="text-center">
-                <figcaption className="mb-1 text-xs font-bold underline">
-                  <a href="#" aria-label={`${e.name}'s profile`}>{e.name}</a>
-                </figcaption>
-                <div className="mx-auto flex h-20 w-20 items-center justify-center text-5xl">
-                  <span className="text-black" aria-hidden="true">
-                    {e.icon ?? initialsFromName(e.name)}
-                  </span>
-                </div>
-              </figure>
-            </div>
+          {pageEntries.map((e) => (
+            <li key={e.id} className="grid grid-cols-[110px_1fr] gap-0 bg-orange-300 text-white">
+              {/* Left: profile */}
+              <div className="p-2 flex flex-col items-center justify-start">
+                <figure className="text-center">
+                  <figcaption className="mb-1 text-xs font-bold underline">
+                    <a href="#" aria-label={`${e.name}'s profile`}>{e.name}</a>
+                  </figcaption>
+                  <div className="mx-auto flex h-20 w-20 items-center justify-center text-5xl">
+                    <span className="text-black" aria-hidden="true">
+                      {e.icon ?? initialsFromName(e.name)}
+                    </span>
+                  </div>
+                </figure>
+              </div>
 
-            {/* Right: message */}
-            <div className="p-3 bg-orange-100 text-black">
-              <p className="text-xs font-bold">{formatDate(e.createdAt)}</p>
-              <p className="mt-1 whitespace-pre-wrap text-sm leading-5">{e.message}</p>
-            </div>
-          </li>
-        ))}
-      </ul>
+              {/* Right: message */}
+              <div className="p-3 bg-orange-100 text-black">
+                <p className="text-xs font-bold">{formatDate(e.createdAt)}</p>
+                <p className="mt-1 whitespace-pre-wrap text-sm leading-5">{e.message}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
 
       {/* ===== PAGINATION CONTROLS ===== */}
       {total > PAGE_SIZE && (
@@ -288,4 +298,3 @@ function formatDate(iso: string) {
 
   return formatted;
 }
-
