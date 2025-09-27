@@ -36,7 +36,7 @@ export default function Home() {
         <div className="xp w-full max-w-xl">
           <div className="window">
             <div className="title-bar">
-              <div className="title-bar-text">Welcome to My Portfolio</div>
+              <div className="title-bar-text">My Portfolio</div>
               <div className="title-bar-controls">
                 <button aria-label="Help" />
                 <button aria-label="Close" />
