@@ -1,6 +1,5 @@
 import Window from "@/components/Window";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,33 +17,33 @@ const books = [
 export default function Interests() {
   return (
     <div>
-      <div className="heading bg-blue-400 text-white text-sm font-bold px-2 py-1">
+      <div className="heading bg-pink-400 text-white text-sm font-bold px-2 py-1">
         <h5>Mary Bruff's Interests</h5>
       </div>
       <Table>
         <TableBody>
           <TableRow>
-            <TableCell className="font-bold w-1/4 bg-blue-300 text-blue-800 whitespace-normal break-words">
+            <TableCell className="font-bold w-1/4 bg-pink-300 text-pink-800 whitespace-normal break-words">
               Soft Skills
             </TableCell>
-            <TableCell className="whitespace-normal bg-blue-200 break-words">
+            <TableCell className="whitespace-normal bg-pink-200 break-words">
               Leadership, Collaboration & Teamwork, Data Analysis & Quality
               Management, Technical Communication & Documentation
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold w-1/4 bg-blue-300 text-blue-800 whitespace-normal break-words">
+            <TableCell className="font-bold w-1/4 bg-pink-300 text-pink-800 whitespace-normal break-words">
               Tech Skills
             </TableCell>
-            <TableCell className="whitespace-normal bg-blue-200 break-words">
+            <TableCell className="whitespace-normal bg-pink-200 break-words">
               JavaScript, TypeScript, React, Next.js, Tailwind CSS, Node.js
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold bg-blue-300 text-blue-800 whitespace-normal break-words">
+            <TableCell className="font-bold bg-pink-300 text-pink-800 whitespace-normal break-words">
               Music
             </TableCell>
-            <TableCell className="whitespace-normal bg-blue-200 break-words">
+            <TableCell className="whitespace-normal bg-pink-200 break-words">
               Check out my tunes on{" "}
               <Link
                 href="https://open.spotify.com/user/poptartmarbear"
@@ -64,10 +63,10 @@ export default function Interests() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold bg-blue-300 text-blue-800 whitespace-normal break-words">
+            <TableCell className="font-bold bg-pink-300 text-pink-800 whitespace-normal break-words">
               Movies
             </TableCell>
-            <TableCell className="whitespace-normal bg-blue-200 break-words">
+            <TableCell className="whitespace-normal bg-pink-200 break-words">
               See my favorite films on{" "}
               <Link
                 href="https://letterboxd.com/Poptartmarbear/"
@@ -79,18 +78,18 @@ export default function Interests() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold bg-blue-300 text-blue-800 whitespace-normal break-words">
+            <TableCell className="font-bold bg-pink-300 text-pink-800 whitespace-normal break-words">
               Activities
             </TableCell>
-            <TableCell className="whitespace-normal bg-blue-200 break-words">
+            <TableCell className="whitespace-normal bg-pink-200 break-words">
               Music, Films, Video Games, Always Learning
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold bg-blue-300 text-blue-800 whitespace-normal break-words">
+            <TableCell className="font-bold bg-pink-300 text-pink-800 whitespace-normal break-words">
               Books
             </TableCell>
-            <TableCell className="whitespace-normal bg-blue-200 break-words">
+            <TableCell className="whitespace-normal bg-pink-200 break-words">
               <div className="grid grid-cols-2 gap-2">
                 {books.map((book, index) => (
                   <div
@@ -110,10 +109,10 @@ export default function Interests() {
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell className="font-bold bg-blue-300 text-blue-800 whitespace-normal break-words">
+            <TableCell className="font-bold bg-pink-300 text-pink-800 whitespace-normal break-words">
               Heroes
             </TableCell>
-            <TableCell className="whitespace-normal bg-blue-200 break-words">
+            <TableCell className="whitespace-normal bg-pink-200 break-words">
               Harpo, Groucho, Chico, Zeppo, and Gummo
             </TableCell>
           </TableRow>

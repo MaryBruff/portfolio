@@ -28,9 +28,9 @@ const contactLinks: ContactLink[][] = [
 export default function ContactActions() {
   return (
     <>
-      <div className="contact border-2 border-blue-500 bg-white text-sm">
+      <div className="border-2 border-pink-400 bg-white text-sm">
         {/* Heading */}
-        <div className="heading bg-blue-500 text-white text-sm font-bold px-2 py-1">
+        <div className="bg-pink-400 text-white text-sm font-bold px-2 py-1">
           <h5>Contacting Mary Bruff</h5>
         </div>
 
@@ -55,7 +55,7 @@ export default function ContactActions() {
           ))}
         </div>
       </div>
-      <div className="border-2 border-blue-500 bg-white text-sm p-2">
+      <div className="border-2 border-pink-400 bg-white text-sm p-2">
         <p className="font-bold">Mary&apos;s MySpace URL:</p>
         <a href="#" className="underline">
           https://myspace.com/marybruff
