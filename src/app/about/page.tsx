@@ -16,7 +16,7 @@ import Window from "@/components/Window";
 
 export default function About() {
   return (
-    <main className="relative flex items-center justify-center">
+    <main className="relative flex items-center justify-center z-2">
       {/* Outer container, scales up to 1080px */}
       <div className="mx-auto max-w-6xl w-full px-4 md:px-6 py-4 bg-no-repeat bg-center bg-cover">
         <div

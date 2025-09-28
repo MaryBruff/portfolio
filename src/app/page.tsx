@@ -22,7 +22,7 @@ export default function Home() {
   return (
     <motion.div
       ref={constraintsRef}
-      className="relative flex min-h-screen flex-col items-center justify-center p-4 overflow-hidden"
+      className="relative flex min-h-screen flex-col items-center justify-center p-4 overflow-hidden z-2"
     >
       <motion.div
         drag={!isMobile}
