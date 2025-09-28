@@ -55,7 +55,7 @@ export default function WorkContent() {
 
   return (
     <main className="relative flex items-center justify-center ">
-      <div className="mx-auto max-w-4xl px-4 md:px-6 py-4">
+      <div className="mx-auto max-w-6xl px-4 md:px-6 py-4">
         <div
           className="min-h-0 max-h-[730px] h-[calc(100svh-100px-16px)] sm:h-[calc(100dvh-80px-16px)]"
           style={{ marginTop: 8, marginBottom: 8 }}
