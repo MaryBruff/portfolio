@@ -1,14 +1,14 @@
 "use client";
 
 const friends = [
-  { name: "tom", img: "https://picsum.photos/100?random=1" },
-  { name: "Andi", img: "https://picsum.photos/100?random=2" },
-  { name: "abraham", img: "https://picsum.photos/100?random=3" },
-  { name: "tanner", img: "https://picsum.photos/100?random=4" },
-  { name: "Tams", img: "https://picsum.photos/100?random=5" },
-  { name: "Haley ˖ ᡣ𐭩", img: "https://picsum.photos/100?random=6" },
-  { name: "J-e-n-n-i", img: "https://picsum.photos/100?random=7" },
-  { name: "James Dean", img: "https://picsum.photos/100?random=8" },
+  { name: "Martin Gore", img: "/Martin.png"},
+  { name: "Pammy ᡣ𐭩", img: "https://i.pinimg.com/1200x/8a/69/48/8a6948b3679f0a207e99aecd19a24878.jpg" },
+  { name: "Morrissey", img: "https://pbs.twimg.com/media/G17Mx07XoAAs51t?format=jpg&name=medium" },
+  { name: "John Keats", img: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/John_Keats_by_William_Hilton.jpg/989px-John_Keats_by_William_Hilton.jpg" },
+  { name: "Arsenal", img: "https://pbs.twimg.com/profile_images/1971499669248180224/i2fASOX8_400x400.jpg" },
+  { name: "Pee-wee Herman", img: "https://64.media.tumblr.com/4b92f0b48dc8d85e50c0ef862a69959c/2a90485d3411a9f4-e7/s1280x1920/3d5822dafb8952da05505c3deeba57252c92c6a5.jpg" },
+  { name: "Franz Kafka", img: "https://ca-times.brightspotcdn.com/dims4/default/e73f8fc/2147483647/strip/true/crop/495x600+0+0/resize/1200x1455!/quality/75/?url=https%3A%2F%2Fcalifornia-times-brightspot.s3.amazonaws.com%2F5e%2F05%2F77e6db347e99564807c60fa467bd%2Fla-et-jc-why-kafka-matters-20130623-001" },
+  { name: "James Dean", img: "https://robbreport.com/wp-content/uploads/2018/12/Getty_Dean_C28718121218250.jpg" },
 ];
 
 export default function MySpaceTop3() {
@@ -22,7 +22,7 @@ export default function MySpaceTop3() {
       {/* Friend count */}
       <p className="mb-4 text-sm">
         <b>
-          Mary has <span className="text-base text-purple-700">73090713</span> Friends.
+          Mary has <span className="text-base text-purple-700">5,757</span> Friends.
         </b>
       </p>
 
