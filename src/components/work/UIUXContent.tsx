@@ -24,7 +24,7 @@ export default function UIUXContent() {
     {
       title: "Website Concept & Design",
       description: "A user-focused website design with personas, audience analysis, and multi-device interfaces.",
-      url: "https://portfolium.com/entry/skincare-website-concept-design",
+      url: "https://docs.google.com/document/d/1Kp6Bu1cDbxMPF4FqlaqBMHhZYx1hAyG8/edit?usp=sharing&ouid=104937312066702883336&rtpof=true&sd=true",
       thumbnail: "/skincare_website.png",
     },
   ];
