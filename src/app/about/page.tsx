@@ -9,6 +9,7 @@ import {
   MySpaceTop3,
   Blog,
   Education,
+  Details,
   Guestbook,
 } from "@/components/about";
 import Welcome from "@/components/about/Welcome";
@@ -42,6 +43,7 @@ export default function About() {
                   <MyJams />
                   <Interests />
                   <Education />
+                  <Details />
                 </div>
 
                 {/* Right Column */}

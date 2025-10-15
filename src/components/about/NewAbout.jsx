@@ -49,7 +49,7 @@ export default function NewAbout() {
             />
           ))}
         </a>
-        <p>Ur mom</p>
+        <p>Tom from MySpace</p>
       </div>
     </div>
   );

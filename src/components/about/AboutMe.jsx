@@ -33,7 +33,7 @@ export default function AboutMe() {
 
         <div className="details space-y-3">
           <p className="italic">"Fail fast, fail often!"</p>
-          <p>United States • She/Her</p>
+          <p>United States</p>
           <Image
             src="/2008/nice-breeze.gif"
             alt="Online Now"
@@ -44,8 +44,8 @@ export default function AboutMe() {
           <Image
             src="http://www.myspacegens.com/images/online_now/148.gif"
             alt="Online Now"
-            width={70}
-            height={70}
+            width={100}  
+            height={100}
             unoptimized
           />
         </div>
@@ -54,7 +54,7 @@ export default function AboutMe() {
       {/* Mood + View my */}
       <div className="mt-3 space-y-1 text-sm">
         <p>
-          <b>Mood:</b> Groovy :-)
+          <b>Mood:</b> Most Excellent :] 
         </p>
         <p>
           <b>View my:</b>{" "}

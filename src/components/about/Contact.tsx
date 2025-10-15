@@ -56,9 +56,9 @@ export default function ContactActions() {
         </div>
       </div>
       <div className="border-2 border-pink-400 bg-white text-sm p-2">
-        <p className="font-bold">Mary&apos;s MySpace URL:</p>
+        <p className="font-bold">Mary&apos;s LinkedIn URL:</p>
         <a href="#" className="underline">
-          https://myspace.com/marybruff
+        https://www.linkedin.com/in/mary-bruff/
         </a>
       </div>
     </>
