@@ -281,3 +281,47 @@ body::before {
   margin-top: 4px;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
 }
+
+@media (max-width: 421px) {
+  .nav-app-link span {
+    display: none;
+  }
+  .nav-app-link {
+    min-width: 40px;
+    padding: 2px;
+    justify-content: center;
+  }
+  .nav-clock {
+    display: none; 
+  }
+  .nav-start-button {
+    width: 80px; 
+  }
+}
+
+.nav-clock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-width: 120px;
+  padding: 0 12px;
+  background: linear-gradient(
+    to bottom,
+    #76b7ff 0%,
+    #3e7dff 50%,
+    #2b66ff 51%,
+    #3b7ff3 100%
+  );
+  border-left: 1px solid rgba(255, 25 255, 0.25);
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  border-right: 1px solid rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.35);
+  border-radius: 0;
+  font-family: "Pixelated MS Sans Serif", Arial;
+  font-size: 15px;
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.8);
+  user-select: none;
+  pointer-events: none;
+}
