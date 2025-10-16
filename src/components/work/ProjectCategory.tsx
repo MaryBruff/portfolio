@@ -16,10 +16,10 @@ interface Project {
 interface PortfolioCategoryProps {
   windowTitle: string;
   introText: string;
-  projects: Project[];      // unchanged for other tabs
+  projects: Project[];    
   githubProfile?: string;
   isDev?: boolean;
-  children?: React.ReactNode; // NEW: allow custom content (e.g., Resume)
+  children?: React.ReactNode; 
 }
 
 export default function PortfolioCategory({

@@ -25,13 +25,12 @@ export default function About() {
           style={{ marginTop: 8, marginBottom: 8 }}
         >
           <Window
-            title="About Me"
+          title="About Me"
             className="h-full flex flex-col min-h-0"
             bodyClassName="flex-1 min-h-0 overflow-y-auto p-0 bg-[url('/backgrounds/pink-bg.jpeg')] bg-cover border-l-[3px] border-[#0000ff] border-r-[3px] border-r-[#184198]"
           >
             {/*bg-[url('/backgrounds/pink-bg.jpeg')] bg-cover*/}
             <div className="mx-auto max-w-4xl bg-white/90">
-              {/* Nav spans full width */}
               <MySpaceNav />
 
               {/* Content grid */}
