@@ -61,7 +61,7 @@ export default function Home() {
                 <Image
                   src="/2008/welcome-rainbow.webp"
                   alt="Mary Bruff Icon"
-                  width={150}
+                  width={180}
                   height={64}
                 />
               </div>
@@ -69,8 +69,8 @@ export default function Home() {
                 <Image
                   src="/2008/marymarymary.gif"
                   alt="Mary Bruff Icon"
-                  width={60}
-                  height={72}
+                  width={75}
+                  height={82}
                 />
                 <h4 className="text-base">says</h4>
               </div>
