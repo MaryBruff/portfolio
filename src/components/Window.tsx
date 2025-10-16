@@ -27,7 +27,6 @@ export default function Window({
 
   const startDrag = (e: React.PointerEvent) => {
     if (isMobile) return;
-    // don’t start a drag when clicking the window control buttons
     if ((e.target as HTMLElement).closest(".title-bar-controls")) return;
     e.preventDefault();
     dragControls.start(e);
@@ -37,7 +36,7 @@ export default function Window({
     <motion.div
       drag={!isMobile}
       dragControls={dragControls}
-      dragListener={false} // <-- only draggable when we manually start via title bar
+      dragListener={false}
       dragConstraints={isMobile ? false : { top: 0, left: 0, right: 0, bottom: 0 }}
       dragElastic={isMobile ? 0 : 0.5}
       dragTransition={isMobile ? {} : { bounceStiffness: 400, bounceDamping: 18 }}

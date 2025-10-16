@@ -5,7 +5,7 @@ import Link from "next/link";
 import { FormEvent, useState } from "react";
 
 type MySpaceNavProps = {
-  logoSrc?: string; // e.g. "/logos/myspace.svg"
+  logoSrc?: string;
   logoAlt?: string;
 };
 
