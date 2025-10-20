@@ -149,7 +149,7 @@ export default function Interests() {
             </TableCell>
             <TableCell className="whitespace-normal bg-pink-200 break-words text-center">
               <p className="mb-3">
-                Harpo, Groucho, Chico, and Zeppo
+                Chico, Groucho, Harpo and Zeppo
               </p>
               <div className="flex justify-center items-center">
                 <a
