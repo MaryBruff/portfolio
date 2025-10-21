@@ -325,3 +325,25 @@ body::before {
   user-select: none;
   pointer-events: none;
 }
+
+@media (max-width: 421px) {
+  .nav-app-link span {
+    display: none;
+  }
+  .nav-app-link {
+    min-width: 40px;
+    padding: 2px;
+    justify-content: center;
+  }
+  .nav-start-button {
+    min-width: 125px;
+    max-width: 125px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 320px) {
+    .nav-clock {
+      display: none; 
+    }
+  }
+}
