@@ -231,9 +231,9 @@ const DesktopIcons = () => {
             {/* MAIN PANES: Tree + File List */}
             <div className="flex flex-1 overflow-hidden">
               {/* LEFT: Folder Tree */}
-              <div className="w-48 bg-[#f0f0f0] border-r border-gray-400 p-1 overflow-y-auto">
-                <ul className="tree-view">
-                  <li>
+              {/* <div className="w-48 bg-[#f0f0f0] border-r border-gray-400 p-1 overflow-y-auto">
+                <ul className="tree-view"> */}
+                  {/* <li>
                     <details open>
                       <summary>My Documents</summary>
                       <ul>
@@ -245,7 +245,7 @@ const DesktopIcons = () => {
                   <li>Desktop</li>
                   <li>My Computer</li>
                 </ul>
-              </div>
+              </div> */}
 
               {/* RIGHT: File List */}
               <div className="flex-1 overflow-y-auto bg-white">
@@ -264,14 +264,14 @@ const DesktopIcons = () => {
 
                   return (
                     <table className="w-full text-sm">
-                      <thead className="bg-gradient-to-r from-[#0a246a] to-[#1e61b0] text-white sticky top-0">
+                      {/* <thead className="bg-gradient-to-r from-[#0a246a] to-[#1e61b0] text-white sticky top-0">
                         <tr>
                           <th className="p-2 text-left">Name</th>
                           <th className="p-2 text-left">Size</th>
                           <th className="p-2 text-left">Type</th>
                           <th className="p-2 text-left">Modified</th>
                         </tr>
-                      </thead>
+                      </thead> */}
                       <tbody>
                         <tr
                           className="hover:bg-[#cce4ff] cursor-pointer border-b"
