@@ -67,8 +67,8 @@
       >
         GitHub
       </Link>
-      <span className="mx-1">|</span>
-      <Link
+      <span className="mx-1"></span>
+      {/* <Link
         href="https://poptartmarbear.tumblr.com/"
         target="_blank"
         rel="noopener noreferrer"
@@ -76,7 +76,7 @@
         className="underline hover:text-blue-600"
       >
         Tumblr
-      </Link>
+      </Link> */}
     </p>
         </div>
       </div>

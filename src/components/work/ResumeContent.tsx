@@ -14,17 +14,17 @@ export default function ResumeContent() {
   // --- Data ---
   const experiences = [
     {
-      title: "DataArt QA Engineer — Experis @ Meta",
+      title: "Data Quality Analyst & Taxonomy SME — Experis @ Meta",
       location: "Remote · Oct 2024 – Current",
       responsibilities: [
-        "Collaborate with engineers/researchers on LLM training pipelines; audit human- and model-generated data for quality and ethical integrity.",
-        "Use Python & SQL to aggregate, analyze, and visualize annotation data; deliver reports that guide product and model improvements.",
-        "Lead vendor training on data annotation & QA for JSON, SRT, and proprietary formats; standardize workflows across global teams.",
-        "Author and maintain technical documentation and workflow guidelines, improving annotation accuracy and reducing rework.",
+        "Analyzed large-scale annotation datasets using Python and SQL to deliver actionable insights, optimize LLM training pipelines, and identify multimillion-dollar revenue leakage.",
+        "Led global vendor training and workflow standardization initiatives, improving annotation consistency, data accuracy, and overall quality across AI/ML programs.",
+        "Designed and refined scalable content taxonomies while aligning cross-functional stakeholders and supporting ethical AI data practices and prioritization.",
+        "Developed technical documentation, QA audit frameworks, and AI-assisted internal tools to enhance data quality, streamline onboarding, and improve human-AI collaboration.",
       ],
     },
     {
-      title: "Programming & Playout Development Engineer Intern — iHeartMedia",
+      title: "Software Engineer Intern — iHeartMedia",
       location: "Remote · May 2024 – Sep 2024",
       responsibilities: [
         "Architected & maintained AWS (Lambda, S3, EC2) for scalable, fault-tolerant playout and metadata services.",
@@ -83,6 +83,7 @@ export default function ResumeContent() {
     "Data Annotation / Pandas / JSON & SRT",
     "Excel / Looker Studio / Dashboards",
     "Tech Writing / API Docs / SOPs",
+    "LLM Data Pipelines / AI Training Optimization "
   ];
 
   const softSkills = [
@@ -137,11 +138,9 @@ export default function ResumeContent() {
             className="mx-auto mb-3 w-full max-w-[120px] max-h-40 object-contain sm:max-h-none"
           />
           <p className="font-medium text-[#800040] mb-2 leading-relaxed text-[clamp(13px,3.8vw,16px)]">
-            QA Engineer and Frontend Developer blending technical precision with creative problem-solving. Skilled in Python, SQL, React, and accessibility-driven design to build scalable, high-quality digital experiences.
-          </p>
+            Software Engineer & Data Quality Analyst focused on AI/ML systems, LLM training data, and frontend performance. Uses Python, SQL, and React to drive data quality, insights, and scalable user experiences.          </p>
           <p className="text-[#800040] leading-relaxed text-[clamp(12px,3.3vw,14px)]">
-            Tools: JavaScript, React, TypeScript, GraphQL, Cypress, Jest, Python, SQL, AWS (Lambda, S3, EC2), Git, CI/CD, Figma, WCAG/ARIA.
-          </p>
+            Tools: JavaScript, TypeScript, React, Python, SQL, GraphQL, AWS, Cypress, Jest, Git, WCAG/ARIA          </p>
         </CardContent>
       </Card>
 
