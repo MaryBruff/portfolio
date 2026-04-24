@@ -10,8 +10,8 @@ const DesktopIcons = () => {
   const [isMp3sModalOpen, setIsMp3sModalOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
-  const resumeUrl = '/resume/Mary_Bruff_RESUME_Jan_2026_Tech.pdf';
-  const downloadFilename = 'Mary_Bruff_RESUME_Jan_2026_Tech.pdf';
+  const resumeUrl = '/resume/Mary Bruff Resume 2026  - Two Page.pdf';
+  const downloadFilename = 'Mary Bruff Resume 2026  - Two Page.pdf';
 
   // Hide icons & modals on mobile (<900px)
   useEffect(() => {
@@ -55,7 +55,7 @@ const DesktopIcons = () => {
             aria-label="Open Resume"
           >
             <Image src="/icons/pdf-icon.png" alt="Resume" width={32} height={32} className="w-8 h-8" />
-            <p className="desktop-icon-text">resume_2025.pdf</p>
+            <p className="desktop-icon-text">resume_2026.pdf</p>
           </button>
 
           {/* My Documents */}
